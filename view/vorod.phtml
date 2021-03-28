@@ -1,0 +1,48 @@
+<?php if (!isset($_SESSION['logIn'])): ?>
+<br><br><br>
+<div class="col-lg-5 container" >
+<h3>صفحه ورود به سایت</h3>
+    <hr>
+    <form action="./acc" method="post">
+        <div class="col-auto">
+            <label
+                class="sr-only" for="inlineFormInputGroup1">Username</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input name="Email" type="Email" class="form-control" id="inlineFormInputGroup1" placeholder="ايميل" required>
+            </div>
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup2">Pawsword</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><img src="asetes/img/lock.png" alt="lock" class="icon"></div>
+                </div>
+                <input type="password" name="Pass" class="form-control" id="inlineFormInputGroup2" pattern=".{6,}" placeholder="رمز" required>
+            </div>
+        </div>
+        <button class="btn btn-success btn-center" type="submit">ورود به سايت</button>
+    </form>
+    <br>
+    <br>
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+  <a href="./faramoshi" class="faramoshi">آیا رمز خود را فراموش کرده اید؟</a>
+  </div>
+  <div class="col-lg-4"></div>
+
+</div>
+
+    <hr>
+    <a href="#" class="btn btn-dark btn-center" style="right: 38%">پنل آگهی دهندگان</a>
+</div>
+<br><br><br>
+<br><br><br>
+<?php
+else:
+    controller::redirect('./PanelUser');
+ endif;
+ ?>

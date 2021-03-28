@@ -1,0 +1,154 @@
+<div class="container">
+  <div id="Reg-mtn"> ثبت نام کاربران</div>
+  <div class="line-purple"></div>
+  <form action="./Reg" method="post">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="name">*
+            نام و نام خانوادگی:
+          </label>
+          <input type="text" class="form-control" id="name" placeholder="  نام و نام خانوادگی خود را وارد کنید  "
+                 name="nam" required pattern=".{2,}"
+                 oninvalid="setCustomValidity('وارد كردن نام و نام خانوادگي الزامي است.')"
+                 oninput="setCustomValidity('')">
+        </fieldset>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+
+          <label for="rido">جنسیت:</label>
+          <div id="rido" style="margin-right: 7%">
+            <div class="btn btn-outline-primary  custom-control  custom-control-inline col-5  col-sm-4">
+              <input type="radio" id="customRadioInline1" name="Sex" value="1" class=" custom-control-input "
+                     checked="checked" required>
+              <label class="custom-control-label" for="customRadioInline1">مرد</label>
+            </div>
+            <div class="btn custom-control  btn-outline-primary  custom-control-inline col-5 col-sm-4">
+              <input type="radio" id="customRadioInline2" name="Sex" value="2" class="custom-control-input" required>
+              <label class="custom-control-label" for="customRadioInline2">زن</label>
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="Email">*
+            آدرس ایمیل:
+          </label>
+          <input type="email" class="form-control" name="email" id="Email" placeholder="آدرس ایمیل خود را وارد کنید"
+                 required oninvalid="setCustomValidity('لطفا ايميل خود را به فرمت  example@example.com وارد كنيد.')"
+                 oninput="setCustomValidity('')">
+        </fieldset>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="inputEmail4">*
+          شماره موبایل:
+        </label>
+        <input name="Phone"
+               type="tel" class="form-control" id="inputEmail4"
+               placeholder=" شماره موبایل خود را وارد کنید :---------09"
+               required pattern="[0-9]{11}"
+               oninvalid="setCustomValidity('لطفا شماره تلفن همراه خود را به طور صحيح وارد كنيد')"
+               oninput="setCustomValidity('')">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="pas1">*
+            رمز :
+          </label>
+          <input type="password" class="form-control" name="Pass" id="pas1" placeholder="رمز خود را وارد کنید"
+                 required pattern=".{6,}" oninvalid="setCustomValidity('حداقل تعداد كاراكتر 6 كاراكتر مي باشد.')"
+                 oninput="setCustomValidity('')" v-model="pass1">
+        </fieldset>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <label for="pas2">*
+          تکرار رمز :
+        </label>
+        <input type="password" class="form-control" id="pas2" placeholder="رمز وارد شده را تاييد كنيد "
+               required :oninvalid="confirm"
+               v-model="pass2" oninput="setCustomValidity('')">
+        <div v-show="pass1!=pass2" style="color: crimson"> لطفا رمز خود را دقیق وارد کنید و به حروف بزرگ و کوچک توجه
+          داشته باشید.
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="SelectPref">*
+            استان :
+          </label>
+          <select class="custom-select my-1 mr-sm-2" id="SelectPref" required name="Ostan">
+            <option selected></option>
+            <option value="1">اصفهان</option>
+            <option value="2">تهران</option>
+            <option value="3">شیراز</option>
+            <option value="4">قم</option>
+            <option value="5">مشهد</option>
+            <option value="6">همدان</option>
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="City">
+            شهر :
+          </label>
+          <input type="text" class="form-control" id="City" name="Shaher"
+                 placeholder="شهر محل سكونت خود را وارد كنيد   "
+                 oninvalid="setCustomValidity('وارد كردن شهر الزامي نيست.')" oninput="setCustomValidity('')">
+        </fieldset>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <label for="madrak">*
+            مدرك تحصيلي :
+          </label>
+          <select class="custom-select my-1 mr-sm-2" id="madrak" name="Madrak" required>
+            <option selected></option>
+            <option value="1">زير ديپلم</option>
+            <option value="2">ديپلم</option>
+            <option value="3">ديپلم</option>
+            <option value="4">كارداني</option>
+            <option value="5">كارشناسي</option>
+            <option value="6">كارشناسي ارشد</option>
+            <option value="7">دكتري</option>
+            <option value="8">فوق دكتري</option>
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <fieldset>
+          <fieldset>
+            <label for="reshte">
+              رشته ي تحصيلي :
+            </label>
+            <input type="text" name="Reshte" class="form-control" id="reshte"
+                   placeholder="شهر محل سكونت خود را وارد كنيد" required>
+          </fieldset>
+        </fieldset>
+      </div>
+      <br><br><br>
+      <div class="line-purple"></div>
+
+      <input v-show="pass1==pass2" type="submit" class="btn btn-success btn-custom-center" value="ثبت نام در سایت">
+    </div>
+  </form>
+
+
+  <!--  مودال-->
+
+
+</div>
+<br><br>

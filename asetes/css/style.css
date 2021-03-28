@@ -1,0 +1,85 @@
+@import 'header.css';
+@import "bootstrap.css";
+@import "icon.css";
+@import "footer.css";
+@import "index.css";
+@import "miniHeader.css";
+@import "Reg.css";
+@import "er.css";
+@import "contact.css";
+@import "taghvim.css";
+@import "Nazarat.css";
+@import "set_advertises.css";
+@import "home.css";
+@import "advertise.css";
+@import "adv.css";
+@import "modalOfSide.css";
+@import "PanelUserMeno.css";
+@import "user_advertise.css";
+@import "Email_Token.css";
+@import "validationReg.css";
+@import "edituseremail.css";
+@import "edtUserInfo.css";
+@import "editresume.css";
+@import "esSarasari.css";
+@import "estekhdam_sarasari.css";
+@font-face {
+  font-family: "B Na";
+  src: url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.eot");
+  src: url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.eot?#iefix") format("embedded-opentype")
+  , url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.woff") format("woff"),
+  url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/3671adca6f650c92b83f906e49656986.svg#B Nazanin") format("svg");
+}
+@font-face {
+  font-family: 'Sas';
+  src: url('../font/S.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Tahoma';
+  src: url('../font/tahoma.ttf') format('ttf');
+}
+
+
+
+
+* {
+  font-family: "B Na", serif;
+  direction: rtl;
+  /*overflow-x: hidden;*/
+}
+
+
+/**::-webkit-scrollbar {*/
+
+
+/*  display: none;*/
+
+
+/*  -ms-overflow-style: none; !* IE and Edge *!*/
+
+
+/*  scrollbar-width: none; !* Firefox *!*/
+
+
+/*}*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b4a4cf;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a87eec;
+}

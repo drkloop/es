@@ -1,0 +1,361 @@
+<?php
+include "./model/funcs_for_advertise.php";
+?>
+<div id="adver">
+    <div id="mySidenav_search_zone" class="sidenav">
+        <div class="sidde">
+            <div id="nav_zone_search" class="col-md-12 filter">
+                <div class="row row_1">
+                    <i class="fa fa-globe"></i>
+                    <p>
+                        منطقه جست و جو
+                    </p>
+                    <button id="zone_search_close" class="closebtn" onclick="closeNav()">&times;</button>
+                </div>
+
+
+                <input type="text" id="shearcheZone" class="filter_search" onkeyup="filterFunction_nav_zone()"
+                       placeholder="متن مورد نظر را جست و جو کنید">
+                <i class="fa fa-search"></i>
+            </div>
+            <hr class="adver_hr">
+            <div id="nav_zones" class="col-md-12 row">
+                <ul id="nav_zone_ul">
+                    <?php
+                    get_city();
+                    ?>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="mySidenav_job_status" class="sidenav">
+        <div class="sidde">
+            <div id="job_status" class="col-md-12 filter">
+                <div class="row">
+                    <i class="fa fa-globe"></i>
+                    <p class="search_title filter_sera_title">
+                        موقعیت شغلی
+                    </p>
+                    <button class="closebtn" onclick="closeNavJob()">&times;</button>
+                </div>
+                <input type="text" onkeyup="filterFunction_nav_status_job()" class="filter_search" id="nav_status_job"
+                       placeholder="موقعیت شغلی خود را فیلتر کنید">
+                <i class="fa fa-search"></i>
+
+            </div>
+            <hr class="adver_hr">
+            <div id="prev_jobs">
+                <div id="nav_jobs" class="filtering">
+                    <?php
+                    get_job_type();
+                    ?>
+                </div>
+            </div>
+
+            <div id="prev_jooob">
+                <div id="nav_jooob" class="filtering">
+                    <?php
+                    get_jobs();
+                    ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="mySidenav_search_major" class="sidenav">
+        <div class="sidde">
+            <div id="major_status" class="col-md-12 filter">
+                <div class="row row_1">
+                    <i class="fa fa-male"></i>
+                    <p class="search_title filter_sera_title">
+                        رشته تحصیلی
+                    </p>
+                    <button class="closebtn" onclick="closeNavMajor()">&times;</button>
+                </div>
+                <input type="text" id="nav_status_major" class="filter_search" placeholder="رشته خود را فیلتر کنید">
+                <i class="fa fa-search"></i>
+            </div>
+
+            <hr class="adver_hr">
+            <div id="prev_majors" class="fils">
+                <div id="nav_majors" class="filtering">
+                    <div class="fillter" id="maj">
+                        <?php
+                        get_majors();
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mySidenav_sex" class="sidenav">
+
+        <div class="sidde">
+            <div id="sex_status" class="col-md-12 filter">
+                <div class="row row_1">
+                    <i class="fa fa-female"></i>
+                    <p class="search_title filter_sera_title">
+                        جنسیت
+                    </p>
+                    <button class="closebtn" onclick="closeNavSex()">&times;</button>
+                </div>
+
+            </div>
+            <hr class="adver_hr">
+            <div id="prev_sex">
+                <div id="sex" class="filtering">
+                    <div id="fill_sex">
+                        <p>
+                            <input type="checkbox" val="1-sex" class="filter_check filter_check_sex">
+                            آقا
+                        </p>
+                        <p>
+                            <input type="checkbox" val="2-sex" class="filter_check filter_check_sex">
+                            خانم
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="mySidenav_doc" class="sidenav">
+
+        <div class="sidde">
+            <div id="doc_status" class="col-md-12 filter">
+                <div class="row row_1">
+                    <i class="fa fa-calendar"></i>
+                    <p class="search_title filter_sera_title">
+                        نوع قرارداد
+                    </p>
+                    <button class="closebtn" onclick="closeNavDoc()">&times;</button>
+
+                </div>
+
+            </div>
+
+            <hr class="adver_hr">
+            <div id="prev_doc">
+                <div id="doc" class="filtering">
+                    <div id="fill_doc">
+                        <p>
+                            <input type="checkbox" val="1-timing" class="filter_check">
+                            تمام وقت
+                        </p>
+                        <p>
+                            <input type="checkbox" val="2-timing" class="filter_check">
+                            پاره وقت
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mySidenav_search_text" class="sidenav">
+
+        <div class="sidde">
+            <div id="side_text_search" class="col-md-12 filter">
+                <div id="side_row_search" class="row">
+                    <i class="fa fa-question"></i>
+                    <p id="side_filter_sera_title" class="search_title filter_sera_title">
+                        جست و جوی متنی
+                    </p>
+                    <button class="closebtn" onclick="closeNavText()">&times;</button>
+                </div>
+
+                <input type="text" id="side_search_text" class="filter_search"
+                       placeholder="متن مورد نظر را جست و جو کنید">
+                <i class="fa fa-search"></i>
+            </div>
+            <hr class="adver_hr">
+            <div id="side_search_seg">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Use any element to open the sidenav -->
+    <div class="col-md-12" id="loading_bar">
+        <img src="asetes/img/load.gif" alt="">
+    </div>
+    <div class="container">
+        <div id="advertises_title">
+            <div id="advertises_title" class="col-md-12 row">
+                <div class="col-md-5">
+                    <h3 id="advertises_title_h">جستجو آگهی های استخدام</h3>
+                </div>
+                <div class="col-md-7 col-sm-12" id="adv_buts">
+                    <a href="./dargeAgahi" class="adv_but_ins">
+                        <i class="fa fa-plus"></i>
+                        درج آگهی استخدام
+                    </a>
+                    <a href="#" class="adv_but_ins">
+                        <i class="fa fa-bell"></i>
+                        دریافت آگهی های استخدامی
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="for_small">
+            <center>
+                <button onclick="openNav()">منطقه جست و جو
+                    <i class="fa fa-angle-down"></i></button>
+                <button onclick="openNavJob()">موقعیت شغلی
+                    <i class="fa fa-angle-down"></i></button>
+                <button onclick="openNavMajor()">رشته تحصیلی
+                    <i class="fa fa-angle-down"></i></button>
+            </center>
+        </div>
+        <div class="for_small">
+            <center>
+                <button onclick="openNavSex()">جنسیت
+                    <i class="fa fa-angle-down"></i></button>
+                <button onclick="openNavDoc()">نوع قرارداد
+                    <i class="fa fa-angle-down"></i></button>
+                <button onclick="openNavText()">جست و جوی متنی
+                    <i class="fa fa-angle-down"></i></button>
+            </center>
+        </div>
+        <div id="advertises" class="row col-md-12">
+            <div id="sidebar" class="col-md-3">
+                <div id="text_search" class="col-md-12 filter">
+                    <p class="search_title filter_sera_title"><i class="fa fa-question"></i>
+                        جست و جوی متنی
+                    </p>
+                    <input type="text" id="search_text" class="filter_search"
+                           placeholder="متن مورد نظر را جست و جو کنید">
+                    <i class="fa fa-search"></i>
+                </div>
+                <hr class="adver_hr">
+                <div id="search_seg">
+                    asdasd
+                </div>
+
+                <div id="zone">
+                    <div id="zone_search" class="col-md-12 filter">
+                        <img src="./asetes/img/img_31475.png" class="filter_sera_title" alt="#" id="iran">
+                        <p id="zone_p" class="filter_sera_title">
+                            منطقه جست و جو
+                        </p>
+
+                        <input type="text" id="search_zone" class="filter_search" onkeyup="filterFunction()"
+                               placeholder="متن مورد نظر را جست و جو کنید">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <hr class="adver_hr">
+
+                    <div id="zones" class="col-md-12 row">
+                        <ul id="zone_ul">
+                            <?php
+                            get_city();
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="job">
+                    <div id="job_status" class="col-md-12 filter">
+                        <p class="search_title filter_sera_title"><i class="fa fa-question"></i>
+                            موقعیت شغلی
+                        </p>
+                        <input type="text" onkeyup="filterFunction_status_job()" class="filter_search" id="status_job"
+                               placeholder="موقعیت شغلی خود را فیلتر کنید">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <hr class="adver_hr">
+
+                    <div id="jobs" class="filtering">
+                        <?php
+                        get_job_type();
+                        ?>
+                    </div>
+
+                    <div id="jooob" class="filtering">
+                        <?php
+                        get_jobs();
+                        ?>
+                    </div>
+                </div>
+
+
+                <div id="major" class="filll">
+                    <div id="major_status" class="col-md-12 filter">
+                        <p class="search_title filter_sera_title"><i class="fa fa-male"></i>
+                            رشته تحصیلی
+                        </p>
+                        <input type="text" id="status_major" class="filter_search" placeholder="رشته خود را فیلتر کنید">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <hr class="adver_hr">
+
+                    <div id="majors" class="filtering fils">
+                        <div class="fillter" id="maj">
+                            <?php
+                            get_majors();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="sex_status" class="col-md-12 filter">
+                    <p class="search_title filter_sera_title"><i class="fa fa-question"></i>
+                        جنسیت
+                    </p>
+                </div>
+                <hr class="adver_hr">
+
+                <div id="sex" class="filtering">
+                    <div id="fill_sex">
+                        <p>
+                            <input type="checkbox" val="1-sex" class="filter_check filter_check_sex">
+                            آقا
+                        </p>
+                        <p>
+                            <input type="checkbox" val="2-sex" class="filter_check filter_check_sex">
+                            خانم
+                        </p>
+                    </div>
+                </div>
+
+                <div id="doc_status" class="col-md-12 filter">
+                    <p class="search_title filter_sera_title"><i class="fa fa-calendar"></i>
+                        نوع قرارداد
+                    </p>
+                </div>
+                <hr class="adver_hr">
+
+                <div id="doc" class="filtering">
+                    <div id="fill_doc">
+                        <p>
+                            <input type="checkbox" val="1-timing" class="filter_check filter_timing_checked">
+                            تمام وقت
+                        </p>
+                        <p>
+                            <input type="checkbox" val="2-timing" class="filter_check filter_timing_checked">
+                            پاره وقت
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="adverss" class="col-md-9">
+                <?php
+                include "./model/advertise.php";
+                ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

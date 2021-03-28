@@ -1,0 +1,70 @@
+#editUserEmail{
+    top: 132px;
+    position: absolute;
+    left: 95px;
+}
+#editemailp{
+    padding: 5px;
+    width: 93%;
+}
+#editemailspan{
+    color: white;
+    width: 7%;
+    text-align: center;
+    padding: 15px 5px 5px 5px;
+    background-color: #17a2b8;
+}
+#editemailspan .fa-bell{
+    font-size: 20px;
+}
+#editemail_alert{
+    margin: 10px;
+    border-radius: 4px;
+    border-top: 2px solid #17a2b8;
+}
+#editemailp p{
+    margin: 0;
+}
+#newemail{
+    width: 50%;
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+}
+.a_sign{
+    text-align: center;
+    width: 9%;
+    background-color: #cccccc;
+    padding: 3px;
+}
+.new_email_input{
+    width: 91%;
+    border: none;
+}
+.new_email_input:focus{
+    outline: none;
+}
+.new_email_input:focus{
+    border: 1px solid #5f0000;
+}
+.new_email_first_input{
+    margin: auto;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.newmail{
+    margin-bottom: 10px;
+}
+#sub_ed_email{
+    padding: 5px 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2bb449;
+}
+#sub_ed_email:focus{
+    border: 1px solid #3bff67;
+    border-radius: 5px;
+}
+

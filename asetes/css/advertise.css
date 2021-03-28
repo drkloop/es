@@ -1,0 +1,537 @@
+#advertises_title_h{
+    color: #7e57c2;
+}
+.adv_but_ins{
+    padding: 5px;
+    border: 1px solid #17a2b8;
+    border-radius: 4px;
+    margin-left: 10px;
+    background: white;
+}
+.adv_but_ins:hover{
+    background: rgba(23, 162, 184, 0.42);
+    text-decoration: none;
+    border-radius: 4px;
+}
+.fa-plus{
+    margin-left: 10px;
+}
+#advertises_title{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#adv_buts{
+    text-align: left;
+}
+#adver{
+    background: #f5f5f5;
+}
+#sidebar{
+    border: 1px solid #cccccc;
+    border-radius:  10px;
+    background: white;
+    box-shadow: 0px 2px 5px 0 #cccccc;
+    margin-bottom: 20px;
+}
+.filter_search{
+    width: 100%;
+    margin-top: -10px;
+    border: none;
+    margin-right: -10px;
+    color: black;
+    padding: 0 5px;
+}
+.filter_search:focus{
+    outline: none;
+}
+::placeholder{
+    color: #cccccc;
+}
+.search_title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.search_title .fa{
+    color: #cccccc;
+    font-size: 23px;
+}
+.filter .fa-search{
+    position: absolute;
+    color: #cccccc;
+}
+.adver_hr{
+    margin-top: 3px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+#iran{
+    width: 20px;
+}
+.zone_check{
+    margin-left: 10px;
+    border-radius: 50%;
+    margin-right: -20px;
+}
+.zone_check:hover{
+    cursor: pointer;
+}
+#zone_p{
+    margin-top: -22px;
+    margin-right: 10px;
+}
+#zone_ul,
+#nav_zone_ul{
+    height:100px;
+    width: 250px;
+    overflow-y: scroll;
+    margin-left: -40px;
+}
+#zone_ul li,
+#nav_zone_ul li{
+    display: block;
+    font-size: 18px;
+}
+.fillter_title .fa-bars{
+    margin-left: 10px;
+}
+.fillter_title .fa-angle-left{
+    float: left;
+    margin-right: 20px;
+}
+.fillter_title{
+    margin-right: -10px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: -10px;
+}
+.fillter_title:hover{
+    background: #f5f5f5;
+}
+.filter_check{
+    margin-left: 10px;
+}
+.joobs_hr{
+    margin-top: -18px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.fills{
+    display: none;
+    height: 150px;
+    overflow-y: scroll;
+}
+.joobb_show{
+    display: unset;
+    transition: 0.4s;
+}
+#jooob
+,#nav_jooob{
+    display: none;
+}
+.filter_sera_title{
+    margin-right: -20px;
+}
+
+
+/* The side navigation menu */
+.nav_ov_x{
+    /*overflow: hidden;*/
+}
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: white; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+.sidde{
+    padding-left: 0;
+    border-left: 1px solid black;
+    height: 100%;
+}
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+.sidenav .closebtn {
+    font-size: 27px;
+    background: #f6f6f6;
+    border: none;
+    cursor: pointer;
+}
+.f{
+}
+.sidenav .closebtn:focus{
+    border: none;
+    outline: none;
+}
+#mySidenav_search_zone #nav_zone_ul{
+    height: unset;
+    overflow-y: hidden;
+}
+.for_small{
+    display: none;
+}
+.sub_title{
+    background: #f6f6f6;
+}
+.for_small button{
+    width: 125px;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #17a2b8;
+    color: #17a2b8;
+    font-weight: bold;
+}
+.for_small button:hover{
+    cursor: pointer;
+}
+.for_small button:focus{
+    outline: none;
+}
+#job_status .row{
+    padding-right: 10px;
+    background: #cccccc;
+    margin-bottom: 5px;
+}
+#job_status .row button{
+    font-size: 27px;
+    background: #cccccc;
+    border: none;
+    cursor: pointer;
+    margin-right: 115px;
+}
+#mySidenav_job_status .fa-globe{
+    color: white;
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+#mySidenav_job_status .row p{
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+#mySidenav_search_zone .row_1{
+    background: #cccccc;
+    margin-bottom: 10px;
+}
+#mySidenav_search_zone .row_1 .fa-globe{
+    margin-top: 12px;
+    font-size: 20px;
+    margin-right: 5px;
+    color: white;
+}
+#mySidenav_search_zone img{
+    width: 20px;
+    margin-right: 10px;
+    padding: 5px;
+}
+#mySidenav_search_zone .row p{
+    margin-top: 10px;
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+}
+#mySidenav_search_zone button{
+    margin-right: 110px;
+    background: #cccccc;
+}
+#mySidenav_search_zone #nav_zones{
+    padding-right: 30px;
+}
+#mySidenav_search_major .row_1{
+    background: #cccccc;
+    margin-bottom: 10px;
+}
+#mySidenav_search_major .row_1 .fa{
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: white;
+}
+#mySidenav_search_major .row_1 p{
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+#mySidenav_search_major button{
+    margin-right: 120px;
+    background: #cccccc;
+}
+#mySidenav_sex .row_1 button{
+    margin-right: 155px;
+    background: #cccccc;
+}
+#mySidenav_sex .row_1 p{
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+#mySidenav_sex .row_1{
+    background: #cccccc;
+}
+#mySidenav_sex .row_1 .fa{
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+#mySidenav_doc .row_1 button{
+    margin-right: 130px;
+    background: #cccccc;
+}
+#mySidenav_doc .row_1 p{
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+}
+#mySidenav_doc .row_1{
+    background: #cccccc;
+}
+#mySidenav_doc .row_1 .fa{
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: white;
+}
+#prev_majors,
+#prev_sex,
+#prev_doc{
+    padding:0 10px;
+}
+#majors{
+    height: 150px;
+    overflow-y: scroll;
+}
+#major_filtering{
+    height: 150px;
+    overflow-y: scroll;
+}
+#adverss .advertise{
+    border: 1px solid #cccccc;
+    padding: 15px 15px 0 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 0 #cccccc;
+    margin-bottom: 10px;
+
+}
+#adverss .advertise_fast{
+    border-right: 10px solid purple;
+}
+.plus_info{
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 5px;
+    left: 0;
+}
+.advertise_title{
+    margin-right: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.advertise_title a:hover{
+    text-decoration: none;
+}
+.adver_row_1{
+    margin-top: 10px;
+}
+.advertise_place{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.advertise_place i{
+    margin-left: 5px;
+}
+.advertise_timing{
+    font-size: 18px;
+}
+.advertise_city{
+    font-size: 18px;
+    margin-right: -20px;
+}
+.advertise_time{
+    font-size: 18px;
+    margin-right: 0;
+}
+.advertise_time i{
+    margin-left: 5px;
+}
+.advertise_city i{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.advertise_timing i{
+    margin-left: 5px;
+}
+.advertise_timing{
+    margin-right: 0px;
+}
+.adver_img img{
+    width: 100px;
+    height: 100px;
+    margin-top: 31px;
+}
+.adver_img_for_screen{
+    display: none;
+}
+.adver_img_for_screen img{
+    width: 100px;
+    height: 100px;
+
+}
+.adver_img{
+    text-align: left;
+}
+.adver_plus_info{
+    padding: 4px;
+    border-top: 1px solid #f6f6f6;
+    margin-right: 0;
+}
+.adver_plus_info .col-md-4{
+    padding: 4px;
+    margin-right: 0;
+}
+.adver_plus_info .col-md-4:hover{
+    background: #f6f6f6;
+    cursor: pointer;
+    font-size: 20px;
+    color: #5f0000;
+    font-weight: bold;
+}
+.ad_border{
+    border-left: 1px solid #f6f6f6;
+
+}
+.ad_border a{
+    color: #666666;
+}
+.ad_border a:hover{
+    text-decoration: none;
+}
+#pagination{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#pagination button{
+    /*background: #f5f5f5;*/
+    border: none;
+    margin-right: 10px;
+    border: 1px solid #603695;
+}
+.p_search{
+    cursor: pointer;
+}
+#loading_bar{
+    display: none;
+    position: fixed; /* or absolute */
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#loading_bar img{
+    width: 200px;
+    height: 200px;
+}
+#pagination button:hover{
+    border-radius: 50%;
+    cursor: pointer;
+    background: #603695;
+    color: white;
+    transition: 0.4s;
+}
+#pagination button:focus{
+    border: none;
+    border-radius: 50%;
+    outline: none;
+}
+.btn_pag_active{
+    background: #000000;
+    border-radius: 60%;
+    color: white;
+}
+#search_seg{
+    display: none;
+}
+#side_search_seg{
+    display: none;
+}
+.search_text_show{
+    display: unset;
+}
+#side_row_search i{
+    margin-top: 12px;
+    margin-right: -4px;
+    font-size: 22px;
+}
+#side_row_search{
+    color: white;
+    margin-right: -13px;
+    background: #cccccc;
+    padding-right: 15px;
+    margin-bottom: 10px;
+}
+#side_filter_sera_title{
+    padding: 0;
+    margin-right: 1px;
+}
+#side_row_search button{
+    background: #cccccc;
+    margin-right: 95px;
+}
+
+@media (max-width: 768px) {
+    .for_small{
+        display: unset;
+    }
+    #sidebar{
+        display: none;
+    }
+    #prev_jobs{
+        padding:0 10px;
+    }
+    #prev_jooob{
+        padding:0 10px;
+    }
+    .adver_plus_info .ad_top_border{
+        border-top: 1px solid #f6f6f6;
+    }
+}
+
+@media (max-width: 768px) {
+    #adv_buts{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .advertise_city{
+        font-size: 18px;
+        margin-right: -5px;
+    }
+    .adver_row_1{
+        margin-bottom: 0;
+    }
+    .adver_img img{
+        display: none;
+    }
+    .adver_img_for_screen{
+        display: unset;
+        margin-bottom: 10px;
+    }
+}

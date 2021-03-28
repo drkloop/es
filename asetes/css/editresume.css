@@ -1,0 +1,168 @@
+#edit_resume{
+    position: absolute;
+    top: 132px;
+    left: 95px;
+}
+.editforresume_title{
+    padding: 15px 10px;
+    background: #f6f6f6;
+    border-bottom: 1px solid #cccccc;
+}
+#base_information_title{
+    background: #1acce5;
+    padding: 5px;
+    color: white;
+}
+.for_resume{
+    padding: 5px;
+}
+.resume_first_span{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+.fa_sec{
+    margin-left: 10px;
+    margin-top: 2px;
+}
+.edit_info{
+    color: white;
+    position: absolute;
+    padding: 5px 10px;
+    left: 20px;
+}
+.edit_info:hover{
+    text-decoration: none;
+    color: white;
+}
+.user_information{
+    border-radius: 4px;
+}
+#base_body_name{
+    text-align: center;
+}
+.for_dec{
+    color: #666666;
+}
+.for_dec:hover{
+    text-decoration: none;
+    color: #666666;
+}
+#user_email{
+    margin-top: 10px;
+}
+.user_for{
+    margin-top: 10px;
+}
+.user_info_first{
+    padding: 5px;
+}
+.user_info_first{
+    width: 100%;
+    border-top: 1px solid #e3e3e3;
+}
+.user_info_p{
+    width: 45%;
+    margin-right: 15px;
+    /*display: inline-block;*/
+}
+.user_information{
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+}
+
+/*--------------------- jobInfo ---------------------*/
+#job_information_title{
+    background-color: #138699;
+    padding: 5px;
+    color: white;
+}
+.editforresume{
+    top: 132px;
+    position: absolute;
+    left: 95px;
+}
+.a_edit_info{
+    margin-top: 8px;
+    margin-left: 5px;
+    color: #666666;
+}
+#editjobbody{
+    margin-top: 10px;
+    padding: 0 200px;
+}
+.jobdiv{
+    margin-bottom: 10px;
+}
+#jobbtn{
+    background: #00af00;
+    border: none;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*language---------------------------*/
+#lan_information_title{
+    background-color: #0e515f;
+    padding: 5px;
+    color: white;
+}
+.lang{
+    margin-bottom: 10px;
+}
+.headerInfospan{
+    background-color: #17a2b8;
+    width: 6%;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding-top: 30px;
+}
+.headerInfop{
+    width: 94%;
+    padding: 5px 5px 0 5px;
+
+}
+.headerInfo{
+    margin:20px 10px;
+    border-top: 4px #17a2b8 solid;
+    border-radius: 5px;
+}
+#languagesadd{
+    padding: 10px 150px;
+}
+
+.lanlevelimg{
+    width: 70px;
+    margin-right: 10px;
+}
+.r_lev{
+    border: 1px solid #e3e3e3;
+    border-radius: 1px;
+    padding: 10px 25px;
+}
+.lanlevelradio{
+    position: relative;
+    top: -30px;
+    right: -15px;
+}
+.radiolev{
+    text-align: center;
+}
+.r_lev:hover{
+    cursor: pointer;
+    background: #f7f7f7;
+}
+#btnlang{
+    background: #00af00;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 40px;
+    border: none;
+    color: white;
+}
+.img_lan{
+    width: 70px;
+}

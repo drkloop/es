@@ -1,0 +1,24 @@
+
+<template id="errors">
+
+    <div class="col-xs-12 col-md-12">
+      <div class="card text-center">
+        <div class="card-header">
+          <h1 style="color: darkolivegreen">
+            لیست اشکالات دریافتی
+          </h1>
+        </div>
+        <div class="card-body">
+            <div>
+           <?php require_once 'list_of_er.phtml' ?>
+            </div>
+
+        </div>
+        <div class="card-footer text-muted">
+            <?php
+            echo jdate('l j F y');
+            ?>
+        </div>
+      </div>
+  </div>
+</template>

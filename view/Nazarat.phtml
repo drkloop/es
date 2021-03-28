@@ -1,0 +1,229 @@
+<?php
+require_once './core/jdf.php';
+?>
+
+<div class="container">
+
+  <div id="nazar" style="font-size: 25px">
+    {{ Reply= (results.length) }}
+    نظر
+    <a href="./taghvim" id="taghvim-link-sm">استخدام - تقویم استخدام های کشور</a>
+  </div>
+  <label for="search-input" style="font-size: 18px;color: #980726;z-index: 0"> جستجو در نظرات:</label>
+  <div class="input-group col-md-12">
+    <input class="form-control py-2" type="search" v-model="search" id="search-input" style="z-index: 0">
+    <span class="input-group-append">
+      <button class="btn btn-outline-secondary" style="z-index: 0">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+
+  </div>
+
+  <div v-if='search=="" ? 0 : 1' v-for="(post, itemObjKey) in filtredPosts">
+    <div v-show="post.Rep!=1">
+      <div class="nazar" v-if="post.Rep!=1">
+        <div class="khat_bala_nazar">
+          <span class="nam_nazar">
+            {{post.Name}}
+          </span>
+          <span style="float: left;margin-left: 10px">
+            {{post.Tarihk}}
+            <span class="d-none d-xl-inline ">
+            ساعت
+            {{post.Saat}}
+            </span>
+            <img src="./asetes/img/link.png" class="icon">
+          </span>
+        </div>
+
+        <p class="container  font-weight-bold">
+        <div>
+          {{post.Mtn}}
+        </div>
+
+
+        </p>
+        <button class="btn btn-secondary" style="width: 100px;margin-right: 10px;margin-bottom: 10px"
+                @click="Coment(post.Id)" v-if="! SHow(post.Id)"> پاسخ
+        </button>
+        <div class="nazarat container col-lg-7" v-if=" SHow(post.Id)">
+
+          <a href="./Home" id="nazaratLink">
+            آگهی های امروز
+              <?php echo jdate('l j F y'); ?>
+            در یک نگاه
+          </a>
+          <div>
+            <div class="linkWithOutUnderLine-2" @click="Coment(0)">برای صرف‌نظر کردن از پاسخ‌گویی اینجا را کلیک کنید.
+            </div>
+          </div>
+          <hr>
+          <Comment></Comment>
+          <br><br>
+        </div>
+
+        <!-- از اينجا -->
+        <div class="container inja" v-for="(Reply,index)  in  replyei" v-if="Reply.CommentId == post.Id">
+          <div class="nazar">
+            <div class="khat_bala_nazar   ">
+              <span class="nam_nazar">
+                {{Reply.Name}}
+              </span>
+              <span style="float: left;margin-left: 10px">
+                {{Reply.Tarihk}}
+                            <spam class="d-none d-xl-inline">
+
+                ساعت
+                {{Reply.Saat}}
+                </spam>
+                <img src="./asetes/img/link.png" class="icon">
+              </span>
+            </div>
+            <p class="container  font-weight-bold">
+              {{Reply.Mtn}}
+            </p>
+          </div>
+        </div>
+        <!-- تا اينجا ريپلاي  -->
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <div class=" col-10" style="margin:10px">
+  <div v-if='search=="" ? 1 : 0 ' class="row " style="margin: 10px">
+    <label for="NumberOfPaginate" style="font-size: large"> تعداد نظرات در هر صفحه: </label>
+    <select class="form-control col-md-2 col-sm-12" v-model.number="Num" id="NumberOfPaginate"
+            style="background-color: #683795;color: cornsilk" @click="btnIdToken(0)">
+      <option value="5" selected><b>5</b></option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+    </select>
+
+    <div class="btn-group btn-custom-center" role="group" id="paginat" >
+      <button type="button" :class="flagBtn<0 ? btnActive : btnNotActive " @click="btnIdToken(--flagBtn)">&laquo;
+      </button>
+      <span v-for="n in btnFor">
+        <button :class="flagBtn==n ? btnActive : btnNotActive" @click="btnIdToken(n)" v-if="n!='e'"
+                type="button">{{n+1}}</button>
+      </span>
+      <button type="button" :class="flagBtn> (TedadNazarat) ? btnActive : btnNotActive" @click="btnIdToken(++flagBtn)">
+        &raquo;
+      </button>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<div v-for="Nazar  in  Nazarat " v-if='(search=="" ? 1 : 0) '>
+  <div class="container col-lg-8">
+    <div class="nazar" v-show="Nazar.Rep!=1">
+      <div v-if="Nazar.Rep!=1">
+        <div class="khat_bala_nazar">
+          <span class="nam_nazar">
+            {{Nazar.Name}}
+          </span>
+          <span style="float: left;margin-left: 10px">
+            {{Nazar.Tarihk}}
+                        <span class="d-none d-xl-inline">
+
+            ساعت
+            {{Nazar.Saat}}
+            </span>
+            <img src="./asetes/img/link.png" class="icon">
+          </span>
+        </div>
+        <p class="container  font-weight-bold">
+          {{Nazar.Mtn}}
+        </p>
+
+        <button class="btn btn-secondary" style="width: 100px;margin-right: 10px;margin-bottom: 10px"
+                @click="Coment(Nazar.Id)" v-if="! SHow(Nazar.Id)"> پاسخ
+        </button>
+        <br>
+      </div>
+      <div class="nazarat container col-lg-7" v-if=" SHow(Nazar.Id)">
+
+        <a href="./Home" id="nazaratLink">
+          آگهی های امروز
+            <?php echo jdate('l j F y'); ?>
+          در یک نگاه
+        </a>
+        <div>
+          <div class="linkWithOutUnderLine-2" @click="Coment(0)">برای صرف‌نظر کردن از پاسخ‌گویی اینجا را کلیک کنید.
+          </div>
+        </div>
+        <hr>
+        <Commentrep :idcoment="Nazar.Id"></Commentrep>
+
+        <br><br>
+      </div>
+      <!-- از اينجا -->
+      <div class="container inja" v-for="(Reply,index)  in  replyei" v-if="Reply.CommentId ==  Nazar.Id">
+        <div class="nazar">
+          <div class="khat_bala_nazar   ">
+            <span class="nam_nazar">
+              {{Reply.Name}}
+            </span>
+            <span style="float: left;margin-left: 10px">
+              {{Reply.Tarihk}}
+                          <span class="d-none d-xl-inline">
+
+              ساعت
+              {{Reply.Saat}}
+            </span>
+              <img src="./asetes/img/link.png" class="icon">
+            </span>
+          </div>
+          <p class="container  font-weight-bold">
+            {{Reply.Mtn}}
+          </p>
+          <!-- اينجا براي پاسخ به ريپلايه -->
+          <!-- <button class="btn btn-secondary" style="width: 100px;margin-right: 10px;margin-bottom: 10px"
+            @click="Coment(Reply.Id)" v-if="! SHow(Reply.Id)"> پاسخ
+          </button>
+          <br>
+          <div class="nazarat container col-lg-7" v-if=" SHow(Reply.Id)">
+            <a href="./Home" id="nazaratLink">
+              آگهی های امروز
+              <?php echo jdate('l j F y'); ?>
+              در یک نگاه
+            </a>
+            <div>
+              <div class="linkWithOutUnderLine-2" @click="Coment(0)">برای صرف‌نظر کردن از پاسخ‌گویی اینجا را کلیک کنید.
+              </div>
+            </div>
+            <hr>
+            <Comment :idcoment="Reply.Id"> </Comment>
+
+            <br><br>
+
+          </div> -->
+        </div>
+      </div>
+      <!-- تا اينجا ريپلاي  -->
+
+
+    </div>
+  </div>
+</div>
+<div>
+  <div class="nazarat container col-lg-7" v-if=" SHow(0)">
+
+    <a href="./Home" id="nazaratLink">
+      آگهی های امروز
+        <?php echo jdate('l j F y'); ?>
+      در یک نگاه
+    </a>
+    <hr>
+    <Comment></Comment>
+    <br><br>
+  </div>
+</div>
+<!-- <div>
+  <copylink link_url="<?= $_SESSION['FullUrl'] ?>"></copylink>
+</div> -->
+<!-- <Comment> </Comment> -->

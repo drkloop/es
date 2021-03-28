@@ -1,0 +1,75 @@
+.Url {
+    position: absolute;
+    top: 85.5px;
+    left: 4%;
+    border-radius: 5px;
+}
+
+#narengi-header {
+    background-color: #e75440;
+    color: aliceblue;
+    height: 50px;
+    font-size: xx-large;
+}
+
+.far {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 100%;
+}
+
+.far:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color: azure;
+    box-shadow: 2px 4px 6px #0a031391;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.far-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.fa-skype {
+    background: #00aff0;
+    color: white;
+}
+
+.fa-yahoo {
+    background: #430297;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.fa-telegram {
+    background: #007bb5;
+    color: white;
+}
+
+.fa-youtube {
+    background: #bb0000;
+    color: white;
+}
+
+.fa-instagram {
+    background: #125688;
+    color: white;
+}

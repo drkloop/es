@@ -1,0 +1,110 @@
+<?php
+require_once __DIR__ . "/jdf.php";
+
+?>
+<template id="dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 mos_dash bg-success">
+        <b style="color: cornsilk;margin-left: 20px">
+          افراد ثبت نام شده:
+          <div>
+            <span style="font-size: xx-large"> {{Users[0].countOfuser}}</span>
+            <br>
+            <i class='bx bxs-user-check bx-burst bx-md'></i>
+          </div>
+        </b>
+
+      </div>
+      <div class="col-md-3 mos_dash bg-primary">
+        <b style="color: cornsilk;margin-left: 20px">
+          تعداد آگهی ها:
+
+          <div>
+            <span style="font-size: xx-large"> {{adverties[0].countOfAdvertise}}</span>
+            <br>
+            <i class='bx bx-credit-card-front bx-burst bx-md'></i>
+          </div>
+        </b>
+      </div>
+      <div class="col-md-3 mos_dash bg-danger">
+        <b style="color: cornsilk;margin-left: 20px">
+          تعداد بازدید های امروز:
+          <div>
+            <span style="font-size: xx-large"> {{ visited[0].visit}}</span>
+            <br>
+            <i class='bx bx-bullseye bx-burst bx-md'></i>
+          </div>
+        </b>
+      </div>
+      <div class="col-md-3 mos_dash bg-secondary">
+        <b style="color: cornsilk;margin-left: 20px">
+          تاریخ امروز
+          :
+          <div>
+          <span style="font-size: x-large">
+              <?php
+              echo jdate('l j F y');
+              ?></span>
+            <br>
+            <i class='bx bxs-calendar bx-burst bx-md'></i>
+          </div>
+        </b>
+      </div>
+    </div>
+<div class="row">
+    <div class=" col-md-12">
+      <line-chart :options="{responsive: true, maintainAspectRatio: false}"
+                  :hara="visit[6].Bazdid" :harb="visit[5].Bazdid"
+                  :harc="visit[4].Bazdid"
+                  :hard="visit[3].Bazdid" :hare="visit[2].Bazdid"
+                  :harf="visit[1].Bazdid" :harh="visit[0].Bazdid"
+                  :datea="visit[6].date" :dateb="visit[5].date"
+                  :datec="visit[4].date" :dated="visit[3].date"
+                  :datee="visit[2].date" :datef="visit[1].date"
+                  :dateg="visit[0].date"
+      >
+      </line-chart>
+    </div>
+    <div class="col-md-12">
+      <span style="font-size: larger">ده نشست اخیر کاربران:</span>
+      <table class="table table-hover table-striped table-responsive-md">
+        <thead>
+        <tr>
+          <th>شماره</th>
+          <th>نام</th>
+          <th> IP آدرس</th>
+          <th>مرورگر</th>
+          <th>دستگاه</th>
+          <th>کشور</th>
+          <th>استان</th>
+          <th>تاريخ </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(session,index) in sessions">
+          <td>{{index+1}}</td>
+          <td>{{session.Name}}</td>
+          <td>{{session.IP}}</td>
+          <td>
+            <i v-if="session.Browser=='Mozilla-Firefox'" class='bx bxl-firefox bx-spin ' style='color:#ff8b00'  ></i>
+            <i v-if="session.Browser=='Google-Chrome'" class='bx bxl-chrome bx-spin ' style='color:#277fbd'  ></i>
+            <i v-if="session.Browser=='Microsoft-Edge'" class='bx bxl-edge bx-spin' style='color:#24c19f'  ></i>
+            <i v-if="session.Browser=='Safari'" class='bx bxl-internet-explorer'></i>
+            {{session.Browser}}
+
+          </td>
+          <td>{{session.Devise}}</td>
+          <td>{{session.Country}}</td>
+          <td>{{session.City}}</td>
+          <td>{{session.date}}</td>
+        </tr>
+        <tr>
+        </tbody>
+      </table>
+
+    </div>
+</div>
+
+  </div>
+</template>

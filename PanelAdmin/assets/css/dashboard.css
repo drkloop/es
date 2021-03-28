@@ -1,0 +1,23 @@
+.mos_dash{
+  width: 100%;
+  height: 170px;
+  border-radius: 15px;
+  text-align: center;
+  border: 5px solid #fff;
+
+}
+.mos_dash:after{
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding-right: 15%;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  height: 6%;
+  background-color: rgba(0,0,0,0.3);
+}
+.mos_dash:hover{
+  box-shadow: 2px 8px 12px rgba(0,0,0,0.3);
+}

@@ -1,0 +1,49 @@
+<div class="col-md-4  col-sm-10 container faramoshBox">
+    <div class="d-flex justify-content-center headOfFaramoshi">
+     تغيير رمز
+    </div>
+    <p class="d-flex justify-content-center" style="padding: 5px">
+        جهت بازیابی رمز عبور آدرس ایمیل خود را که هنگام ثبت نام ثبت کرده‌اید وارد کنید، لینک بازیابی رمز عبور به ایمیل شما
+        ارسال خواهد شد.
+    </p>
+    <hr class="col-10">
+    <div class="col-12">
+        <form action="" method="post" id="form1"  @submit="validateBeforeSubmit">
+            <label for="inlineFormInputGroup1">رمز</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text" style="padding: 0">
+                        <img src="asetes/img/lock.png" alt="#" class="icon2">
+                    </div>
+                </div>
+                <input type="password" name="RePass"  v-model="RePass1" class="form-control" id="inlineFormInputGroup1" placeholder="رمز جديد خود را وارد كنيد"
+                      pattern='.{6,20}' oninvalid="setCustomValidity('رمز حداقل 6 رقمي  و حداكثر 20 رقم است')"
+                       oninput="setCustomValidity('')"
+                       required>
+            </div>
+            <label for="inlineFormInputGroup2">تاييد رمز</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text" style="padding: 0">
+                        <img src="asetes/img/lock.png" alt="#" class="icon2">
+                    </div>
+                </div>
+                <input type="password" name="RePass" class="form-control" id="inlineFormInputGroup2" v-model="RePass2"
+                       placeholder="رمز جديد خود را تاييد كنيد"
+                       required pattern='.{6,20}' oninvalid="setCustomValidity('رمز حداقل 6 رقمي  و حداكثر 20 رقم است')"
+                       oninput="setCustomValidity('')"
+                      >
+            </div>
+          <div v-if="disabled" style="color: crimson">  *
+            رمز و تاييد رمز را به درستي وارد كنيد تا دكمه فعال شود.
+
+          </div>
+
+            <button type="submit" form="form1" value="Submit"
+                    class="btn d-flex justify-content-center  btn-center btn-success "
+                    :disabled="RePass1!=RePass2 || RePass1==''" >تغيير رمز عبور
+            </button>
+        </form>
+    </div>
+    <br><br><br><br><br>
+</div>

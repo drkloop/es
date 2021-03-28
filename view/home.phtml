@@ -1,0 +1,129 @@
+<?php
+include "./model/home.php";
+?>
+<br><br>
+<a href="./"></a>
+<div id="employment">
+    <div class="row employment employment_white">
+        <div class="col-md-6 col-sm-12 adver_lists">
+            <h5 class="list_anchor_title row">
+                <a href="#" class="list_anchor_title_a">استخدام های فوری</a>
+                <div class="action">
+                    <a href="#" class="list_fa_a">
+                        <i class="fa fa-th-list"></i>
+                    </a>
+                </div>
+            </h5>
+            <div class="list_anchor">
+                <?php
+                get_fast_advertises();
+                ?>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 adver_lists">
+            <h5 class="list_anchor_title row">
+                <a href="#" class="list_anchor_title_a">آخرین اخبار استخدامی</a>
+                <div class="action">
+                    <a href="#" class="list_fa_a">
+                        <i class="fa fa-th-list"></i>
+                    </a>
+                </div>
+            </h5>
+            <div class="list_anchor">
+                <?php
+                get_last_advertises();
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="row employment_gray employment">
+        <div class="col-md-6 col-sm-12 adver_lists">
+            <h5 class="list_anchor_title row">
+                <a href="estekhdamSarasari" class="list_anchor_title_a">اخبار سراسری و ویژه</a>
+                <div class="action">
+                    <a href="estekhdamSarasari" class="list_fa_a">
+                        <i class="fa fa-th-list"></i>
+                    </a>
+                </div>
+            </h5>
+            <div class="list_anchor">
+                <?php
+                get_last_advertises();
+                ?>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 adver_lists">
+            <h5 class="list_anchor_title row">
+                <a href="#" class="list_anchor_title_a">آخرین آگهی های قم</a>
+                <div class="action">
+                    <a href="#" class="list_fa_a">
+                        <i class="fa fa-th-list"></i>
+                    </a>
+                </div>
+            </h5>
+            <div class="list_anchor">
+                <?php
+                get_last_qom_advertises();
+                ?>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="home_more_info">
+        <div class="col-md-12 row">
+            <div class="col-md-6" id="search_in_adver" data-aos="zoom-in" data-aos-delay="150" data-aos-once="true">
+                <div class="col-md-12 row home_adver_info">
+                    <div class="home_adver_icon">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class="home_adver_text">
+                        <p class="home_adver_info_title">جست و جو در آکهی های استخدامی</p>
+                        <p class="home_adver_info_disc">متناسب با شرایط کاری خودتان در آگهی‌های استخدامی سایت جستجو
+                            کنید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="home_bank_jobs" data-aos="zoom-in" data-aos-delay="250" data-aos-once="true">
+                <div class="col-md-12 row home_adver_info">
+                    <div class="home_adver_icon">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
+                    <div class="home_adver_text">
+                        <p class="home_adver_info_title">بانک مشاغل و اطلاعات شغلی</p>
+                        <p class="home_adver_info_disc">در این صفحه لیستی از مشاغل مختلف بر اساس رشته و مهارت
+                            گردآوری شده است</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="home_bank_majors" data-aos="zoom-in" data-aos-delay="350"
+                 data-aos-once="true">
+                <div class="col-md-12 row home_adver_info">
+                    <div class="home_adver_icon">
+                        <i class="fa fa-university"></i>
+                    </div>
+                    <div class="home_adver_text">
+                        <p class="home_adver_info_title">بانک رشته های نحصیلی دانشگاهی</p>
+                        <p class="home_adver_info_disc">در این صفحه لیستی از رشته های دانشگاهی گردآوری شده است</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="home_calender" data-aos="zoom-in" data-aos-delay="450" data-aos-once="true">
+                <div class="col-md-12 row home_adver_info">
+                    <div class="home_adver_icon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <div class="home_adver_text">
+                        <p class="home_adver_info_title">تقویم استخدام های کشور</p>
+                        <p class="home_adver_info_disc">جدول زمانبندی استخدام های ویژه کشور را در این صفحه دنبال
+                            کنید</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+

@@ -1,0 +1,89 @@
+<?php
+require_once "./model/editUserInfo.php";
+?>
+<div class="row">
+  <div class="col-4">
+      <?php $this->loadView('panelUserMeno')?>
+  </div>
+<div class="editforresume  col-8">
+  <div class="editforresume_title ">
+    <a href="./panelUser_editResume" class="a_edit_info">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+    <h3>
+      ویرایش اطلاعات پایه
+    </h3>
+  </div>
+
+  <div id="editInfo">
+    <div class="editInfo" id="editInfo_name">
+      <label>نام و نام خانوادگی</label>
+      <span class="red_span">*</span>
+      <input type="text" id="editInfo_name_input" class="form-control advers_info_input" value="<?= $name ?>">
+    </div>
+    <div class="editInfo" id="editInfo_gender">
+      <label>جنسیت</label>
+      <span class="red_span">*</span>
+      <div>
+        <div class="genderInfo">
+            <?php
+            if ($sex == 1) {
+                echo "
+                            <input type=\"radio\" class=\"genderRadio\" name=\"gender\" value=\"male\" checked>
+                            <label>مرد</label>
+                            </div>
+                            <div class=\"genderInfo\">
+                                <input type=\"radio\" class=\"genderRadio\" name=\"gender\" value=\"female\">
+                                <label>زن</label>
+                            </div>
+                        ";
+            } elseif ($sex == 2) {
+                echo "
+                        <input type=\"radio\" class=\"genderRadio\" name=\"gender\" value=\"male\" >
+                            <label>مرد</label>
+                            </div>
+                            <div class=\"genderInfo\">
+                                <input type=\"radio\" class=\"genderRadio\" name=\"gender\" value=\"female\" checked>
+                                <label>زن</label>
+                            </div>
+                        ";
+            }
+            ?>
+
+
+        </div>
+
+      </div>
+      <div class="editInfo" id="editInfo_mobile">
+        <label>شماره موبایل</label>
+        <span class="red_span">*</span>
+        <input type="number" id="editInfo_mobile_input" class="form-control advers_info_input" value="<?= $phone ?>">
+      </div>
+      <div class="editInfo" id="editInfo_ostan">
+        <label>استان</label>
+        <span class="red_span">*</span>
+        <select name="" class="form-control adver_select" id="ostan_select">
+            <?php
+            for ($i = 0; $i < count($ostanha_value); $i++) {
+                echo "
+                      <option value='$ostanha_value[$i]'>$ostanha_name[$i]</option>
+                    ";
+            }
+            ?>
+        </select>
+      </div>
+      <div class="editInfo" id="editInfo_city">
+        <label>شهر</label>
+        <span class="red_span">*</span>
+        <input type="text" id="editInfo_city_input" class="form-control advers_info_input" value="<?= $city ?>">
+      </div>
+
+      <center>
+        <button id="btn_editInfo">
+          ثبت
+        </button>
+      </center>
+    </div>
+  </div>
+</div>
+

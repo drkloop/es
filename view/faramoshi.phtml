@@ -1,0 +1,55 @@
+<?php
+$md5_hash = md5(rand(0, 999));
+$captcha = substr($md5_hash, 10, 5);
+$_SESSION['captcha'] = $captcha;
+?>
+<div class="col-md-4  col-sm-10 container faramoshBox">
+  <div class="d-flex justify-content-center headOfFaramoshi">
+    بازیابی رمز عبور
+  </div>
+  <p class="d-flex justify-content-center" style="padding: 5px">
+    جهت بازیابی رمز عبور آدرس ایمیل خود را که هنگام ثبت نام ثبت کرده‌اید وارد کنید، لینک بازیابی رمز عبور به ایمیل شما
+    ارسال خواهد شد.
+  </p>
+  <hr class="col-10">
+  <div class="col-12">
+    <form action="" method="post" id="form1"  @submit="validateBeforeSubmit">
+      <label for="inlineFormInputGroup1">آدرس ایمیل</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="email" name="Email" class="form-control" id="inlineFormInputGroup1" placeholder="ايميل"
+               required>
+      </div>
+      <label for="inlineFormInputGroup2">کد امنیتی</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="padding: 0">
+            <img src="./view/capcha.php">
+              <?php
+
+              ?>
+          </div>
+        </div>
+        <input type="text" name="captcha" class="form-control" id="inlineFormInputGroup2"
+               placeholder="کد امنیتی را وارد کنید"
+               required pattern='.{5,5}' oninvalid="setCustomValidity('کد امنیتی 5 کاراکتری است است')"
+               oninput="setCustomValidity('')"
+        v-model="captcha">
+      </div>
+      <div v-show="0">
+      {{checkCaptcha ("<?=$_SESSION['captcha'] ?>")  }}
+      </div>
+ <div v-if="disabled" style="color: crimson">  *
+   توجه کد امنیتی را به درستی وارد کنید تا دکمه ارسال ایمیل فعال شود.
+
+ </div>
+      <button type="submit" form="form1" value="Submit"
+              class="btn d-flex justify-content-center  btn-center btn-success "
+              :disabled="disabled == 1">باز یابی رمز عبور
+      </button>
+    </form>
+  </div>
+  <br><br><br><br><br>
+</div>

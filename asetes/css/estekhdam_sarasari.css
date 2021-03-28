@@ -1,0 +1,69 @@
+#estekhdam_sarasari{
+    padding: 0 40px;
+}
+#es_sa{
+    margin-top: 10px;
+}
+#es_sar_mor .fa{
+    margin-left: 5px;
+    width: 20px;
+}
+.es_ser_mors{
+    margin-bottom: 10px;
+}
+.es_ser_mors a{
+    color: black;
+}
+.es_ser_mors a:hover{
+    text-decoration: none;
+}
+.es_ser_mors:hover{
+    transition: 0.5s;
+    background: #f6f6f6;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+#estekhdam_saari_title{
+    border-bottom: 2px solid #603695;
+}
+.title_adver_sarasari{
+    color: #17a2b8;
+    margin-top: 5px;
+}
+.info_adver_sarasari{
+    margin-top: -10px;
+}
+.footer_adver_sarasari{
+    background: #603695;
+    color: white;
+    margin-right: -10px;
+    margin-left: -10px;
+    margin-bottom: 0px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 5px;
+}
+.adver_sarasari_for_pad{
+    padding: 0 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.adver_sarasari_for_pad:hover{
+    transition: 0.4s;
+    background: #f6f6f6;
+    box-shadow: #cccccc 5px 5px 5px 1px;
+}
+.adver_sarasari_for_pad .fa{
+    position: absolute;
+    left: 0;
+    margin-left: 25px;
+    margin-top: -25px;
+}
+#advers_sar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

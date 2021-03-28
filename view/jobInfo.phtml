@@ -1,0 +1,50 @@
+<?php
+require_once "./model/editUsergmail.php";
+?>
+<div class="row container">
+  <div class="col-md-3">
+      <?php $this->loadView('panelUserMeno')?>
+  </div>
+  <div id="editUserEmail" class="editforresume  col-md-9  col-9">
+    <div class="editforresume_title ">
+      <a href="./panelUser_editResume" class="a_edit_info">
+        <i class="fa fa-arrow-right"></i>
+      </a>
+      <h3>
+        ثبت اطلاعات تکمیلی
+      </h3>
+    </div>
+
+    <div id="editjobbody">
+      <div id="jobdiv">
+        <label>وضعیت اشتغال</label>
+        <select id="jobstatusselect" class="advers_info_input form-control">
+          <option value="در حال حاضر مشغول به کار نیستم و دنبال کار میگردم">در حال حاضر مشغول به کار نیستم و دنبال کار
+            میگردم
+          </option>
+          <option value="بازنشسته هستم">بازنشسته هستم</option>
+          <option value="دنبال کار نیستم">دنبال کار نیستم</option>
+        </select>
+      </div>
+      <div class="jobdiv">
+        <label>وضعیت اشتغال</label>
+        <select id="workinselect" class="advers_info_input form-control">
+          <option value="کل کشور">کل کشور</option>
+          <option value="خارج کشور">خارج کشور</option>
+        </select>
+      </div>
+      <div class="jobdiv">
+        <label>حقوق درخواستی</label>
+        <select id="salaryselect" class="advers_info_input form-control">
+          <option value="بدون انتخاب">بدون انتخاب</option>
+          <option value="حقوق توافقی">حقوق توافقی</option>
+        </select>
+      </div>
+      <div class="jobdiv">
+        <center>
+          <button id="jobbtn">ثبت</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>

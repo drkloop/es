@@ -1,0 +1,34 @@
+.btn-custom-center{
+  position: relative;
+  right: 46%;
+}
+#Reg-mtn{
+  font-weight: bold;
+  font-size:40px;
+  margin-top: 26px;
+  text-align: center;
+}
+.gender{
+  width:46.678%;
+}
+.line-purple{
+  height: 1px;
+  width: 100%;
+  background-color: #6c016c;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/*radio*/
+.custom-control-input{
+ position: relative;
+  right: 50px;
+}
+@media only screen and (max-width: 900px) {
+  .btn-custom-center{
+    right: 0%;
+    width: 100%;
+    margin: 5px;
+  }
+}@media only screen and (max-width: 767px) {
+
+}

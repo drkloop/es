@@ -1,0 +1,58 @@
+<div class="container usermenoshow userpanel " v-if="ShowMenuPanel">
+    <div class="row">
+        <div class="MenoOfUser">
+            <div class="profile" data-aos="flip-down" data-aos-delay="100">
+                <img src="./asetes/img/icons8_male_user_400px_2.png" class="img-pro" alt="">
+            </div>
+
+            <div id="NameOfAcc">
+                <?php
+                echo $_SESSION['Name']
+
+                ?>
+            </div>
+            <ul style="list-style: none">
+                <li class="listmenoUser">
+                    <a href="#" class="linkWithOutUnderLine-2" style="color: black;">
+                        <div class="styleListMeno " data-aos="zoom-in" data-aos-delay="150">
+                            <img src="./asetes/img/homeforPanel.png" class="icon2" alt="">
+                            پيشخوان
+                        </div>
+                    </a>
+                </li>
+                <li class="listmenoUser">
+                    <a href="./PanelUser_editResume" class="linkWithOutUnderLine-2" style="color: black;">
+                        <div class="styleListMeno " data-aos="zoom-in" data-aos-delay="250">
+                            <img src="./asetes/img/cv.png" class="icon2" alt="">
+                            رزومه
+                        </div>
+                    </a>
+                </li>
+                <li class="listmenoUser ">
+                    <a href="#" class="linkWithOutUnderLine-2" style="color: black;">
+                        <div class="styleListMeno " data-aos="zoom-in" data-aos-delay="350">
+                            <img src="./asetes/img/star.png" class="icon2" alt="">
+                            ليست نشان شده ها
+                        </div>
+                    </a>
+                </li>
+                <li class="listmenoUser">
+                    <a href="./PanelUser_userAdvertise" class="linkWithOutUnderLine-2" style="color: black;">
+                        <div class="styleListMeno " data-aos="zoom-in" data-aos-delay="450">
+                            <img src="./asetes/img/editeIist.png" class="icon2" alt="">
+                            تصحيح آگهي
+                        </div>
+                    </a>
+                </li>
+                <li class="listmenoUser ">
+                    <a href="./Out" class="linkWithOutUnderLine-2" style="color: black;">
+                        <div class="styleListMeno " data-aos="zoom-in" data-aos-delay="550">
+                            <img src="./asetes/img/exit.png" class="icon2" alt="">
+                            خروج
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

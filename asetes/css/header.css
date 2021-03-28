@@ -1,0 +1,576 @@
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1240;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-backdrop::-webkit-scrollbar {
+    display: none;
+}
+
+#em {
+    position: fixed;
+    left: 14px;
+    top: 3px;
+}
+
+#talkbubble {
+    width: 140px;
+    height: 99px;
+    background: #f7f4f4;
+    position: fixed;
+    left: 0;
+    top: 32px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#talkbubble-vorod {
+    position: relative;
+    top: 31px;
+    left: 0px;
+}
+
+.talkbubble-vorod2 {
+    position: relative;
+    top: 21px;
+    left: 0px;
+}
+
+#talkbubble:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 115px;
+    width: 0;
+    height: 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 5px solid #f7f4f4;
+}
+
+#em2 {
+    position: fixed;
+    left: 14px;
+    top: 3px;
+}
+
+#talkbubble2 {
+    width: 140px;
+    height: 99px;
+    background: #f7f4f4;
+    position: fixed;
+    left: 0;
+    top: 32px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#talkbubble2:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 76px;
+    width: 0;
+    height: 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 5px solid #f7f4f4;
+}
+
+#em3 {
+    position: fixed;
+    left: 14px;
+    top: 3px;
+}
+
+#talkbubble3 {
+    width: 140px;
+    height: 99px;
+    background: #f7f4f4;
+    position: fixed;
+    left: 0;
+    top: 32px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#talkbubble3:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 5px solid #f7f4f4;
+}
+
+#thant {
+    position: relative;
+    right: 28%;
+}
+
+#mtn-agh {
+    position: relative;
+    right: 20%;
+}
+
+#miz-p {
+    position: relative;
+    right: 36%;
+}
+
+#btn-info {
+    position: relative;
+    right: 37%;
+    margin-top: 30px;
+}
+
+.btn-center {
+    position: absolute;
+    right: 40%;
+    margin-top: 10px;
+}
+
+#karbar {
+    margin: 20px;
+}
+
+.CardHead {
+    overflow-x: hidden;
+}
+
+#text-vorod {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#zabdar {
+    position: fixed;
+    top: 20%;
+    right: 66%;
+    bottom: 80%;
+    left: 0;
+    z-index: 1240;
+    font-size: xx-large;
+}
+
+.gozine {
+    position: relative;
+    top: 15px;
+    margin: 10px 20px 30px 10px;
+}
+
+.border-3 {
+    padding-right: 5px;
+    padding-left: 5px;
+    border-left: 0.5px solid #9c9c9c;
+    border-right: 0.5px solid #9c9c9c;
+    border-top: 0.5px solid #9c9c9c;
+    border-bottom: 3px solid #f7f4f4;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 5px;
+}
+
+#zabdar:hover {
+    text-decoration: none;
+    border: 0.1px solid rgba(252, 248, 227, 0.01);
+    color: #c90d9f;
+}
+
+#blue-header {
+    width: 100%;
+    height: 50px;
+    background-color: #2196f3;
+    font-size: 30px;
+    padding-right: 10px;
+    color: cornsilk;
+}
+
+#modal {
+    /*overflow-x: hidden;*/
+    position: fixed;
+    top: 20%;
+    right: 30%;
+    bottom: 0;
+    left: 0;
+    z-index: 1240;
+    background-color: #f7f4f4;
+    width: 35%;
+    height: 440px;
+    border: 1px solid mediumpurple;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+#e-logo {
+    position: absolute;
+    top: 50px;
+    right: 18%;
+    width: 200px;
+    height: auto;
+}
+
+#Hr-logo {
+    position: absolute;
+    top: 40px;
+}
+
+#meno {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 6000;
+    background-color: #fff;
+    width: 90%;
+    max-width: 320px;
+}
+
+#logo {
+    width: 100%;
+    height: 200px;
+    background: #603695;
+}
+
+#meno:after[id=x] {}
+
+#x {
+    position: fixed;
+    right: 310px;
+    top: 56px;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    z-index: 1241;
+    border-radius: 5px;
+    background: #603695;
+}
+
+.Modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1240;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#perpule-left {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+}
+
+#meno-user {
+    position: absolute;
+    top: 160px;
+    right: 5px;
+    font-size: 22.5px;
+}
+
+#meno-user-1 {
+    padding-right: 10px;
+    border-top: 1px solid mediumpurple;
+}
+
+#meno-user-2 {
+    border-top: 1px solid mediumpurple;
+    padding-right: 10px;
+}
+
+.linkWithOutUnderLine {
+    text-decoration: none;
+    color: cornsilk;
+}
+
+.linkWithOutUnderLine:hover {
+    text-decoration: none;
+    border: 0.1px solid rgba(252, 248, 227, 0.01);
+    color: #c90d9f;
+}
+
+.linkWithOutUnderLine-2 {
+    text-decoration: none;
+    color: rgba(62, 60, 57, 0.49);
+}
+
+.linkWithOutUnderLine-2:hover {
+    text-decoration: none;
+    color: #c90d9f;
+}
+
+.hover-font:hover {
+    background-color: #dfdbe2;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 5px;
+}
+
+.listfontcoler {
+    text-decoration: none;
+    font-size: large;
+    color: rgba(15, 1, 1, 0.55);
+    padding-left: 32.3%;
+    padding-right: 25.5%;
+    padding-top: 1px;
+    padding-bottom: 21px;
+}
+
+.listfontcoler:hover {
+    text-decoration: none;
+    color: #c90d9f;
+}
+
+.line {
+    color: #bae2e8;
+}
+
+.icon {
+    width: 15px;
+    height: 15px;
+}
+
+#right-header {
+    position: absolute;
+    right: 60%;
+    top: 0px;
+}
+
+#meno-back {
+    background-color: #e5e5e5;
+    width: 100%;
+    height: auto;
+}
+
+#blackLine {
+    width: 10px;
+}
+
+div .listmeno {
+    position: relative;
+    right: 10px;
+    font-size: large;
+    color: #000000;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    width: 97%;
+    height: 50px;
+}
+
+.listmeno:hover {
+    right: 0px;
+    width: 100%;
+    background-color: rgba(247, 255, 255, 0.95);
+    border-bottom: 1px solid #603695;
+    border-right: 10px solid #603695;
+}
+
+.bg-purple {
+    background-color: #603695;
+    padding-bottom: 5px;
+}
+
+#purpleLine {
+    display: none;
+}
+
+#Estekhtam {
+    padding: 20px;
+    width: 200px;
+    height: auto;
+}
+
+#motabar {
+    font-size: xx-large;
+    color: cornsilk;
+    position: absolute;
+    right: 36%;
+    top: 0px;
+}
+
+#but {
+    position: absolute;
+    right: 70%;
+    top: 10px;
+    color: cornsilk;
+}
+
+.icon2 {
+    width: 25px;
+    height: 25px;
+}
+
+.list {
+    position: relative;
+    right: 22%;
+    left: 22%;
+    font-size: large;
+}
+
+@media only screen and (max-width: 1300px) {
+    #motabar {
+        display: none;
+    }
+    #right-header {
+        position: absolute;
+        right: 50%;
+        top: 0px;
+    }
+    #modal {
+        width: 50%;
+    }
+    #zabdar {
+        left: 1%;
+        right: 77%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #blackLine {
+        display: none;
+    }
+    #purpleLine {
+        display: inline;
+        background-color: #563086;
+    }
+    .list {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .list {
+        display: none;
+    }
+    #modal {
+        width: 70%;
+        right: 10%;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    .list {
+        display: none;
+    }
+    #but {
+        position: relative;
+        right: 180px;
+        top: -8px;
+    }
+    #Estekhtam {
+        position: relative;
+        top: 5px;
+        right: 200px;
+    }
+    #modal {
+        width: 100%;
+        right: 0px;
+    }
+    #zabdar {
+        left: 1%;
+        right: 96%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .list {
+        display: none;
+    }
+    #but {
+        position: relative;
+        right: 70px;
+        top: -8px;
+    }
+    #Estekhtam {
+        position: relative;
+        top: 5px;
+        right: 80px;
+    }
+    #meno-user {
+        position: absolute;
+        top: 160px;
+        right: 5px;
+        font-size: 16px;
+    }
+    #meno {
+        width: 80%;
+    }
+    #thant {
+        position: relative;
+        right: 5%;
+    }
+    #mtn-agh {
+        position: relative;
+        right: 1%;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    #x {
+        right: 295px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    #x {
+        right: 285px;
+    }
+    #meno-back {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #x {
+        right: 276px;
+    }
+    #but {
+        position: relative;
+        right: 40px;
+        top: -8px;
+    }
+    #Estekhtam {
+        position: relative;
+        top: 5px;
+        right: 45px;
+    }
+}
+
+@media only screen and (max-width: 342px) {
+    div.listmeno {
+        font-size: 14px;
+        height: 40px;
+    }
+    #x {
+        right: 260px;
+    }
+    #modal {
+        height: 435px;
+    }
+}
+
+@media only screen and (max-width: 332px) {
+    #x {
+        right: 250px;
+    }
+    div.listmeno {
+        width: 95%;
+    }
+}

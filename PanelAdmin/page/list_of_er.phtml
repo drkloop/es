@@ -1,0 +1,71 @@
+<div class="col-md-12 col-12" v-if="!showList ">
+  <button type="submit" class="btn btn-primary left-0" @click="showList=true">
+    بازگشت به لیست گزارشات ◄
+  </button>
+  <br>
+  <hr>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>عنوان</th>
+      <th>ایمیل کاربر</th>
+      <th>متن گزارش</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <lable for="pasokh"> پاشخ شما :</lable>
+        <textarea name="pasokh" id="pasokh" class="form-control" required></textarea>
+        <br>
+        <hr>
+        <button type="submit" class="btn btn-info btn-center">
+          ارسال پاسخ
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!---->
+<div v-if="showList">
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+    <th>شناسه</th>
+    <th>عنوان</th>
+    <th>پاسخ داده شده</th>
+    <th>عمليات</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+
+
+<pasokh></pasokh>
+    <tr v-for="(error,index) in errors">
+        <td>{{index+1}}</td>
+        <td>{{error.title}}</td>
+        <td>
+        <button v-if="error.visited==1" class="btn btn-success">
+          ✔</button>
+        <button  v-if="error.visited==0" class="btn btn-danger">✘</button>
+        </td>
+        <td>
+            <button class="btn btn-success" @click="showList=false">پاسخ</button>
+            <button class="btn btn-danger">حذف </button>
+        </td>
+    </tr>
+
+
+
+    </tbody>
+</table>
+</div>

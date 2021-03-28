@@ -1,0 +1,60 @@
+<div id="adv" class="col-md-12">
+  <div class="row">
+    <div class="col-lg-9">
+        <?php
+        include "./model/adv.php";
+        ?>
+      <!--            <div id="adv_short_def" class="row">-->
+      <!--                <p>شرکت پخش آی تک برادران کریمیان، بزرگترین شرکت پخش محصولات غذایی و بهداشتی در سطح استان گیلان، جهت-->
+      <!--                    تکمیل کادر پرسنلی خود از واجدین شرایط خانم و آقا دعوت به همکاری می‌نماید.</p>-->
+      <!--            </div>-->
+
+
+      <div id="adv_info_call_info">
+        <div id="adv_info_call_info_name" class="row">
+                    <span>
+                        <i class="fa fa-phone"></i>
+                    </span>
+          <span id="cor"></span>
+          <p id="call_info">اطلاعات تماس</p>
+        </div>
+        <div id="adv_info_call_info_hr">
+        </div>
+        <div id="adv_info_call">
+            <?php
+            call_info();
+            ?>
+
+        </div>
+        <div id="adv_info_call_squ"></div>
+
+
+      </div>
+      <div id="adv_extras" class="row">
+        <div class="adv_extras" @click="Zago=1">
+          <i class="fa fa-flag"></i>
+          گزارش مشکل آگهی
+        </div>
+        <div class="adv_extras" @click="ZaShare=1">
+          <i class="fa fa-share"></i>
+          اشتراک گذاری
+        </div>
+        <div class="adv_extras">
+          <i class="fa fa-star"></i>
+          نشان کردن
+        </div>
+      </div>
+    </div>
+
+
+      <?php
+      require_once "modalShare.phtml";
+
+      ?>
+  </div>
+
+</div>
+
+<?php
+require_once "modalgozaresh.phtml";
+?>

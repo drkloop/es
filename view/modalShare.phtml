@@ -1,0 +1,75 @@
+<div class="col-lg-3" id="ad">
+    <div id="adv_more_extra">
+        <div class="adv_more_extra" @click="ZaShare=1">
+
+            <i class="fa fa-share"></i>
+            <span>
+                |
+            </span>
+            <span> اشتراک گذاری</span>
+
+        </div>
+        <div class="adv_more_extra">
+            <a href="./adver" class="linkWithOutUnderLine" style="color: black;">
+                <i class="fa fa-search"></i>
+                <span>
+                    |
+                </span>
+                <span>جست و جو در آگهی ها</span>
+            </a>
+        </div>
+        <div class="adv_more_extra">
+            <a href="./dargeAgahi" class="linkWithOutUnderLine" style="color: black;">
+                <i class="fa fa-plus"></i>
+                <span>
+                    |
+                </span>
+                <span> درج آکهی استخدام</span>
+            </a>
+        </div>
+
+
+    </div>
+</div>
+
+<div v-if="zabdarshare">
+    <div class="Modal-backdrop" @click="ZaShare=0">
+    </div>
+    <div id="modal">
+        <div id="blue-header">
+            <b>
+                اشتراک گذاری
+                <a href="#" class="linkWithOutUnderLine" style="float: left;margin-left:5px" @click="ZaShare=0">
+                    &times;
+                </a>
+            </b>
+        </div>
+
+        <p style="margin-right: 10px;">همچنین میتوانید لینک کوتاه زیر را جهت دسترسی به صفحه فوق برای اشتراک گذاری کپی
+            کنید</p>
+        <div class="row container">
+            <div @click="btnCopy= !btnCopy" class="col-3">
+                <copylink link_url="<?= $_SESSION['FullUrl']  ?>"></copylink>
+            </div>
+            <div class="col-9">
+                <div v-if="btnCopy==1">
+                    <copy></copy>
+                </div>
+                <input type="text" class="form-control" style="direction: ltr;" value="<?= $_SESSION['FullUrl']  ?>"
+                    disabled>
+            </div>
+        </div>
+        <hr>
+        <p style="margin-right: 10px">راه ارتباطي شما از طريق شبكه هاي اجتماعي</p>
+        <div style="margin-right: 10%;">
+            <a href="#" class="fa far fa-facebook"></a>
+            <a href="#" class="fa  far  fa-instagram"></a>
+            <a href="#" class="fa  far fa-yahoo"></a>
+            <a href="#" class="fa far  fa-linkedin"></a>
+            <a href="#" class="fa far fa-google far-google"></a>
+            <a href="#" class="fa far fa-telegram"></a>
+            <a href="#" class="fa far fa-youtube"></a>
+            <a href="#" class="fa far fa-twitter"></a>
+        </div>
+    </div>
+</div>

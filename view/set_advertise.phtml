@@ -1,0 +1,243 @@
+
+<div id="set_adv_title">
+    <center>
+        <h2>درج آگهی استخدام</h2>
+    </center>
+</div>
+<div id="set_adv_infos">
+    <div class="col-md-12 row">
+        <div class="set_adv_info col-md-3" id="set_adv_info_3">
+            <center><img class="set_adv_img" src="./asetes/img/bell.png"></center>
+            <h6 class="set_adv_info_h6">ارسال ایمیل و پیامک به جامعه هدف شما</h6>
+            <p class="set_adv_info_p">با درج آگهی در وب سایت «ای-استخدام» از مزیت انتشار گسترده آگهی استخدام خود در فضای
+                وب و شبکه های مجازی بهره‌مند خواهید شد</p>
+        </div>
+        <div class="set_adv_info col-md-3" id="set_adv_info_1">
+            <center><img class="set_adv_img" src="asetes/img/sat.png"></center>
+            <h6 class="set_adv_info_h6">اطلاع رسانی گسترده در اینترنت</h6>
+            <p class="set_adv_info_p">با درج آگهی در وب سایت «ای-استخدام» از مزیت انتشار گسترده آگهی استخدام خود در فضای
+                وب و شبکه های مجازی بهره‌مند خواهید شد</p>
+        </div>
+        <div class="set_adv_info col-md-3" id="set_adv_info_2">
+            <center><img class="set_adv_img" src="./asetes/img/clock.png"></center>
+            <h6 class="set_adv_info_h6">اطلاع رسانی گسترده در اینترنت</h6>
+            <p class="set_adv_info_p">با درج آگهی در وب سایت «ای-استخدام» از مزیت انتشار گسترده آگهی استخدام خود در فضای
+                وب و شبکه های مجازی بهره‌مند خواهید شد</p>
+        </div>
+    </div>
+</div>
+<div id="set_adv_banner">
+    <div class="col-md-12 col-sm-12 row" id="banners">
+        <div class="col-md-6 col-sm-12 banner">
+            <center><img id="contact_banner" class="img_set_advertise" src="asetes/img/contact_banner.png" alt=""></center>
+        </div>
+        <div class="col-md-6 col-sm-12 banner">
+            <center><img class="img_set_advertise" src="asetes/img/employer_banner.png" alt=""></center>
+        </div>
+    </div>
+</div>
+<div id="set_adver">
+    <div id="set_adver_title">
+        <h4>فرم ثبت آگهی استخدام</h4>
+        <hr style="background: #7e57c2;">
+        <div id="set_adver_info" class="row">
+            <div class="col-md-6 advers_info">
+                <label>نام شما</label>
+                <input maxlength="30" type="text" id="adver_fname_lname" class="form-control advers_info_input"
+                       placeholder="نام و نام خانوادگی مسئول درج آگهی" required>
+            </div>
+            <div class="col-md-6 advers_info">
+                <label>موبایل شما</label>
+                <input type="number" id="adver_phone_number" class="form-control advers_info_input"
+                       placeholder="شماره موبایل مسئول درج آگهی"
+                       max="999999999">
+            </div>
+            <div class="col-md-6 advers_info">
+                <label>نام موسسه</label>
+                <input maxlength="16" type="text" id="adver_factory_name" class="form-control advers_info_input"
+                       placeholder="نام شرکت موسسه یا سازمان" required>
+            </div>
+            <div class="col-md-6 advers_info">
+                <label>تلفن تماس</label>
+                <input type="number" id="adver_call_phone" class="form-control advers_info_input"
+                       placeholder="شماره تماس به همراه پیش شماره شهر" required>
+            </div>
+            <div class="col-md-6 advers_info">
+                <label>ایمیل</label>
+                <input type="email" id="adver_email" class="form-control advers_info_input"
+                       placeholder="آدرس ایمیل مسئول درج آگهی"
+                       required>
+            </div>
+            <div class="col-md-6 advers_info">
+                <label>استان</label>
+                <button onclick="myFunction()" id="adver_but" class="form-control but">
+                    استان را انتخاب کنید
+                    <i class="fa fa-angle-down"></i></button>
+                <div id="adver_dropdown" class="dropdown-content">
+                    <input class="form-control" type="text" placeholder="در میان استان ها جست و جو کنید"
+                           id="adver_input"
+                           onkeyup="filterFunction2()">
+                    <a city="1" class="adver_city">تهران</a>
+                    <a city="2" class="adver_city">قم</a>
+                    <a city="3" class="adver_city">مشهد</a>
+                    <a city="4" class="adver_city">شیراز</a>
+                    <a city="5" class="adver_city">همدان</a>
+                </div>
+            </div>
+            <div class="col-md-12 advers_info" id="advers_info_deff">
+                <div id="advers_info_def">
+                    <div class="col-md-12 advers_info_def_rows">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>آدرس شرکت </label>
+                                <input type="text" maxlength="16" class="form-control advers_info_input" id="adver_address">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 advers_info_def_rows">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>جنسيت</label>
+                                <select class="form-control adver_select" id="adver_sex">
+                                    <option value="0">انتخاب كنيد</option>
+                                    <option value="man">مرد</option>
+                                    <option value="woman">زن</option>
+                                    <option value="both">هردو</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>عنوان</label>
+                                <input maxlength="30" class="advers_info_input form-control" type="text" id="adver_title" placeholder="عنوان مورد نظر را وارد كنيد" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label>نوع همكاري</label>
+                                <select class="form-control adver_select" id="adver_timing">
+                                    <option value="0">انتخاب كنيد</option>
+                                    <option value="halfTiming">پاره وقت</option>
+                                    <option value="totalTiming">تمام وقت</option>
+                                    <option value="both">هردو</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-6" id="joob_check">
+                                <input class="form-control advers_info_input" type="text" placeholder="در میان رشته ها جست و جو کنید"
+                                       id="major_input"
+                                       onkeyup="filterFunction_major()">
+                                <div id="check_majors">
+                                    <ul>
+                                        <?php
+                                        include "./model/get_majors.php";
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12" id="adver_ch_fast">
+                                <span>فوري</span>
+                                <input type="checkbox" id="adver_fast">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 advers_info_def_rows">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>توضیحات قبل از مشخصات </label>
+                                <input type="text" class="form-control advers_info_input" id="adver_before_main">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 advers_info_def_rows">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input class="form-control advers_info_input" type="text" placeholder="در میان شغل ها جست و جو کنید"
+                                       id="job_input"
+                                       onkeyup="filterFunction_job()">
+                                <div id="check_jobs">
+                                    <ul>
+                                        <?php
+                                        include "./model/get_jobs.php";
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>شرايط احراز</label>
+                                <textarea id="adver_txtarea_ide" class="form-control advers_info_input" cols="10" rows="10" placeholder=" بين شرايط احراز از - استفاده كنيد و بين شرايط احراز عناوين ديگر از /"></textarea>
+                            </div>
+                            <div class="col-md-3">
+                                <label>مزايا</label>
+                                <textarea id="adver_txtarea_profit" class="form-control advers_info_input" cols="10" rows="10" placeholder=" بين مزايا از - استفاده كنيد و بين مزايا عناوين ديگر از /"></textarea>
+                            </div>
+                            <div class="col-md-3">
+                                <label>راه ارتباطي</label>
+                                <textarea id="adver_txtarea_rela" class="form-control advers_info_input" cols="10" rows="10" placeholder=" بين راه ارتباطي از - استفاده كنيد و بين راه ارتباطي عناوين ديگر از /"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 advers_info_def_rows">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>توضیحات بعد از مشخصات </label>
+                                <input type="text" class="form-control advers_info_input" id="adver_after_main">
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="set_adver_info_sec">
+            <div class="col-md-12 advers_info row" id="adver_show">
+                <div class="col-md-12">
+                    <center><p>اطلاعات تماسی که مایلید در آگهی نمایش داده شوند را مشخص نمائید.</p></center>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" value="factory_name" class="adver_check"><span
+                        class="adver_span">نام شرکت</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" value="mobile" class="adver_check"><span class="adver_span">موبایل</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" value="email" class="adver_check"><span class="adver_span">ایمیل</span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" value="phone" class="adver_check"><span class="adver_span">تلفن</span>
+                </div>
+            </div>
+        </div>
+        <div id="set_adver_info_third">
+            <div class="col-md-12 advers_info row" id="adver_file">
+                <div class="col-md-12">
+                    <p>فایل الصاقی</p>
+                </div>
+                <input type="file" class="form-control" id="adver_file_upload">
+                <p class="muted">عکس آگهی خود را بفرستید</p>
+            </div>
+        </div>
+
+        <center>
+            <button class="btn btn-success adver_btn" id="advr_btn" for_what="1">ثبت آکهی</button>
+            <p>با ثبت این آگهی شما تایید میکنید که قوانین درج آگهی در «ای-استخدام» را خوانده و آن را قبول دارید</p>
+        </center>
+
+
+    </div>
+</div>
+<div id="adver_selected">
+    <center>
+        <p>برخی از آگهی‌دهندگان برگزیده</p>
+    </center>
+    <div class="col-md-12 col-sm-6 col-xs-6 set_adver_adver_img">
+        <center>
+            <img src="asetes/img/advers.jpg" class="img-responsive" alt="">
+        </center>
+    </div>
+
+</div>
+
+

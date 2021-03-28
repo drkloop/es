@@ -1,0 +1,86 @@
+.nazarat{
+  background-color: #ebe6f0;
+  height: auto;
+  text-align: center;
+  border:1px solid #002752;
+  border-radius:10px ;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow:hidden;
+}
+#pagnat{
+  text-align: center;
+  margin-bottom: 20px;
+}
+#paginat button{
+  border: none;
+  margin-right: 1px;
+  border: 1px solid #603695;
+}
+#paginat button:hover{
+  /*border-radius: 50%;*/
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  cursor: pointer;
+  background: #603695;
+
+  color: white;
+  transition: 0.7s;
+}
+
+.btnActive{
+  background: #603695;
+  border-radius: 60%;
+  color: white;
+  box-shadow: 2px 3px 4px rgba(50, 56, 62, 0.86);
+}
+.nazar{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #f8fff8;
+  border:1px solid #32383e;
+  border-radius:10px ;
+  width: 100%;
+  height: auto;
+  overflow:hidden;
+}
+.khat_bala_nazar{
+  width: 100%;
+  height: 37px;
+  background-color: gainsboro;
+  border-top-left-radius:10px ;
+  border-top-right-radius:10px ;
+}
+.nam_nazar{
+  overflow:hidden;
+width: auto;
+  height: 100px;
+  color: cornsilk;
+  border-top-right-radius:10px ;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: x-large;
+  background-color: #787878;
+
+}
+#nazaratLink{
+font-size: larger;
+}
+#nazaratLink:hover{
+  text-decoration: none;
+}
+.label-border{
+  background-color: #ebf5e8;
+ height: 37px;
+}
+.label-didgah{
+  background-color: #ebf5e8;
+  width: 100%;
+  height: 36px;
+margin-bottom: -5px;
+}
+#name_nazarat{
+  border-right: none;
+}#em_nazarat{
+  border-right: none;
+}

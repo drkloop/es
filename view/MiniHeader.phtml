@@ -1,0 +1,70 @@
+<div>
+  <div id="Mini">
+    <?php View::render("MinisideMenu.html")?>
+    <div v-show="scrollpx > 120">
+      <div id="miniHeader">
+        <div class="container">
+          <ul  class="mini-list">
+            <li id="menu-mini-navbar"  style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="#meno" class="linkWithOutUnderLine border-3-wtl" @click="menoA(1)" >
+                <img src="<?php Assetes::img('menu.svg') ?>" alt="list" class="icon"> منوهاي سايت
+              </a>
+            </li>
+            <?php if(!isset($_SESSION['logIn'])): ?>
+            <li style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="./vorod" class="linkWithOutUnderLine border-3-wtl mini-header-hide" >
+                <img src="<?php Assetes::img('paneluser.ico') ?>" alt="list" class="icon"> ورود به حساب كاربري
+              </a>
+            </li>
+            <?php else: ?>
+              <li style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="./taghvim" class="linkWithOutUnderLine border-3-wtl mini-header-hide" >
+                <img src="<?php Assetes::img('icons8_planner_32px.png') ?>" alt="list" class="icon"> تقويم استخدام
+              </a>
+            </li>
+            <?php endif; ?>
+            <li style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="./adver" class="linkWithOutUnderLine border-3-wtl mini-header-hide" >
+                <img src="<?php Assetes::img('searchw.png') ?>" alt="list" class="icon"> جستجو آگهي
+              </a>
+            </li>      
+
+            <?php if(!isset($_SESSION['logIn'])): ?>
+            <li style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="./signup" class="linkWithOutUnderLine border-3-wtl mini-header-hide" >
+                <img src="<?php Assetes::img('ag.png') ?>" alt="list" class="icon"> ثبت نام
+              </a>
+            </li>
+
+            <?php endif; ?>
+            <li style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="./dargeAgahi" class="linkWithOutUnderLine border-3-wtl mini-header-hide" >
+                <img src="<?php Assetes::img('commercialw.png') ?>" alt="list" class="icon"> درج آگهي
+              </a>
+            </li>
+          </ul>
+          <!--          اينجاست-->
+          <div id="logo-2">
+          <img  src="<?php Assetes::img('logo_bw.svg') ?>" alt="list" style="height: 20px;">
+          </div>
+        </div>
+      </div>
+      <div class="progress-bar" id="myBar"></div>
+      <div class="under-progress-bar"></div>
+    </div>
+  </div>
+  <script src="<?php Assetes::js('MiniHeader.js') ?>"></script>
+</div>
+<?php  ?>

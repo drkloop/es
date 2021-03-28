@@ -1,0 +1,141 @@
+#content {
+  overflow-x: hidden;
+}
+.mostatil-zard{
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  background-color: #fbab1d;
+}
+.mtn-cont {
+  position: relative;
+  top: 30px;
+}
+.mostatil-sefid{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+  right: 5px;
+  font-size: x-large;
+}
+#head-of-cont {
+  text-align: center;
+  font-size: 25px;
+  color: rgba(94, 33, 0, 0.78);
+}
+
+#contact-link {
+  font-weight: bolder;
+  color: #00008b;
+  font-size: 70px;
+}
+
+#contact-link:hover {
+  text-decoration: none;
+  color: blue;
+}
+
+.trapezoid {
+  position:relative;
+  top: 17.7px;
+  left: 40%;
+  border-radius: 8px;
+  border-bottom: 25px solid #683795;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 125px;
+}
+
+/*.trapezoid{*/
+/*  position: absolute;*/
+/*  top: 24px;*/
+/*  left: 600px;*/
+/*  background-color: #683795;*/
+/*  height: 1px;*/
+/*  width:700px;*/
+/*}*/
+
+
+.mtn-jadval {
+  color: cornflowerblue;
+  font-size: x-large;
+}
+
+.mostatil {
+  border: 2px solid #683795;
+  height: 60px;
+  border-radius: 5px;
+}
+.mostatil-2{
+  border: 2px solid #683795;
+  height: 300px;
+  border-radius: 5px;
+}
+.mtn-vasat-red{
+  text-align: center;
+  font-size: large;
+  color: red;
+}
+.mtn-vasat{
+  text-align: center;
+  font-size: large;
+}
+.mostatil-md-blue{
+  border: 2px solid #05bced;
+  height: 60px;
+  margin-left:10px;
+  margin-right:10px;
+  border-radius: 5px;
+  margin-bottom:5px ;
+}
+.mostatil-md-purple{
+  border: 2px solid purple;
+  height: 60px;
+  margin-left:10px;
+  margin-right:10px;
+  border-radius: 5px;
+  margin-bottom:5px ;
+}
+.moraba-blue{
+  position: relative;
+  right: -1px;
+  border: 1px solid #05bced;
+  background-color: #05bced;
+  height: 58px;
+  width: 59px;
+}
+.moraba-purple{
+  position: relative;
+  right: -1px;
+  border: 1px solid purple;
+  background-color: purple;
+  height: 58px;
+  width: 59px;
+}
+#phone-number{
+  position: absolute;
+  right: 60px;
+  top: 10px;
+}
+#email-cont{
+  position: absolute;
+  right: 60px;
+  top: 10px;
+}
+#es-req-cont{
+  position: absolute;
+  right: 60px;
+  top: 10px;
+}
+/*@media only screen and(max-width: 00px){*/
+/*  .mostatil-zard{*/
+/*    width: 100%;*/
+/*    height: 250px;*/
+/*    background-color: #fbab1d;*/
+/*  }*/
+/* }*/

@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: 100px">
+  <div class="bg-primary" id="mostatil"><img src="./asetes/img/alarm.png" style="margin-top: 5px;margin-right: 5px"
+                                             alt=""></div>
+</div>
+<div class="container" id="er-back">
+  <div class="col-9 col-md-9">
+    <p>در این صفحه شما میتوانید وجود یک اشکال در سامانه «ای-استخدام» را گزارش دهید.</p>
+  </div>
+
+  <form action="./dargEr" method="post">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-9">
+        <label for="email-er"> ايميل شما (جهت پيگيري)</label>
+        <input type="email" class="form-control " id="email-er" name="email" placeholder=" ايميل خود را وارد كنيد. ">
+        <label for="title">* عنوان  </label>
+        <input type="text" class="form-control " id="title"  name="title" placeholder=" ايميل خود را وارد كنيد. " required>
+        <label for="text-er">* توضيحات </label>
+        <textarea class="form-control " rows="5"  name="coment" cols="30" id="text-er"
+                  placeholder=" متن مورد نظر خود در اينجا وارد كنيد" required></textarea>
+        <hr>
+        <input type="submit" class="btn btn-success" value="ثبت اشكال" style="margin-right: 40%">
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </form>
+</div>

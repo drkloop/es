@@ -1,0 +1,228 @@
+<div class="CardHead" id="header" @mouseleave="bar0()">
+  <div class="Modal-backdrop" v-if="modalA" @click="modalA=0">
+  </div>
+  <div id="modal" data-aos="flip-left"
+       data-aos-easing="ease-out-cubic"
+       data-aos-duration="2000" v-if="modalA" >
+    <div id="blue-header">
+      <b>
+        عضویت یا ورود به سایت
+        <a href="#" class="linkWithOutUnderLine" style="float: left;margin-left:5px" @click="modalA=0">
+          &times;
+        </a>
+      </b>
+    </div>
+    <div id="gozine-panel">
+      <a href="#" :class="PanelActive" @click="btnPanel(1)">پنل کاربران</a>
+      <a href="#" :class="PanelDisActive" @click="btnPanel(2)">پنل آگهی دهندگان</a>
+    </div>
+    <hr>
+    <div id="vorod">
+      <div id="karbar" v-if="Panelkarbari" data-aos="zoom-in" data-aos-delay="500">
+        <p id="text-vorod">
+          شما وارد حساب کاربری خود نشده اید جهت استفاده از تمام امکانات سایت وارد حساب کاربری خود شوید. در صورتی که هنوز
+          عضو کاربران سایت نشده اید ثبت نام کنید.
+        </p>
+        <form action="./acc" method="post">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup1">Username</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" name="Email" class="form-control" id="inlineFormInputGroup1" placeholder="ايميل"
+                     required>
+            </div>
+          </div>
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup2">Pawsword</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><img src="<?php Assetes::img('lock.png') ?>" alt="lock" class="icon"></div>
+              </div>
+              <input required type="text" name="Pass" class="form-control" id="inlineFormInputGroup2" placeholder="رمز">
+            </div>
+          </div>
+         
+          <button class="btn btn-success btn-center" type="submit">ورود به سايت</button>
+         
+        </form>
+        <br>
+        <br>
+        <hr>
+        <a href="<?php View::GoTo('faramoshi') ?>" class="faramoshi d-flex justify-content-center">آیا رمز خود را فراموش کرده اید؟</a>
+        <a href="<?php View::GoTo('signup') ?>" class="btn btn-primary btn-center" style="right: 38.5%"> ثبت نام در سايت</a>
+      </div>
+      <div id="agahidahande" v-if="Panelagahi" data-aos="zoom-in" data-aos-delay="500">
+
+        <a href="#" class="linkWithOutUnderLine-2" id="mtn-agh"> در صورتی که پنل مدیریت آگهی دارید، برای ورود به پنل
+          اینجا کلیک
+          کنید</a>
+        <div>
+          <img src="<?php Assetes::img('ep.png') ?>" id="miz-p" alt="ep" width="140" height="120">
+        </div>
+        <a href="#" class="btn btn-info" id="btn-info">ورود به پنل كاربري</a>
+        <br>
+        <br>
+        <hr>
+        <a href="#" class="linkWithOutUnderLine-2" id="thant">جهت ثبت درخواست درج آگهی استخدام اينجا كليك كنيد</a>
+      </div>
+    </div>
+  </div>
+
+
+    <?php  View::render("sideMenu.php"); ?>
+
+  <div class="row">
+    <div class="col bg-purple2" id="purpleLine">
+      <a href="#meno" class="linkWithOutUnderLine" @click="menoActiver(1)" @mouseover='showIcone(1)'
+         @mouseout='noneIcone()' @mouseenter="bar0()">
+        <img v-if="Icone==1" src="<?php Assetes::img('list_p.ico') ?>" alt="list">
+        <img v-if="Icone!=1" src="<?php Assetes::img('list.ico') ?>" alt="list"> منوي سايت
+      </a>
+      <div id="perpule-left">
+        <a href="#" class="linkWithOutUnderLine" @mouseover='showIcone(2)' @mouseout='noneIcone()'
+           @mouseenter="Unbar(1,0,0)">
+          <img v-if="Icone==2" src="<?php Assetes::img('telep.ico') ?>" alt="tel">
+          <img v-if="Icone!=2" src="<?php Assetes::img('tele.ico') ?>" alt="tel">
+        </a>
+        <span class="line"> |</span>
+        <a href="#" class="linkWithOutUnderLine" @mouseover='showIcone(3)' @mouseout='noneIcone()'
+           @mouseenter="Unbar(0,1,0)">
+          <img v-if="Icone==3" src="<?php Assetes::img('poshtp.ico') ?>" alt="postibani">
+          <img v-if="Icone!=3" src="<?php Assetes::img('posht.ico') ?>" alt="postibani">
+        </a>
+        <span class="line"> |</span>
+        <a href="#" class="linkWithOutUnderLine" @mouseover='showIcone(4)' @mouseenter="Unbar(0,0,1)"
+           @mouseout='noneIcone()'>
+          <img v-if="Icone==4" src="<?php Assetes::img('userp.ico') ?>" alt="user">
+          <img v-if="Icone!=4" src="<?php Assetes::img('paneluser.ico') ?>" alt="user">
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col bg-dark " id="blackLine">
+      <div class="container" id="left-header">
+      <?php if(!isset($_SESSION['logIn'])): ?>
+        <a href="#modal" class="linkWithOutUnderLine" @click="modal(1)">
+          <img src="<?php Assetes::img('per.png') ?>" class="icon" alt="user"> ورودكاربران
+        </a>
+     
+        <span class="line"> |</span>
+
+        <a href="<?php View::GoTo('signup') ?>" class="linkWithOutUnderLine"><img src="<?php Assetes::img('plus.png') ?>" class="icon" alt="plus"> ثبت
+          نام
+        </a>
+        <span class="line"> |</span>
+        <?php else: ?>
+          <a href="<?php View::GoTo('PanelUser') ?>" class="linkWithOutUnderLine">
+          <?php if(isset($_SESSION['Name'])) echo $_SESSION['Name'];?>
+          </a>
+          <span class="line"> |</span>
+        <?php endif;?>
+        <a href="<?php View::GoTo('contact') ?>" class="linkWithOutUnderLine"> پشتيباني كاربران
+          56670844 (021)
+          <img src="<?php Assetes::img('tel.png') ?>" class="icon" alt="tel">
+        </a>
+      </div>
+      <div class="container" id="right-header">
+        <a href="<?php View::GoTo('dargeAgahi') ?>" class="linkWithOutUnderLine"> <img src="<?php Assetes::img('list.png') ?>" class="icon" alt="list"> درج آگهي
+        </a>
+        <span class="line"> |</span>
+        <?php if(!isset($_SESSION['logIn'])): ?>
+        <a href="#" class="linkWithOutUnderLine"><img src="<?php Assetes::img('agahi.png') ?>" class="icon" alt="agahi"> ورود آگهي
+          دهندگان</a>
+        <span class="line"> |</span>
+        <?php endif;?>
+        <a href="<?php View::GoTo('contact') ?>" class="linkWithOutUnderLine"> پشتيباني آگهي دهندگان
+          56670844 (021)
+          <img src="<?php Assetes::img('tel.png') ?>" class="icon" alt="tel">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col bg-purple ">
+      <div class="container">
+        <img src="<?php Assetes::img('e.png') ?>" alt="e" id="Estekhtam">
+        <div id="motabar"> معتبر ترين سامانه آگهي استخدامي كشور</div>
+        <div id="but">
+          <a href="<?php  View::GoTo('adver')?>" class="btn btn-primary"> <img src="<?php Assetes::img('search.png') ?>" alt="e" class="icon"> جستجوي
+            آگهي ها
+          </a>
+            <?php if(!isset($_SESSION['logIn'])): ?>
+          <a href="<?php View::GoTo('signup') ?>" class="btn btn-success"><img src="<?php Assetes::img('plus.png') ?>" class="icon" alt="plus"> ثبت
+            نام</a>
+          <?php endif; ?>
+        </div>
+        <div class="list">
+          <ul class="nav navbar-nav  " id="nav" style="  display: inline;">
+            <li id="home" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;">
+              <a href="<?php View::GoTo('home') ?>" class="linkWithOutUnderLine" @click="showIcone(5)" @mouseover='showIcone(5)'
+                 @mouseout='noneIcone()'>
+                <img v-if="Icone!=5" src="<?php Assetes::img('home.png') ?>" alt="home" class="icon2">
+                <img v-if="Icone==5" src="<?php Assetes::img('homep.png') ?>" alt="home" class="icon2">
+              </a>
+            </li>
+            <span class="line"> |</span>
+            <li id="jostojo" class="nav-custom" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"><a href=" <?php View::GoTo('adver') ?>" class="linkWithOutUnderLine"> جستجوي آگهي</a></li>
+            <span class="line" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"> |</span>
+            <li class="nav-custom" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"><a href="<?php View::GoTo('taghvim') ?>" class="linkWithOutUnderLine"> تقويم استخدام</a></li>
+            <span class="line" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"> |</span>
+            <li class="nav-custom" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"><a href="<?php View::GoTo('dargeAgahi') ?>" class="linkWithOutUnderLine"> درج آگهي استخدام</a></li>
+            <span class="line"> |</span>
+            <li class="nav-custom" style="  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;"><a href="<?php View::GoTo('contact') ?>" class="linkWithOutUnderLine"> تماس با ما</a></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div v-show="scrolpx < 50" id="talkbubble" data-aos="fade-right" v-if="barLeft" @mouseleave="barLeft=0">
+    <img src="<?php Assetes::img('e.png') ?>" height="19" id="em">
+    <div id="talkbubble-vorod">
+    <?php if(!isset($_SESSION['logIn'])): ?>
+      <a href="#" class="btn btn-sm btn-outline-secondary btn-block" @click="modal(1)">ورود كاربران</a>
+      <a href="#" class="btn btn-sm btn-outline-info btn-block" @click="modal(1)"> ورود آگهي دهندگان</a>
+      <?php else: ?>
+        <br>
+      <a href="<?php View::GoTo('PanelUser') ?> " class="btn btn-sm btn-outline-info btn-block" > پنل كاربري</a>
+      <?php endif;?>
+    </div>
+  </div>
+  <div v-show="scrolpx < 50" id="talkbubble2" data-aos="fade-right" v-if="barMidel" @mouseleave="barMidel=0">
+    <div style="text-align: center"><b>پشتيباني آگهي دهندگان</b></div>
+    <div style="text-align: center"> 44291844 (021)</div>
+    <div class="talkbubble-vorod2">
+      <a href="<?php View::GoTo('contact') ?>" class="btn btn-sm btn-outline-secondary btn-block">تماس با ما</a>
+    </div>
+  </div>
+  <div v-show="scrolpx < 50" id="talkbubble3" data-aos="fade-right" v-if="barRight" @mouseleave="barRight=0">
+    <img src="<?php Assetes::img('e.png') ?>" height="19" id="em3">
+    <div style="text-align: center;margin-top:22px"><b>درباره پروژه</b></div>
+    <div class="talkbubble-vorod2">
+      <a href="#" class="btn btn-sm btn-outline-secondary btn-block">درباره پروژه</a>
+    </div>
+  </div>
+
+</div>
+

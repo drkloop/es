@@ -1,0 +1,90 @@
+<?php
+require_once "./model/editUserInfo.php";
+?>
+
+<?php if (isset($_GET["action"]) && $_GET["action"] == "language") { ?>
+  <div class="row" >
+    <div class="col-4 col-lg-4">
+        <?php $this->loadView('panelUserMeno') ?>
+    </div>
+    <div id="addUserLanguage" class="editforresume  col-md-8 col-lg-8">
+      <div class="editforresume_title ">
+        <a href="./panelUser_editResume" class="a_edit_info">
+          <i class="fa fa-arrow-right"></i>
+        </a>
+        <h3>
+          افزودن زبان
+        </h3>
+      </div>
+
+      <div id="addLanguagedesc" class="row headerInfo">
+        <span class="headerInfospan">
+            <i class="fa fa-bell"></i>
+        </span>
+        <div id="addlanp" class="headerInfop">
+          <p>
+            در این بخش زبان‌ خارجی که با آن آشنا هستید را انتخاب کنید. تسلط به زبان خارجی در اکثر مشاغل مزیت محسوب
+            میگردد.
+          </p>
+          <h5>توضیحات</h5>
+          <p>
+            اگر به یک زبان خارجی در حد ضعیف هم تسلط دارید آنرا وارد کنید، ممکن است این مساله برای یک آگهی‌دهنده مهم
+            باشد.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="languagesadd">
+        <div class="lang">
+          <label>زبان خارجی</label><span class="red_span">*</span>
+          <select id="langselect" class="form-control advers_info_input">
+            <option value="اانگلیسی">اانگلیسی</option>
+            <option value="اردو">اردو</option>
+          </select>
+        </div>
+        <div class="lang">
+          <label>میزان تسلط</label><span class="red_span">*</span>
+          <div class="radiolev row">
+            <div class="r_lev">
+              <input type="radio" name="lanlevelradio" value="basic" class="lanlevelradio" checked>
+              <img src="./asetes/img/cv_basic.svg" class="lanlevelimg" alt="">
+            </div>
+            <div class="r_lev">
+              <input type="radio" name="lanlevelradio" value="intermediate" class="lanlevelradio">
+              <img src="./asetes/img/cv_intermediate.svg" class="lanlevelimg" alt="">
+            </div>
+            <div class="r_lev">
+              <input type="radio" name="lanlevelradio" value="advanced" class="lanlevelradio">
+              <img src="./asetes/img/cv_advanced.svg" class="lanlevelimg" alt="">
+            </div>
+            <div class="r_lev">
+              <input type="radio" name="lanlevelradio" value="expert" class="lanlevelradio">
+              <img src="./asetes/img/cv_expert.svg" class="lanlevelimg" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div id="sublang">
+          <center>
+            <button id="btnlang">
+              ثبت
+            </button>
+          </center>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+<!---->
+<!--<div id="addUserLanguage" class="editforresume container col-md-8">-->
+<!--    <div class="editforresume_title row">-->
+<!--        <a href="./panelUser_editResume" class="a_edit_info">-->
+<!--            <i class="fa fa-arrow-right"></i>-->
+<!--        </a>-->
+<!--        <h3>-->
+<!--            ثبت اطلاعات تکمیلی-->
+<!--        </h3>-->
+<!--    </div>-->
+<!--</div>-->

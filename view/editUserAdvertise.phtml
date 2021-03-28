@@ -1,0 +1,360 @@
+<?php
+require_once "./model/db.php";
+$db = new db();
+$url = $_SERVER["REQUEST_URI"];
+$id = parse_url($url, PHP_URL_QUERY);
+$id = explode("=", $id);
+$id = $id[1];
+$query = "SELECT * FROM advertise WHERE advertise_id='$id'";
+$run = mysqli_query($db->getDb(),$query);
+$row = mysqli_fetch_array($run);
+$advertise_title = $row["advertise_title"];
+$advertise_id = $row["advertise_id"];
+$advertise_factory = $row["advertise_factory"];
+$advertise_city = $row["advertise_city"];
+$advertise_mobile = $row['advertise_mobile'];
+$advertise_phone = $row["advertise_phone"];
+$advertise_email = $row["advertise_email"];
+$advertise_address = $row["advertise_address"];
+$advertise_sex = $row["advertise_sex"];
+$advertise_timing = $row["advertise_timing"];
+$advertise_major = $row["advertise_major"];
+$advertise_major = explode("-",$advertise_major);
+$advertise_fast = $row["advertise_fast"];
+$advertise_ide = $row["advertise_ide"];
+$advertise_job = $row["advertise_job"];
+$advertise_job =explode("-",$advertise_job);
+$advertise_profit = $row["advertise_profit"];
+$advertise_rela = $row["advertise_rela"];
+$advertise_after = $row["advertise_after"];
+$advertise_show = $row["advertise_show"];
+$advertise_show = explode("-",$advertise_show);
+$advertise_fname_lname = $row["advertise_fname_lname"];
+$advertise_img = $row["advertise_img"];
+$advertise_before = $row["advertise_before"]
+?>
+<!--<div id="editUserAdvertise">-->
+    <div class="row ">
+      <div class="col-3">
+          <?php $this->loadView('panelUserMeno')?>
+      </div>
+        <div class=" col-9" >
+            <div id="edit_advertise">
+                <div id="edit_advertise_title">
+                    <h3>ویرایش آگهی</h3>
+                </div>
+                <div id="edit_advertise_inputs">
+                    <div id="set_adver_info" class="row">
+                        <div class="col-md-6 advers_info">
+                            <label>نام شما</label>
+                            <input maxlength="30" type="text" id="adver_fname_lname" class="form-control advers_info_input"
+                                   value="<?=$advertise_fname_lname?>">
+                        </div>
+                        <div class="col-md-6 advers_info">
+                            <label>موبایل شما</label>
+                            <input type="number" id="adver_phone_number" class="form-control advers_info_input"
+                                   value="<?=$advertise_mobile?>"
+                                   max="999999999">
+                        </div>
+                        <div class="col-md-6 advers_info">
+                            <label>نام موسسه</label>
+                            <input maxlength="30" type="text" id="adver_factory_name" class="form-control advers_info_input"
+                                   value="<?=$advertise_factory?>" required>
+                        </div>
+                        <div class="col-md-6 advers_info">
+                            <label>تلفن تماس</label>
+                            <input type="number" id="adver_call_phone" class="form-control advers_info_input"
+                                   value="<?=$advertise_phone?>">
+                        </div>
+                        <div class="col-md-6 advers_info">
+                            <label>ایمیل</label>
+                            <input type="email" id="adver_email" class="form-control advers_info_input"
+                                   value="<?=$advertise_email?>"
+                                   required>
+                        </div>
+                        <div class="col-md-6 advers_info">
+                            <label>استان</label>
+                            <button onclick="myFunction()" id="adver_but" class="form-control but" value="<?=$advertise_city?>">
+                                <?=$advertise_city?>
+                                <i class="fa fa-angle-down"></i></button>
+                            <div id="adver_dropdown" class="dropdown-content">
+                                <input class="form-control" type="text" placeholder="در میان استان ها جست و جو کنید"
+                                       id="adver_input"
+                                       onkeyup="filterFunction2()">
+                                <a city="1" class="adver_city">تهران</a>
+                                <a city="2" class="adver_city">قم</a>
+                                <a city="3" class="adver_city">مشهد</a>
+                                <a city="4" class="adver_city">شیراز</a>
+                                <a city="5" class="adver_city">همدان</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 advers_info" id="advers_info_deff">
+                            <div id="advers_info_def">
+                                <div class="col-md-12 advers_info_def_rows">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>آدرس شرکت </label>
+                                            <input type="text" class="form-control advers_info_input" id="adver_address"
+                                            value="<?=$advertise_address?>">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 advers_info_def_rows">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>جنسيت</label>
+                                            <select class="form-control adver_select" id="adver_sex">
+                                                <?php
+                                                if($advertise_sex==1){
+                                                    echo"
+                                                    <option value=\"man\">مرد</option>
+                                                <option value=\"woman\">زن</option>
+                                                <option value=\"both\">هردو</option>
+                                                    ";
+                                                }elseif ($advertise_sex==2){
+                                                    echo"
+                                                <option value=\"woman\">زن</option>
+                                                <option value=\"man\">مرد</option>
+                                                <option value=\"both\">هردو</option>
+                                                    ";
+                                                }else{
+                                                    echo"
+                                                    <option value=\"both\">هردو</option>
+                                                <option value=\"woman\">زن</option>
+                                                <option value=\"man\">مرد</option>
+                                                    ";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>عنوان</label>
+                                            <input maxlength="30" class="advers_info_input form-control" type="text" id="adver_title" value="<?=$advertise_title?>">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>نوع همكاري</label>
+                                            <select class="form-control adver_select" id="adver_timing">
+                                                <?php
+                                                if($advertise_timing==1){
+                                                    echo"
+                                                <option value=\"halfTiming\">پاره وقت</option>
+                                                <option value=\"totalTiming\">تمام وقت</option>
+                                                <option value=\"both\">هردو</option>
+                                                    ";
+                                                }elseif ($advertise_timing==2){
+                                                    echo "
+                                                    <option value=\"totalTiming\">تمام وقت</option>
+                                                <option value=\"halfTiming\">پاره وقت</option>
+                                                <option value=\"both\">هردو</option>
+                                                    ";
+                                                }else{
+                                                    echo "
+                                                    <option value=\"both\">هردو</option>
+                                                <option value=\"halfTiming\">پاره وقت</option>
+                                                <option value=\"totalTiming\">تمام وقت</option>
+                                                    ";
+                                                }
+                                                ?>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-md-6" id="joob_check">
+                                            <input class="form-control advers_info_input" type="text" placeholder="در میان رشته ها جست و جو کنید"
+                                                   id="major_input"
+                                                   onkeyup="filterFunction_major()">
+                                            <div id="check_majors">
+                                                <ul>
+                                                    <?php
+                                                    $query = "SELECT * FROM major";
+                                                    $run = mysqli_query($db->getDb(),$query);
+                                                    while ($row = mysqli_fetch_array($run)){
+                                                        $major_id = $row["major_id"];
+                                                        $major_name = $row["major_name"];
+                                                        if(in_array($major_id,$advertise_major)){
+                                                            echo "
+    <li style='margin-right: 10px'><input type='checkbox' value='$major_id' class='major_check' checked><span>$major_name</span></li>
+    ";
+                                                        }else{
+                                                            echo "
+    <li style='margin-right: 10px'><input type='checkbox' value='$major_id' class='major_check'><span>$major_name</span></li>
+    ";
+                                                        }
+
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" id="adver_ch_fast">
+                                            <span>فوري</span>
+                                            <?php
+                                            if($advertise_fast==0){
+                                                echo "
+                                                <input type=\"checkbox\" id=\"adver_fast\">
+                                              ";
+                                            }else{
+                                                echo "
+                                                <input type=\"checkbox\" id=\"adver_fast\" checked>
+                                              ";
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12 advers_info_def_rows">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>توضیحات قبل از مشخصات </label>
+                                            <input type="text" class="form-control advers_info_input" id="adver_before_main"
+                                            value="<?=$advertise_before?>">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button id="sdfghkj" value="<?=$advertise_id?>" style="display: none;"></button>
+                                <div class="col-md-12 advers_info_def_rows">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <input class="form-control advers_info_input" type="text" placeholder="در میان شغل ها جست و جو کنید"
+                                                   id="job_input"
+                                                   onkeyup="filterFunction_job()">
+                                            <div id="check_jobs">
+                                                <ul>
+                                                    <?php
+                                                    $query = "SELECT * FROM job";
+                                                    $run = mysqli_query($db->getDb(),$query);
+                                                    while ($row = mysqli_fetch_array($run)){
+                                                        $job_id = $row["job_id"];
+                                                        $job_name = $row["job_name"];
+                                                        if(in_array($job_id,$advertise_job)){
+                                                            echo "<center>
+    <li><input type='checkbox' value='$job_id' class='job_check' checked><span>$job_name</span></li></center>
+    ";
+                                                        }else{
+                                                            echo "<center>
+    <li><input type='checkbox' value='$job_id' class='job_check'><span>$job_name</span></li></center>
+    ";
+                                                        }
+
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>شرايط احراز</label>
+                                            <textarea id="adver_txtarea_ide" class="form-control advers_info_input" cols="10" rows="10"><?=$advertise_ide?></textarea>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>مزايا</label>
+                                            <textarea id="adver_txtarea_profit" class="form-control advers_info_input" cols="10" rows="10"><?=$advertise_profit?></textarea>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>راه ارتباطي</label>
+                                            <textarea id="adver_txtarea_rela" class="form-control advers_info_input" cols="10" rows="10"><?=$advertise_rela?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 advers_info_def_rows">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>توضیحات بعد از مشخصات </label>
+                                            <input type="text" class="form-control advers_info_input" id="adver_after_main"
+                                            value="<?=$advertise_after?>">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="set_adver_info_sec">
+                        <div class="col-md-12 advers_info row" id="adver_show">
+                            <div class="col-md-12">
+                                <center><p>اطلاعات تماسی که مایلید در آگهی نمایش داده شوند را مشخص نمائید.</p></center>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <?php
+                                if(in_array("factory_name",$advertise_show)){
+                                    echo "
+                                    <input type=\"checkbox\" value=\"factory_name\" class=\"adver_check\" checked><span
+                                    class=\"adver_span\">نام شرکت</span>";
+                                }else{
+                                    echo "
+                                    <input type=\"checkbox\" value=\"factory_name\" class=\"adver_check\"><span
+                                    class=\"adver_span\">نام شرکت</span>";
+                                }
+                                ?>
+
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <?php
+                                if(in_array("mobile",$advertise_show)){
+                                    echo "
+                                    <input type=\"checkbox\" value=\"mobile\" class=\"adver_check\" checked><span class=\"adver_span\">موبایل</span>
+                                    ";
+                                }else{
+                                    echo "
+                                    <input type=\"checkbox\" value=\"mobile\" class=\"adver_check\"><span class=\"adver_span\">موبایل</span>
+                                    ";
+                                }
+                                ?>
+
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <?php
+                                if(in_array("email",$advertise_show)){
+                                    echo "
+                                    <input type=\"checkbox\" value=\"email\" class=\"adver_check\" checked><span class=\"adver_span\">ایمیل</span>
+                                    ";
+                                }else{
+                                    echo "
+                                    <input type=\"checkbox\" value=\"email\" class=\"adver_check\"><span class=\"adver_span\">ایمیل</span>
+                                    ";
+                                }
+                                ?>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <?php
+                                if(in_array("phone",$advertise_show)){
+                                    echo "
+                                    <input type=\"checkbox\" value=\"phone\" class=\"adver_check\" checked><span class=\"adver_span\">تلفن</span>
+                                    ";
+                                }else{
+                                    echo "
+                                    <input type=\"checkbox\" value=\"phone\" class=\"adver_check\"><span class=\"adver_span\">تلفن</span>
+                                    ";
+                                }
+                                ?>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="set_adver_info_third">
+                        <div class="col-md-12 advers_info row" id="adver_file">
+                            <div class="col-md-12">
+                                <p>فایل الصاقی</p>
+                            </div>
+                            <img src="./adver_images/<?=$advertise_img?>" alt="" id="imagggge" style="width: 100px;height: 100px;margin-bottom: 10px;">
+                            <input type="file" class="form-control" id="adver_file_upload" image_url="<?=$advertise_img?>">
+                            <p class="muted">عکس آگهی خود را بفرستید</p>
+                        </div>
+                    </div>
+
+                    <center>
+                        <button class="btn btn-success adver_btn" id="advr_btn" for_what="2">ثبت آکهی</button>
+                        <p>با ثبت این آگهی شما تایید میکنید که قوانین درج آگهی در «ای-استخدام» را خوانده و آن را قبول دارید</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<!--</div>-->
+
+
+
