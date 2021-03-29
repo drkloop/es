@@ -55,12 +55,12 @@
     margin-bottom: 500px;
 }
 @media only screen and (max-width: 800px) {
-    #user_advertise {
-        display: none;
-    }
-    #this_editeagahi {
-        position: relative;
-        top: 0;
-        right: 0;
-    }
+    /*#user_advertise {*/
+    /*    display: none;*/
+    /*}*/
+    /*#this_editeagahi {*/
+    /*    position: relative;*/
+    /*    top: 0;*/
+    /*    right: 0;*/
+    /*}*/
 }
