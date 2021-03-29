@@ -34,3 +34,5 @@ View::render('headOfSite.php');
     ?>
 </div>
 <div></div>
+<div></div>
+<div></div>
