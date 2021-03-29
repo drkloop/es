@@ -34,11 +34,12 @@ $advertise_img = $row["advertise_img"];
 $advertise_before = $row["advertise_before"]
 ?>
 <!--<div id="editUserAdvertise">-->
+<?php  $this->loadView('MenoUser'); ?>
     <div class="row ">
-      <div class="col-3">
+      <div class="col-md-3 col-0">
           <?php $this->loadView('panelUserMeno')?>
       </div>
-        <div class=" col-9" >
+        <div class=" col-md-9 col-12" >
             <div id="edit_advertise">
                 <div id="edit_advertise_title">
                     <h3>ویرایش آگهی</h3>

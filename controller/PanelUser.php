@@ -7,8 +7,8 @@ class PanelUser extends controller
 
     public function __construct()
     {
-
         if ($_GET['url'] == 'PanelUser') {
+
             $this->redirect('PanelUser_index');
 
         }
@@ -39,6 +39,7 @@ class PanelUser extends controller
     {
         $this->notFound = 1;
         $this->loadView('panelUserMeno');
+        $this->loadView('MenoUser');
     }
 
     public function userAdvertise()

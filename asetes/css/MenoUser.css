@@ -1,0 +1,42 @@
+.MenuUserProfile{
+  background-color: #b5c4de;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.itsMenuProfileOfUser{
+  display: flex;
+  justify-content: center;
+  margin: 10px ;
+  position: relative;
+  button:0px;
+}
+div .listOfMenuUserProfile ul li{
+  position: relative;
+  /*text-align: center;*/
+  padding: 0 5% ;
+  margin-top:10px;
+  list-style: none;
+  border:1px solid black;
+  font-size: larger;
+
+}div .listOfMenuUserProfile ul li:hover{
+background-color: #603695;
+  color: cornsilk;
+
+}
+.listOfMenuUserProfile{
+  width: 75%;
+}
+div .listOfMenuUserProfile ul li span{
+padding-right: 50px;
+}
+div .listOfMenuUserProfile ul a{
+  text-decoration: none;
+  color: #131111;
+}
+@media only screen and (min-width: 1000px) {
+  .UserShowMenu {
+    display: none;
+  }
+}

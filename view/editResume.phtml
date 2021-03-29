@@ -1,9 +1,12 @@
 <?php
 require_once "./model/editResume.php";
 ?>
+<?php  $this->loadView('MenoUser'); ?>
 <div class="row">
 <div class="col-4">
-  <?php $this->loadView('panelUserMeno')?>
+  <?php $this->loadView('panelUserMeno')
+  ?>
+
 </div>
 
 <div id="edit_resume" class="col-md-8">
@@ -187,4 +190,6 @@ require_once "./model/editResume.php";
     </div>
 
 </div>
+
 </div>
+
