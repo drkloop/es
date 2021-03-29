@@ -3,14 +3,6 @@ session_start();
 require_once __DIR__ . '/Info.php';
 View::render('headOfSite.php');
 
-//if (isset($_GET['url'])) {
-//    $url_array[] = explode('/', $_GET['url']);
-//    if (isset($url_array[1])) {
-//    header("Location: http://$_SERVER[HTTP_HOST]");
-//    }
-//}
-
-
 ?>
 <div id="org-head">
     <?php
