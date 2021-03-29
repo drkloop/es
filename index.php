@@ -33,3 +33,4 @@ View::render('headOfSite.php');
     View::render('footOfSite.php');
     ?>
 </div>
+<div></div>
