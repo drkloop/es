@@ -1,195 +1,266 @@
 <?php
 require_once "./model/editResume.php";
+require_once "./model/db.php";
+
+$db = new db();
 ?>
-<?php  $this->loadView('MenoUser'); ?>
+<?php $this->loadView('MenoUser'); ?>
 <div class="row">
-<div class="col-4">
-  <?php $this->loadView('panelUserMeno')
-  ?>
+    <div class="col-4">
+        <?php $this->loadView('panelUserMeno')
+        ?>
 
-</div>
-
-<div id="edit_resume" class="col-md-8">
-    <div id="edit_resume_title" class="editforresume_title row">
-        <h3>
-            تکمیل رزومه
-        </h3>
     </div>
 
-    <div id="resume" class="for_resume">
-        <div id="base_infromation" class="user_information">
-            <div id="base_information_title">
-                <div class="row">
+    <?php if (isset($_GET["lang"])) {
+        $lan = $_GET["lang"];
+        $u_mail = $_SESSION["logIn"];
+        $query = "SELECT languages,languages_level FROM resume WHERE user_mail='$u_mail'";
+        $run = mysqli_query($db->getDb(),$query);
+        $row = mysqli_fetch_array($run);
+        $languages = $row['languages'];
+        $languages = explode("-",$languages);
+        $languages_level = $row['languages_level'];
+        $languages_level = explode("-",$languages_level);
+        if(!in_array($lan,$languages)){
+            echo "
+            <script>window.open('panelUser_editResume','_self')</script>
+            ";
+        }
+        $pos = array_search($lan,$languages);
+        $lan_level = $languages_level[$pos];
+
+        ?>
+        <div id="edit_resume" class="col-md-8">
+            <div id="edit_resume_title" class="editforresume_title row">
+                <h3>
+                    ويرايش زبان
+                </h3>
+            </div>
+            <div id="language_details" class="row">
+                <div id="languagesadd">
+                    <div id="lang_name" class="col-md-12">
+                        <label>زبان در حال ويرايش :</label>
+                        <input type="text" value="<?=$lan?>" id="selectedlan" disabled>
+                    </div>
+
+                    <div class="lang col-md-12">
+                        <label>میزان تسلط</label><span class="red_span">*</span>
+                        <div class="radiolev row">
+                            <div class="r_lev">
+                                <input type="radio" name="lanlevelradio" value="basic" class="lanlevelradio" <?php if($lan_level=="basic"){echo "checked";}?>>
+                                <img src="./asetes/img/cv_basic.svg" class="lanlevelimg" alt="">
+                            </div>
+                            <div class="r_lev">
+                                <input type="radio" name="lanlevelradio" value="intermediate" class="lanlevelradio" <?php if($lan_level=="intermediate"){echo "checked";}?>>
+                                <img src="./asetes/img/cv_intermediate.svg" class="lanlevelimg" alt="">
+                            </div>
+                            <div class="r_lev">
+                                <input type="radio" name="lanlevelradio" value="advanced" class="lanlevelradio" <?php if($lan_level=="advanced"){echo "checked";}?>>
+                                <img src="./asetes/img/cv_advanced.svg" class="lanlevelimg" alt="">
+                            </div>
+                            <div class="r_lev">
+                                <input type="radio" name="lanlevelradio" value="expert" class="lanlevelradio" <?php if($lan_level=="expert"){echo "checked";}?>>
+                                <img src="./asetes/img/cv_expert.svg" class="lanlevelimg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sublang">
+                        <center>
+                            <button id="btnlangedit">
+                                ويرايش
+                            </button>
+                        </center>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <?php }else{ ?>
+        <div id="edit_resume" class="col-md-8">
+        <div id="edit_resume_title" class="editforresume_title row">
+            <h3>
+                تکمیل رزومه
+            </h3>
+        </div>
+
+        <div id="resume" class="for_resume">
+            <div id="base_infromation" class="user_information">
+                <div id="base_information_title">
+                    <div class="row">
                     <span class="resume_first_span">
                     <i class="fa fa-pencil"></i>
                 </span>
-                    <h3>
-                        اطلاعات پایه
-                    </h3>
-                    <a href="./panelUser_editUserInfo" class="edit_info">
+                        <h3>
+                            اطلاعات پایه
+                        </h3>
+                        <a href="./panelUser_editUserInfo" class="edit_info">
                     <span class="resume_seccond_span">
                     <i class="fa fa-pencil fa_sec"></i>
                     ویرایش
                     </span>
-                    </a>
+                        </a>
 
-                </div>
-            </div>
-            <div id="base_information_body">
-                <div id="base_body_name">
-                    <h3>
-                        فوو
-                    </h3>
-                    <div>
-                        <a class="for_dec" href="./panelUser_editUserInfo">
-                            <i class="fa fa-plus"></i>
-                            عنوان حرفه ای اضافه کنید
-                        </a>
-                    </div>
-                    <div class="user_for">
-                        <a href="PanelUser_editEmail" id="">
-                            <i class="fa fa-pencil"></i>
-                            <?= $_SESSION["logIn"];?>
-                        </a>
-                    </div>
-                    <div class="user_for">
-                        <p>شماره تلفن</p>
-                    </div>
-                    <div class="user_for">
-                        <p>شهر</p>
                     </div>
                 </div>
-            </div>
-            <div id="base_information_footer">
-                <div class="us_info_1">
-                    <div class="user_info_first">
-                        <div class="row">
-                            <p class="user_info_p">
-                                جنسیت:
-                                <b>مرد</b>
-                            </p>
-                            <p class="user_info_p">
-                                وضعیت تاهل:
-                                <b>-</b>
-                            </p>
+                <div id="base_information_body">
+                    <div id="base_body_name">
+                        <h3>
+                            فوو
+                        </h3>
+                        <div>
+                            <a class="for_dec" href="./panelUser_editUserInfo">
+                                <i class="fa fa-plus"></i>
+                                عنوان حرفه ای اضافه کنید
+                            </a>
                         </div>
-                    </div>
-                    <div class="user_info_first">
-                        <div class="row">
-                            <p class="user_info_p">
-                                سربازی:
-                                <b>-</b>
-                            </p>
-                            <p class="user_info_p">
-                                متولد:
-                                <b>-</b>
-                            </p>
+                        <div class="user_for">
+                            <a href="PanelUser_editEmail" id="">
+                                <i class="fa fa-pencil"></i>
+                                <?= $_SESSION["logIn"]; ?>
+                            </a>
+                        </div>
+                        <div class="user_for">
+                            <p>شماره تلفن</p>
+                        </div>
+                        <div class="user_for">
+                            <p>شهر</p>
                         </div>
                     </div>
                 </div>
+                <div id="base_information_footer">
+                    <div class="us_info_1">
+                        <div class="user_info_first">
+                            <div class="row">
+                                <p class="user_info_p">
+                                    جنسیت:
+                                    <b>مرد</b>
+                                </p>
+                                <p class="user_info_p">
+                                    وضعیت تاهل:
+                                    <b>-</b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="user_info_first">
+                            <div class="row">
+                                <p class="user_info_p">
+                                    سربازی:
+                                    <b>-</b>
+                                </p>
+                                <p class="user_info_p">
+                                    متولد:
+                                    <b>-</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
 
-    <div id="jobInfo" class="for_resume">
-        <div id="jobInformation" class="user_information">
-            <div id="job_information_title">
-                <div class="row">
+        <div id="jobInfo" class="for_resume">
+            <div id="jobInformation" class="user_information">
+                <div id="job_information_title">
+                    <div class="row">
                     <span class="resume_first_span">
                     <i class="fa fa-briefcase"></i>
                 </span>
-                    <h3>
-                        اطلاعات شغلی
-                    </h3>
-                    <a href="./panelUser_jobInfo" class="edit_info">
+                        <h3>
+                            اطلاعات شغلی
+                        </h3>
+                        <a href="./panelUser_jobInfo" class="edit_info">
                     <span class="resume_seccond_span">
                     <i class="fa fa-pencil fa_sec"></i>
                     ویرایش
                     </span>
-                    </a>
+                        </a>
 
-                </div>
-            </div>
-            <div id="job_information_footer">
-                <div class="us_info_1">
-                    <div class="user_info_first">
-                        <div class="row">
-                            <p class="user_info_p">
-                                وضعیت اشتغال:
-                                <b><?= $job_status;?></b>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="user_info_first">
-                        <div class="row">
-                            <p class="user_info_p">
-                                آماده کار در:
-                                <b><?= $work_in;?></b>
-                            </p>
-                            <p class="user_info_p">
-                                حداقل حقوق درخواستی:
-                                <b><?= $salary;?></b>
-                            </p>
-                        </div>
                     </div>
                 </div>
+                <div id="job_information_footer">
+                    <div class="us_info_1">
+                        <div class="user_info_first">
+                            <div class="row">
+                                <p class="user_info_p">
+                                    وضعیت اشتغال:
+                                    <b><?= $job_status; ?></b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="user_info_first">
+                            <div class="row">
+                                <p class="user_info_p">
+                                    آماده کار در:
+                                    <b><?= $work_in; ?></b>
+                                </p>
+                                <p class="user_info_p">
+                                    حداقل حقوق درخواستی:
+                                    <b><?= $salary; ?></b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
-
         </div>
-    </div>
 
-    <div id="languageInfo" class="for_resume">
-        <div id="lanInformation" class="user_information">
-            <div id="lan_information_title">
-                <div class="row">
+        <div id="languageInfo" class="for_resume">
+            <div id="lanInformation" class="user_information">
+                <div id="lan_information_title">
+                    <div class="row">
                     <span class="resume_first_span">
                     <i class="fa fa-language"></i>
                 </span>
-                    <h3>
-                       زبان ها خارجی
-                    </h3>
-                    <a href="./panelUser_other?action=language" class="edit_info">
+                        <h3>
+                            زبان ها خارجی
+                        </h3>
+                        <a href="./panelUser_other?action=language" class="edit_info">
                     <span class="resume_seccond_span">
                     <i class="fa fa-plus fa_sec"></i>
                     افزودن
                     </span>
-                    </a>
+                        </a>
 
+                    </div>
                 </div>
-            </div>
-            <div id="job_information_footer">
-                <div class="us_info_1">
-                    <div class="user_info_first">
-                        <div class="row">
-                            <?php
-                            $languages = explode("-",$languages);
-                            $languages_level = explode("-",$languages_level);
-                            for ($i=0;$i<count($languages)-1;$i++){
-                                $img="./asetes/img/cv_".$languages_level[$i].".svg";
-                                echo " 
+                <div id="job_information_footer">
+                    <div class="us_info_1">
+                        <div class="user_info_first">
+                            <div class="row">
+                                <?php
+                                $languages = explode("-", $languages);
+                                $languages_level = explode("-", $languages_level);
+                                for ($i = 0; $i < count($languages) - 1; $i++) {
+                                    $img = "./asetes/img/cv_" . $languages_level[$i] . ".svg";
+                                    echo " 
                                       <div class=\"user_info_p\">
                                       <center>
                                       <img class='img_lan' src=$img alt=''>
                                       <p>$languages[$i]</p>
+                                       <span><i val='$languages[$i]' class='fa fa-close fa-lan fa-close-lan'></i><a href='panelUser_editResume?lang=$languages[$i]'><i class='fa fa-pencil fa-lan'></i></a></span>
                                       </center>
                                       </div>
                                       
                                 ";
-                            }
-                            ?>
+                                }
+                                ?>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
 
-</div>
+    </div>
+    <?php  }?>
 
 </div>
 

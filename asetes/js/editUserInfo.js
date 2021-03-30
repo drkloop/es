@@ -82,4 +82,34 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(".fa-close-lan").click(function () {
+        var lang = $(this).attr("val");
+        $.post("./model/editForRes.php",{lang:lang},function (result) {
+            if(result==1){
+                alert("زبان موردنظر حذف شد");
+                window.open("PanelUser_editResume","_self");
+            }else{
+                alert("دوباره امتحان كنيد");
+            }
+        });
+    });
+
+    $("#btnlangedit").click(function () {
+        var lang=$("#selectedlan").val();
+        var level="";
+        $(".lanlevelradio").each(function () {
+            if($(this).prop("checked")){
+                level=$(this).val()
+            }
+        });
+        $.post("./model/editUserinfoUpdate.php",{editlang:0,level:level,lang:lang},function (result) {
+            if(result==1){
+                alert("زبان ويرايش شد");
+                window.open("panelUser_editResume","_self");
+            }else{
+                alert("مشكلي وجود دارد");
+            }
+        });
+    });
 });
