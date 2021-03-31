@@ -14,9 +14,9 @@
     </thead>
     <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ER.title}}</td>
+      <td>{{ER.email}}</td>
+      <td>{{ER.coment}}</td>
     </tr>
     <tr>
       <td colspan="3">
@@ -35,37 +35,37 @@
 <!---->
 <div v-if="showList">
 
-<table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead>
     <tr>
-    <th>شناسه</th>
-    <th>عنوان</th>
-    <th>پاسخ داده شده</th>
-    <th>عمليات</th>
+      <th>شناسه</th>
+      <th>عنوان</th>
+      <th>پاسخ داده شده</th>
+      <th>عمليات</th>
     </tr>
     </thead>
     <tbody>
 
 
-
-
-<pasokh></pasokh>
+    <pasokh></pasokh>
     <tr v-for="(error,index) in errors">
-        <td>{{index+1}}</td>
-        <td>{{error.title}}</td>
-        <td>
+      <td>{{index+1}}</td>
+      <td>{{error.title}}</td>
+      <td>
         <button v-if="error.visited==1" class="btn btn-success">
-          ✔</button>
-        <button  v-if="error.visited==0" class="btn btn-danger">✘</button>
-        </td>
-        <td>
-            <button class="btn btn-success" @click="showList=false">پاسخ</button>
-            <button class="btn btn-danger">حذف </button>
-        </td>
+          ✔
+        </button>
+        <button v-if="error.visited==0" class="btn btn-danger">✘</button>
+      </td>
+      <td>
+
+        <a class="btn btn-success" @click.prevent="listErfuncs($event) " :href="index" >
+        پاسخ  </a>
+        <button class="btn btn-danger">حذف</button>
+      </td>
     </tr>
 
 
-
     </tbody>
-</table>
+  </table>
 </div>

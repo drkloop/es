@@ -28,6 +28,7 @@ session_start();
     require_once __DIR__ . "/page/dashbord.phtml";
     require_once __DIR__ . "/page/errors.phtml";
     require_once __DIR__ . "/page/exit.php";
+    require_once __DIR__ . "/page/Users.phtml";
     require_once __DIR__ . "/page/404.html";
 
     ?>
@@ -65,7 +66,7 @@ session_start();
 
             </a>
           </router-link>
-          <router-link to="/assa">
+          <router-link to="/users">
           <a href="#" class="nav__link">
             <i class='bx bx-user bx-tada'></i>
             <span class="nav__name">کاربران</span>
