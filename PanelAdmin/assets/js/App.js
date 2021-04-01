@@ -7,6 +7,8 @@ const url3 = UrlOfsite + '/visited.php';
 const url4 = UrlOfsite + '/UserInfo.php';
 const url5 = UrlOfsite + '/nemodar.php';
 const url6 = UrlOfsite + '/er.php';
+const url7 = UrlOfsite + '/users.php';
+
 Vue.component('job', {
   template: '',
   created() {
@@ -116,21 +118,61 @@ const NotfoundComponent = {
   template: '#NotFound'
 
 };
-const users={
+const users = {
   template: '#Users',
   data() {
     return {
-
+      Users: [],
+      showDatails:true,
+      ShowEdit:true,
+      ShowRemove:true,
+      user:[]
     };
   },
-}
+  mounted() {
+    this.getUsers();
+    this.User();
+    this.getTheUser();
+  },
+  methods: {
+    User(event, fnc) {
+      element = event.currentTarget;
+      id = element.getAttribute('href');
+      switch (fnc) {
+        case "datails":
+          this.showDatails = false;
+          break;
+        case "edit":
+          this.ShowEdit = false;
+          break;
+        case "remove":
+          this.ShowRemove = false;
+          break;
+      }
+      this.getTheUser(id);
+    },
+    getTheUser(id) {
+      this.user = this.Users[id];
+      return this.user;
+    },
+    getUsers() {
+      axios.get(url7)
+          .then(response => {
+            this.Users = response.data;
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+    }
+  }
+};
 const errors = {
   template: '#errors',
   data() {
     return {
       errors: [],
       showList: true,
-      ER:[]
+      ER: []
     };
   },
   mounted() {
@@ -150,11 +192,11 @@ const errors = {
       element = event.currentTarget;
       id = element.getAttribute('href');
       this.showList = false;
-     this.getTheEr(id);
+      this.getTheEr(id);
     },
-    getTheEr(id){
-       this.ER=this.errors[id];
-      return  this.ER;
+    getTheEr(id) {
+      this.ER = this.errors[id];
+      return this.ER;
     },
     getErrors() {
       axios.get(url6)
