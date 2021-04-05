@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . '/Info.php';
 View::render('headOfSite.php');
+
 ?>
 <div id="org-head">
     <?php
