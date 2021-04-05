@@ -1,0 +1,21 @@
+<template id="Users">
+    <div class="col-xs-12 col-md-12">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1 style="color: darkolivegreen">
+                    بخش كاربران
+                </h1>
+            </div>
+            <div class="card-body">
+                <div>
+                    <?php require_once 'list_of_User.phtml' ?>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <?php
+                echo jdate('l j F Y');
+                ?>
+            </div>
+        </div>
+    </div>
+</template>

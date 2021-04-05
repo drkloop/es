@@ -1,12 +1,14 @@
 //urls
-const Url='http://es.local/';
-const UrlOfsite =  Url+'panelAdmin/page/DatabaseAndJson';
+const Url = 'http://es.local/';
+const UrlOfsite = Url + 'panelAdmin/page/DatabaseAndJson';
 const url1 = UrlOfsite + '/thabtnamiha.php';
 const url2 = UrlOfsite + '/agahiha.php';
 const url3 = UrlOfsite + '/visited.php';
 const url4 = UrlOfsite + '/UserInfo.php';
 const url5 = UrlOfsite + '/nemodar.php';
 const url6 = UrlOfsite + '/er.php';
+const url7 = UrlOfsite + '/users.php';
+const url8 = UrlOfsite + '/insert.php';
 Vue.component('job', {
   template: '',
   created() {
@@ -14,7 +16,6 @@ Vue.component('job', {
   },
   methods: {
     Sucses() {
-
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -33,12 +34,12 @@ Vue.component('job', {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.replace(Url+"Out");
+          window.location.replace(Url + 'Out');
         } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
-          window.location.replace(Url+"panelAdmin");
+          window.location.replace(Url + 'panelAdmin');
         }
       });
     }
@@ -116,21 +117,183 @@ const NotfoundComponent = {
   template: '#NotFound'
 
 };
+const users = {
+  template: '#Users',
+
+
+  data() {
+    return {
+      Users: [],
+      showDatails: true,
+      ShowEdit: true,
+      ShowRemove: true,
+      user: [],
+      Id: '',
+      Email: '',
+      Madrak: '',
+      Name: '',
+      Ostan: '',
+      Phone: '',
+      Reshte: '',
+      Semat: '',
+      Sex: '',
+      Shaher: '',
+      Password: '',
+      errors: []
+    };
+  },
+  mounted() {
+    this.getUsers();
+    this.User();
+    this.getTheUser();
+    this.user;
+    this.editUser();
+    this.deleteUser();
+  },
+  created(){
+
+  },
+  methods: {
+    delete(id){
+          Swal.fire({
+            title: 'آيا مطمئن هستيد كه ميخواهيد اين كاربر را حذف كنيد ؟',
+            text: "در صورت حذف كاربر تمام اطلاعات اين كاربر نيز پاك مي شود",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'نه منصرف شدم',
+            confirmButtonText: 'بله مطمئنم پاكش كن'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            this.deleteUser(id);
+              Swal.fire(
+                  '!پاك شد',
+                  '.كاربر مورد نظر حذف شد',
+                  'success'
+              )
+              window.location.replace(Url + 'panelAdmin');
+            }
+          })
+    },
+    removeUser(id){
+      this.delete();
+    },
+    Sucses() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'اطلاعات به درستي ثبت شد'
+      });
+    },
+    deleteUser(id) {
+      axios.post(url8, {
+        action: 'deleteUser',
+        Id:id,
+      })
+          .then((response) => {
+            console.log(id);
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
+    editUser() {
+      axios.post(url8, {
+        action: 'User',
+        Id: this.Id,
+        Email: this.Email,
+        Madrak: this.Madrak,
+        Name: this.Name,
+        Ostan: this.Ostan,
+        Phone: this.Phone,
+        Reshte: this.Reshte,
+        Semat: this.Semat,
+        Sex: this.Sex,
+        Shaher: this.Shaher,
+        Password: this.Password
+      })
+          .then((response) => {
+            this.InfoUser = response.data;
+            this.Sucses();
+            this.ShowEdit = true;
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
+    User(event, fnc) {
+      element = event.currentTarget;
+     var id = element.getAttribute('href');
+      this.getTheUser(id);
+      switch (fnc) {
+        case 'datails':
+          this.showDatails = false;
+          break;
+        case 'edit':
+          this.ShowEdit = false;
+          break;
+        case 'remove':
+          this.delete(this.user.Id);
+          break;
+      }
+    },
+    getTheUser(id) {
+      this.user = this.Users[id];
+      return this.user;
+    },
+    getUsers() {
+      axios.get(url7)
+          .then(response => {
+            this.Users = response.data;
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+    }
+  }
+};
 const errors = {
   template: '#errors',
   data() {
     return {
       errors: [],
-      showList:true,
+      showList: true,
+      ER: []
     };
   },
   mounted() {
+    this.listErfuncs();
     ComponentB.data().showList;
+    function showDetails(animal) {
+      var animalType = animal.getAttribute('data-animal-type');
+      alert('The ' + animal.innerHTML + ' is a ' + animalType + '.');
+    }
   },
   created() {
     this.getErrors();
   },
   methods: {
+    listErfuncs(event) {
+      element = event.currentTarget;
+      id = element.getAttribute('href');
+      this.showList = false;
+      this.getTheEr(id);
+    },
+    getTheEr(id) {
+      this.ER = this.errors[id];
+      return this.ER;
+    },
     getErrors() {
       axios.get(url6)
           .then(response => {
@@ -139,7 +302,7 @@ const errors = {
           .catch(error => {
             console.log(error.response.data);
           });
-    },
+    }
   }
 };
 const exit = {
@@ -233,6 +396,10 @@ const routes = [
   {
     path: '/errors',
     component: errors
+  },
+  {
+    path: '/users',
+    component: users
   },
   {
     path: '/exit',

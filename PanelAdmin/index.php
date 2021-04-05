@@ -11,14 +11,12 @@ session_start();
   <!-- ===== BOX ICONS ===== -->
   <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 <!---->
-
-
   <!-- ===== CSS ===== -->
   <link href="https://v1.fontapi.ir/css/Tanha" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+<!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>-->
+<!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <title>پنل ادمین</title>
 </head>
@@ -28,6 +26,7 @@ session_start();
     require_once __DIR__ . "/page/dashbord.phtml";
     require_once __DIR__ . "/page/errors.phtml";
     require_once __DIR__ . "/page/exit.php";
+    require_once __DIR__ . "/page/Users.phtml";
     require_once __DIR__ . "/page/404.html";
 
     ?>
@@ -55,9 +54,9 @@ session_start();
           <span class="nav__logo-name">پنل مدیریت</span>
         </a>
 
-        <div class="nav__list">
-          <router-link to="/panelAdmin">
-            <a href="#" class="nav__link active">
+        <div class="nav__list" >
+          <router-link to="/panelAdmin" title="داشبورد">
+            <a href="#" class="nav__link active" >
               <i class='bx bxs-dashboard bx-tada'></i>
               <span class="nav__name" >داشبورد
 
@@ -65,7 +64,7 @@ session_start();
 
             </a>
           </router-link>
-          <router-link to="/assa">
+          <router-link to="/users" title="كاربران">
           <a href="#" class="nav__link">
             <i class='bx bx-user bx-tada'></i>
             <span class="nav__name">کاربران</span>
@@ -100,7 +99,7 @@ session_start();
 
 
 
-          <router-link to="/errors">
+          <router-link to="/errors" title="اشكالات">
             <a href="#" class="nav__link">
               <i class='bx bxs-message-alt-error bx-tada bx-rotate-90'></i>
               <span class="nav__name">اشکالات</span>
