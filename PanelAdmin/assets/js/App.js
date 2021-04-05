@@ -8,7 +8,7 @@ const url4 = UrlOfsite + '/UserInfo.php';
 const url5 = UrlOfsite + '/nemodar.php';
 const url6 = UrlOfsite + '/er.php';
 const url7 = UrlOfsite + '/users.php';
-
+const url8 = UrlOfsite + '/insert.php';
 Vue.component('job', {
   template: '',
   created() {
@@ -16,7 +16,6 @@ Vue.component('job', {
   },
   methods: {
     Sucses() {
-
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -120,36 +119,134 @@ const NotfoundComponent = {
 };
 const users = {
   template: '#Users',
+
+
   data() {
     return {
       Users: [],
-      showDatails:true,
-      ShowEdit:true,
-      ShowRemove:true,
-      user:[]
+      showDatails: true,
+      ShowEdit: true,
+      ShowRemove: true,
+      user: [],
+      Id: '',
+      Email: '',
+      Madrak: '',
+      Name: '',
+      Ostan: '',
+      Phone: '',
+      Reshte: '',
+      Semat: '',
+      Sex: '',
+      Shaher: '',
+      Password: '',
+      errors: []
     };
   },
   mounted() {
     this.getUsers();
     this.User();
     this.getTheUser();
+    this.user;
+    this.editUser();
+    this.deleteUser();
+  },
+  created(){
+
   },
   methods: {
+    delete(id){
+          Swal.fire({
+            title: 'آيا مطمئن هستيد كه ميخواهيد اين كاربر را حذف كنيد ؟',
+            text: "در صورت حذف كاربر تمام اطلاعات اين كاربر نيز پاك مي شود",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'نه منصرف شدم',
+            confirmButtonText: 'بله مطمئنم پاكش كن'
+          }).then((result) => {
+            if (result.isConfirmed) {
+            this.deleteUser(id);
+              Swal.fire(
+                  '!پاك شد',
+                  '.كاربر مورد نظر حذف شد',
+                  'success'
+              )
+              window.location.replace(Url + 'panelAdmin');
+            }
+          })
+    },
+    removeUser(id){
+      this.delete();
+    },
+    Sucses() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'اطلاعات به درستي ثبت شد'
+      });
+    },
+    deleteUser(id) {
+      axios.post(url8, {
+        action: 'deleteUser',
+        Id:id,
+      })
+          .then((response) => {
+            console.log(id);
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
+    editUser() {
+      axios.post(url8, {
+        action: 'User',
+        Id: this.Id,
+        Email: this.Email,
+        Madrak: this.Madrak,
+        Name: this.Name,
+        Ostan: this.Ostan,
+        Phone: this.Phone,
+        Reshte: this.Reshte,
+        Semat: this.Semat,
+        Sex: this.Sex,
+        Shaher: this.Shaher,
+        Password: this.Password
+      })
+          .then((response) => {
+            this.InfoUser = response.data;
+            this.Sucses();
+            this.ShowEdit = true;
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
     User(event, fnc) {
       element = event.currentTarget;
-      id = element.getAttribute('href');
+     var id = element.getAttribute('href');
+      this.getTheUser(id);
       switch (fnc) {
-        case "datails":
+        case 'datails':
           this.showDatails = false;
           break;
-        case "edit":
+        case 'edit':
           this.ShowEdit = false;
           break;
-        case "remove":
-          this.ShowRemove = false;
+        case 'remove':
+          this.delete(this.user.Id);
           break;
       }
-      this.getTheUser(id);
     },
     getTheUser(id) {
       this.user = this.Users[id];
@@ -178,7 +275,6 @@ const errors = {
   mounted() {
     this.listErfuncs();
     ComponentB.data().showList;
-
     function showDetails(animal) {
       var animalType = animal.getAttribute('data-animal-type');
       alert('The ' + animal.innerHTML + ' is a ' + animalType + '.');

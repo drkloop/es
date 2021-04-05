@@ -12,6 +12,7 @@ class API
             while ($outPutData = mysqli_fetch_assoc($data)) {
                 $list[]=[
                     'Name' => $outPutData['Name'],
+                    'Id' => $outPutData['Id'],
                     'Sex' => $outPutData['Sex'],
                     'Email' => $outPutData['Email'],
                     'Validate' => $outPutData['Validate'],
@@ -20,6 +21,7 @@ class API
                     'Madrak' => $outPutData['Madrak'],
                     'Reshte' => $outPutData['Reshte'],
                     'Phone' => ($outPutData['Phone']),
+                    'Semat' => ($outPutData['semat']),
                 ];
             }
         }

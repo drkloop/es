@@ -98,20 +98,23 @@
   <button type="submit" class="btn btn-primary left-0" @click="ShowEdit=true">
     بازگشت به لیست گزارشات ◄
   </button>
+
   <div id="Reg-mtn"> ویرایش کاربر</div>
   <div class="line-purple"></div>
-  <form action="./Reg" method="post">
+  <form action="#" @submit.prevent="editUser()">
+
+<input type="hidden" v-model="Id=user.Id">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <fieldset>
           <label for="name">*
             نام و نام خانوادگی:
           </label>
-          <input type="text" class="form-control" id="name" placeholder="  نام و نام خانوادگی خود را وارد کنید  "
+          <input v-model="Name=user.Name"
+              type="text" class="form-control" id="name" placeholder="  نام و نام خانوادگی خود را وارد کنید  "
                  name="nam" required pattern=".{2,}"
                  oninvalid="setCustomValidity('وارد كردن نام و نام خانوادگي الزامي است.')"
                  oninput="setCustomValidity('')"
-          :value="user.Name"
           >
         </fieldset>
       </div>
@@ -121,11 +124,17 @@
           <div id="rido" style="margin-right: 7%">
             <div class="btn btn-outline-primary  custom-control  custom-control-inline col-5  col-sm-4">
               <input type="radio" id="customRadioInline1" name="Sex" value="1" class=" custom-control-input d-flex justify-content-center "
-                     checked="checked" required>
+                     :checked="user.Sex==1" required
+                     v-model="Sex=user.Sex"
+              >
               <label class="custom-control-label" for="customRadioInline1">مرد</label>
             </div>
             <div class="btn custom-control  btn-outline-primary  custom-control-inline col-5 col-sm-4">
-              <input type="radio" id="customRadioInline2" name="Sex" value="2" class="custom-control-input" required>
+              <input type="radio" id="customRadioInline2"
+                     name="Sex" value="2" class="custom-control-input"
+                     :checked="user.Sex==2"
+                     required
+              >
               <label class="custom-control-label" for="customRadioInline2">زن</label>
             </div>
           </div>
@@ -139,10 +148,12 @@
           <label for="Email">*
             آدرس ایمیل:
           </label>
-          <input type="email" class="form-control" name="email" id="Email" placeholder="آدرس ایمیل خود را وارد کنید"
+          <input
+              v-model="Email=user.Email"
+              type="email" class="form-control" name="email" id="Email" placeholder="آدرس ایمیل خود را وارد کنید"
                  required oninvalid="setCustomValidity('لطفا ايميل خود را به فرمت  example@example.com وارد كنيد.')"
                  oninput="setCustomValidity('')"
-          :value="user.Email">
+          >
         </fieldset>
       </div>
       <div class="col-md-6 col-sm-12">
@@ -150,12 +161,13 @@
           شماره موبایل:
         </label>
         <input name="phone"
+               v-model="Phone=user.Phone"
                type="tel" class="form-control" id="inputEmail4"
                placeholder=" شماره موبایل خود را وارد کنید :---------09"
                required pattern="[0-9]{11}"
                oninvalid="setCustomValidity('لطفا شماره تلفن همراه خود را به طور صحيح وارد كنيد')"
                oninput="setCustomValidity('')"
-        :value="user.Phone"
+
         >
       </div>
     </div>
@@ -165,18 +177,19 @@
           <label for="pas1">*
             رمز :
           </label>
-          <input type="password" class="form-control" name="Pass" id="pas1" placeholder="رمز خود را وارد کنید"
+          <input    v-model="Password"
+              type="password" class="form-control" name="Pass" id="pas1" placeholder="رمز خود را وارد کنید"
                  required pattern=".{6,}" oninvalid="setCustomValidity('حداقل تعداد كاراكتر 6 كاراكتر مي باشد.')"
-                 oninput="setCustomValidity('')" v-model="pass1">
+                 oninput="setCustomValidity('')" >
         </fieldset>
       </div>
       <div class="col-md-6 col-sm-12">
         <label for="semat">*
          سمت:
         </label>
-        <select class="custom-select my-1 mr-sm-2" id="semat" required name="Semat">
-          <option selected value="0">کاربر عادی</option>
-          <option value="1">مدیر سایت</option>
+        <select class="custom-select my-1 mr-sm-2" id="semat" v-model="Semat=user.Semat" required name="Semat">
+          <option  value="0" :selected="user.Semat==0">کاربر عادی</option>
+          <option :selected="user.Semat == 1" value="1">مدیر سایت</option>
         </select>
       </div>
 
@@ -187,14 +200,13 @@
           <label for="SelectPref">*
             استان :
           </label>
-          <select class="custom-select my-1 mr-sm-2" id="SelectPref" required name="Ostan">
-            <option selected></option>
-            <option value="1">اصفهان</option>
-            <option value="2">تهران</option>
-            <option value="3">شیراز</option>
-            <option value="4">قم</option>
-            <option value="5">مشهد</option>
-            <option value="6">همدان</option>
+          <select class="custom-select my-1 mr-sm-2" id="SelectPref" required v-model="Ostan=user.Ostan" name="Ostan">
+            <option value="1" :selected="user.Ostan == 1">اصفهان</option>
+            <option value="2" :selected="user.Ostan == 2" >تهران</option>
+            <option value="3" :selected="user.Ostan == 3" >شیراز</option>
+            <option value="4" :selected="user.Ostan == 4" >قم</option>
+            <option value="5" :selected="user.Ostan == 5" >مشهد</option>
+            <option value="6" :selected="user.Ostan == 6" >همدان</option>
           </select>
         </fieldset>
       </div>
@@ -203,9 +215,11 @@
           <label for="City">
             شهر :
           </label>
-          <input type="text" class="form-control" id="City" name="Shaher"
+          <input type="text" class="form-control" id="City"
+                 v-model="Shaher=user.Shaher"
+                 name="Shaher"
                  placeholder="شهر محل سكونت خود را وارد كنيد   "
-                 :value="user.Shaher"
+
                  oninvalid="setCustomValidity('وارد كردن شهر الزامي نيست.')" oninput="setCustomValidity('')"
           >
         </fieldset>
@@ -218,15 +232,14 @@
           <label for="madrak">*
             مدرك تحصيلي :
           </label>
-          <select class="custom-select my-1 mr-sm-2" id="madrak" name="Madrak"  required>
-            <option selected></option>
-            <option value="1">زير ديپلم</option>
-            <option value="2">ديپلم</option>
-            <option value="3">كارداني</option>
-            <option value="4">كارشناسي</option>
-            <option value="5">كارشناسي ارشد</option>
-            <option value="6">دكتري</option>
-            <option value="7">فوق دكتري</option>
+          <select class="custom-select my-1 mr-sm-2" id="madrak" name="Madrak"   v-model="Madrak=user.Madrak"  required>
+            <option value="1" :selected="user.Madrak == 1">زير ديپلم</option>
+            <option value="2" :selected="user.Madrak == 2">ديپلم</option>
+            <option value="3" :selected="user.Madrak == 3">كارداني</option>
+            <option value="4" :selected="user.Madrak == 4">كارشناسي</option>
+            <option value="5" :selected="user.Madrak == 5">كارشناسي ارشد</option>
+            <option value="6" :selected="user.Madrak == 6">دكتري</option>
+            <option value="7" :selected="user.Madrak == 7">فوق دكتري</option>
           </select>
         </fieldset>
       </div>
@@ -236,15 +249,17 @@
             <label for="reshte">
               رشته ي تحصيلي :
             </label>
-            <input type="text" name="Reshte" class="form-control" id="reshte"
-                   placeholder="شهر محل سكونت خود را وارد كنيد" required>
+            <input type="text"
+                   v-model="Reshte=user.Reshte"
+                   name="Reshte" class="form-control" id="reshte"
+                   placeholder="شهر محل سكونت خود را وارد كنيد" required
+            >
           </fieldset>
         </fieldset>
       </div>
       <br><br><br>
-      <div class="line-purple"></div>
-
-      <input v-show="pass1==pass2" type="submit" class="btn btn-success btn-custom-center" value="ثبت نام در سایت">
+      <br><br>
+      <input  type="submit" class="btn btn-success btn-block" value="ويرايش كاربر مورد نظر ">
     </div>
   </form>
 
