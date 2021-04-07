@@ -10,13 +10,13 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- ===== BOX ICONS ===== -->
   <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-<!---->
+  <!---->
   <!-- ===== CSS ===== -->
   <link href="https://v1.fontapi.ir/css/Tanha" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/styles.css">
-<!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>-->
-<!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>-->
+  <!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>-->
+  <!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <title>پنل ادمین</title>
 </head>
@@ -27,6 +27,7 @@ session_start();
     require_once __DIR__ . "/page/errors.phtml";
     require_once __DIR__ . "/page/exit.php";
     require_once __DIR__ . "/page/Users.phtml";
+    require_once __DIR__ . "/page/Comment.phtml";
     require_once __DIR__ . "/page/404.html";
 
     ?>
@@ -34,15 +35,15 @@ session_start();
 
 <div id="wraper">
 
-<!--  <ckeditor :editor="editor" v-model="editorData" @input="onEditorInput" :config="editorConfig"></ckeditor>-->
+  <!--  <ckeditor :editor="editor" v-model="editorData" @input="onEditorInput" :config="editorConfig"></ckeditor>-->
   <header class="header" id="header">
     <div class="header__toggle">
       <i class='bx bx-menu' id="header-toggle"></i>
     </div>
 
-      <b> نام مدیر</b>
+    <b> نام مدیر</b>
     <div class="header__img">
-      <i class='bx bxs-user-circle bx-spin bx-md' ></i>
+      <i class='bx bxs-user-circle bx-spin bx-md'></i>
     </div>
   </header>
 
@@ -54,49 +55,53 @@ session_start();
           <span class="nav__logo-name">پنل مدیریت</span>
         </a>
 
-        <div class="nav__list" >
+        <div class="nav__list">
           <router-link to="/panelAdmin" title="داشبورد">
-            <a href="#" class="nav__link active" >
+            <a href="#" class="nav__link active">
               <i class='bx bxs-dashboard bx-tada'></i>
-              <span class="nav__name" >داشبورد
+              <span class="nav__name">داشبورد
 
               </span>
 
             </a>
           </router-link>
           <router-link to="/users" title="كاربران">
-          <a href="#" class="nav__link">
-            <i class='bx bx-user bx-tada'></i>
-            <span class="nav__name">کاربران</span>
-          </a>
+            <a href="#" class="nav__link">
+              <i class='bx bx-user bx-tada'></i>
+              <span class="nav__name">کاربران</span>
+            </a>
           </router-link>
-          <a href="#" class="nav__link"  @click="showdash=!showdash">
+
+          <span>
+
+          <a href="#" class="nav__link" @click="showdash=!showdash">
             <i class='bx bx-mail-send bx-tada'></i>
             <span class="nav__name">
               ایمیل ها
               <i class='bx bx-chevron-up' v-if="showdash"></i>
-            <i  class='bx bx-chevron-down' v-if="!showdash"></i>
+            <i class='bx bx-chevron-down' v-if="!showdash"></i>
             </span>
+          </a>
             <a href="#" class="nav__link " v-if="showdash">
               <i class='bx bxs-message-rounded-add '></i>
               <span class="nav__name">ارسال ایمیل جدید</span>
             </a>
             <a href="#" class="nav__link " v-if="showdash">
-              <i class='bx bx-envelope' ></i>
+              <i class='bx bx-envelope'></i>
               <span class="nav__name">ایمیل های دریافتی</span>
             </a>
-          </a>
 
+          </span>
+  <router-link to="/comments" title="نظرات">
           <a href="#" class="nav__link">
             <i class='bx bxs-comment-detail bx-tada'></i>
             <span class="nav__name">نظرات</span>
           </a>
-
+ </router-link>
           <a href="#" class="nav__link">
-            <i class='bx bxs-megaphone bx-tada' ></i>
+            <i class='bx bxs-megaphone bx-tada'></i>
             <span class="nav__name">آگهی ها </span>
           </a>
-
 
 
           <router-link to="/errors" title="اشكالات">
@@ -107,15 +112,13 @@ session_start();
           </router-link>
 
 
-
-
         </div>
       </div>
       <router-link to="/exit">
-      <a href="#" class="nav__link">
-        <i class='bx bx-log-out nav__icon'></i>
-        <span class="nav__name">خروج </span>
-      </a>
+        <a href="#" class="nav__link">
+          <i class='bx bx-log-out nav__icon'></i>
+          <span class="nav__name">خروج </span>
+        </a>
       </router-link>
     </nav>
   </div>

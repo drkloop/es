@@ -4,14 +4,14 @@
   </button>
   <br>
   <hr>
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped table-responsive-md">
     <thead>
     <tr>
-      <th>نام </th>
+      <th>نام</th>
       <th>وضعيت تاييد</th>
-      <th>مدرك </th>
-      <th>استان </th>
-      <th>شهر </th>
+      <th>مدرك</th>
+      <th>استان</th>
+      <th>شهر</th>
     </tr>
     </thead>
     <tbody>
@@ -27,22 +27,22 @@
       </td>
       <td>
         <button v-if="user.Madrak==1" class="btn btn-outline-danger">
-      زير ديپلم
+          زير ديپلم
         </button>
         <button v-if="user.Madrak==2" class="btn btn-outline-warning">
           ديپلم
         </button>
         <button v-if="user.Madrak==3" class="btn btn-outline-primary">
-      كار داني
+          كار داني
         </button>
         <button v-if="user.Madrak==4" class="btn btn-outline-success">
-         كارشناسي
+          كارشناسي
         </button>
         <button v-if="user.Madrak==5" class="btn btn-outline-success">
           كارشناسي ارشد
         </button>
         <button v-if="user.Madrak==6" class="btn btn-outline-info">
-        دکتری
+          دکتری
         </button>
         <button v-if="user.Madrak==7" class="btn btn-outline-secondary">
           فوق دکتری
@@ -50,16 +50,16 @@
       </td>
       <td>
         <button v-if="user.Ostan==1" class="btn btn-outline-danger">
-         اصفهان
+          اصفهان
         </button>
         <button v-if="user.Ostan==2" class="btn btn-outline-warning">
-         تهران
+          تهران
         </button>
         <button v-if="user.Ostan==3" class="btn btn-outline-primary">
           شیراز
         </button>
         <button v-if="user.Ostan==4" class="btn btn-outline-success">
-         قم
+          قم
         </button>
         <button v-if="user.Ostan==5" class="btn btn-outline-success">
           مشهد
@@ -76,20 +76,20 @@
       <th>ایمیل</th>
       <th colspan="2">تلفن</th>
     </tr>
-<tr>
-  <td>
-    <button v-if="user.Sex==1" class="btn btn-outline-primary">
-     مرد
-    </button>
-    <button v-if="user.Sex==0" class="btn btn-outline-info">
-      زن
-    </button>
+    <tr>
+      <td>
+        <button v-if="user.Sex==1" class="btn btn-outline-primary">
+          مرد
+        </button>
+        <button v-if="user.Sex==0" class="btn btn-outline-info">
+          زن
+        </button>
 
-  </td>
-  <td>{{user.Reshte}}</td>
-  <td>{{user.Email}}</td>
-  <td colspan="2">{{user.Phone}}</td>
-</tr>
+      </td>
+      <td>{{user.Reshte}}</td>
+      <td>{{user.Email}}</td>
+      <td colspan="2">{{user.Phone}}</td>
+    </tr>
 
     </tbody>
   </table>
@@ -103,7 +103,7 @@
   <div class="line-purple"></div>
   <form action="#" @submit.prevent="editUser()">
 
-<input type="hidden" v-model="Id=user.Id">
+    <input type="hidden" v-model="Id=user.Id">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <fieldset>
@@ -111,7 +111,7 @@
             نام و نام خانوادگی:
           </label>
           <input v-model="Name=user.Name"
-              type="text" class="form-control" id="name" placeholder="  نام و نام خانوادگی خود را وارد کنید  "
+                 type="text" class="form-control" id="name" placeholder="  نام و نام خانوادگی خود را وارد کنید  "
                  name="nam" required pattern=".{2,}"
                  oninvalid="setCustomValidity('وارد كردن نام و نام خانوادگي الزامي است.')"
                  oninput="setCustomValidity('')"
@@ -123,7 +123,8 @@
           <label for="rido">جنسیت:</label>
           <div id="rido" style="margin-right: 7%">
             <div class="btn btn-outline-primary  custom-control  custom-control-inline col-5  col-sm-4">
-              <input type="radio" id="customRadioInline1" name="Sex" value="1" class=" custom-control-input d-flex justify-content-center "
+              <input type="radio" id="customRadioInline1" name="Sex" value="1"
+                     class=" custom-control-input d-flex justify-content-center "
                      :checked="user.Sex==1" required
                      v-model="Sex=user.Sex"
               >
@@ -151,8 +152,8 @@
           <input
               v-model="Email=user.Email"
               type="email" class="form-control" name="email" id="Email" placeholder="آدرس ایمیل خود را وارد کنید"
-                 required oninvalid="setCustomValidity('لطفا ايميل خود را به فرمت  example@example.com وارد كنيد.')"
-                 oninput="setCustomValidity('')"
+              required oninvalid="setCustomValidity('لطفا ايميل خود را به فرمت  example@example.com وارد كنيد.')"
+              oninput="setCustomValidity('')"
           >
         </fieldset>
       </div>
@@ -177,18 +178,18 @@
           <label for="pas1">*
             رمز :
           </label>
-          <input    v-model="Password"
-              type="password" class="form-control" name="Pass" id="pas1" placeholder="رمز خود را وارد کنید"
+          <input v-model="Password"
+                 type="password" class="form-control" name="Pass" id="pas1" placeholder="رمز خود را وارد کنید"
                  required pattern=".{6,}" oninvalid="setCustomValidity('حداقل تعداد كاراكتر 6 كاراكتر مي باشد.')"
-                 oninput="setCustomValidity('')" >
+                 oninput="setCustomValidity('')">
         </fieldset>
       </div>
       <div class="col-md-6 col-sm-12">
         <label for="semat">*
-         سمت:
+          سمت:
         </label>
         <select class="custom-select my-1 mr-sm-2" id="semat" v-model="Semat=user.Semat" required name="Semat">
-          <option  value="0" :selected="user.Semat==0">کاربر عادی</option>
+          <option value="0" :selected="user.Semat==0">کاربر عادی</option>
           <option :selected="user.Semat == 1" value="1">مدیر سایت</option>
         </select>
       </div>
@@ -202,11 +203,11 @@
           </label>
           <select class="custom-select my-1 mr-sm-2" id="SelectPref" required v-model="Ostan=user.Ostan" name="Ostan">
             <option value="1" :selected="user.Ostan == 1">اصفهان</option>
-            <option value="2" :selected="user.Ostan == 2" >تهران</option>
-            <option value="3" :selected="user.Ostan == 3" >شیراز</option>
-            <option value="4" :selected="user.Ostan == 4" >قم</option>
-            <option value="5" :selected="user.Ostan == 5" >مشهد</option>
-            <option value="6" :selected="user.Ostan == 6" >همدان</option>
+            <option value="2" :selected="user.Ostan == 2">تهران</option>
+            <option value="3" :selected="user.Ostan == 3">شیراز</option>
+            <option value="4" :selected="user.Ostan == 4">قم</option>
+            <option value="5" :selected="user.Ostan == 5">مشهد</option>
+            <option value="6" :selected="user.Ostan == 6">همدان</option>
           </select>
         </fieldset>
       </div>
@@ -232,7 +233,7 @@
           <label for="madrak">*
             مدرك تحصيلي :
           </label>
-          <select class="custom-select my-1 mr-sm-2" id="madrak" name="Madrak"   v-model="Madrak=user.Madrak"  required>
+          <select class="custom-select my-1 mr-sm-2" id="madrak" name="Madrak" v-model="Madrak=user.Madrak" required>
             <option value="1" :selected="user.Madrak == 1">زير ديپلم</option>
             <option value="2" :selected="user.Madrak == 2">ديپلم</option>
             <option value="3" :selected="user.Madrak == 3">كارداني</option>
@@ -259,7 +260,7 @@
       </div>
       <br><br><br>
       <br><br>
-      <input  type="submit" class="btn btn-success btn-block" value="ويرايش كاربر مورد نظر ">
+      <input type="submit" class="btn btn-success btn-block" value="ويرايش كاربر مورد نظر ">
     </div>
   </form>
 
@@ -269,7 +270,7 @@
 
 </div>
 <div v-if="showDatails && ShowEdit">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped table-responsive-md">
     <thead>
     <tr>
       <th>شناسه</th>
@@ -292,19 +293,19 @@
           ✘
         </button>
       </td>
-<td>
+      <td>
 
-  <a class="btn btn-info" @click.prevent="User($event,'datails')" :href="index" >
-    جزئيات بيشتر
-  </a>
-  <a class="btn btn-primary" @click.prevent="User($event,'edit')" :href="index" >
-   ويرايش
-  </a>
-  <a class="btn btn-danger" @click.prevent="User($event,'remove')" :href="index" >
-   حذف
-  </a>
+        <a class="btn btn-info" @click.prevent="User($event,'datails')" :href="index">
+          جزئيات بيشتر
+        </a>
+        <a class="btn btn-primary" @click.prevent="User($event,'edit')" :href="index">
+          ويرايش
+        </a>
+        <a class="btn btn-danger" @click.prevent="User($event,'remove')" :href="index">
+          حذف
+        </a>
 
-</td>
+      </td>
     </tr>
 
     </tbody>

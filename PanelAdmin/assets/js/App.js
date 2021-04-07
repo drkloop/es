@@ -9,6 +9,10 @@ const url5 = UrlOfsite + '/nemodar.php';
 const url6 = UrlOfsite + '/er.php';
 const url7 = UrlOfsite + '/users.php';
 const url8 = UrlOfsite + '/insert.php';
+const url9 = UrlOfsite + '/comments.php';
+// end url
+
+//comonet that use
 Vue.component('job', {
   template: '',
   created() {
@@ -112,15 +116,14 @@ var ComponentA = {
     );
   }
 };
+//end uses
 
+//main component
 const NotfoundComponent = {
   template: '#NotFound'
-
 };
 const users = {
   template: '#Users',
-
-
   data() {
     return {
       Users: [],
@@ -150,33 +153,33 @@ const users = {
     this.editUser();
     this.deleteUser();
   },
-  created(){
+  created() {
 
   },
   methods: {
-    delete(id){
-          Swal.fire({
-            title: 'آيا مطمئن هستيد كه ميخواهيد اين كاربر را حذف كنيد ؟',
-            text: "در صورت حذف كاربر تمام اطلاعات اين كاربر نيز پاك مي شود",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'نه منصرف شدم',
-            confirmButtonText: 'بله مطمئنم پاكش كن'
-          }).then((result) => {
-            if (result.isConfirmed) {
-            this.deleteUser(id);
-              Swal.fire(
-                  '!پاك شد',
-                  '.كاربر مورد نظر حذف شد',
-                  'success'
-              )
-              window.location.replace(Url + 'panelAdmin');
-            }
-          })
+    delete(id) {
+      Swal.fire({
+        title: 'آيا مطمئن هستيد كه ميخواهيد اين كاربر را حذف كنيد ؟',
+        text: 'در صورت حذف كاربر تمام اطلاعات اين كاربر نيز پاك مي شود',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'نه منصرف شدم',
+        confirmButtonText: 'بله مطمئنم پاكش كن'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteUser(id);
+          Swal.fire(
+              '!پاك شد',
+              '.كاربر مورد نظر حذف شد',
+              'success'
+          );
+          window.location.replace(Url + 'panelAdmin');
+        }
+      });
     },
-    removeUser(id){
+    removeUser(id) {
       this.delete();
     },
     Sucses() {
@@ -199,7 +202,7 @@ const users = {
     deleteUser(id) {
       axios.post(url8, {
         action: 'deleteUser',
-        Id:id,
+        Id: id
       })
           .then((response) => {
             console.log(id);
@@ -234,7 +237,7 @@ const users = {
     },
     User(event, fnc) {
       element = event.currentTarget;
-     var id = element.getAttribute('href');
+      var id = element.getAttribute('href');
       this.getTheUser(id);
       switch (fnc) {
         case 'datails':
@@ -275,6 +278,7 @@ const errors = {
   mounted() {
     this.listErfuncs();
     ComponentB.data().showList;
+
     function showDetails(animal) {
       var animalType = animal.getAttribute('data-animal-type');
       alert('The ' + animal.innerHTML + ' is a ' + animalType + '.');
@@ -385,13 +389,105 @@ const HomeComponent = {
   }
 
 };
-const AboutComponent = {
-  template: '<h1>About</h1>'
+const Comment = {
+  template: '#comment',
+  data() {
+    return {
+      Comments: [],
+      comment: [],
+      id: 1,
+      showDatails:true,
+      ShowAns :false,
+      adding:0
+    };
+  },
+  created() {
+    // this.ThePage(1);
+    this.getThePage();
+  },
+  mounted() {
+    this.ThePage();
+    this.getComments();
+    this.getTheComment();
+    this.getThePage();
+    this.comments;
+  },
+  methods: {
+    getComments() {
+      axios.get(url9)
+          .then(response => {
+            this.Comments = response.data;
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+    },
+    getThePage() {
+      var page = 10 * this.id;
+      var i = ((this.id - 1) * 10);
+      this.adding=i;
+      console.log(page);
+      console.log(i);
+      return this.Comments.slice(i, page);
+    },
+    paginationComments() {
+      var length = this.Comments.length;
+      return Number(((length / 10) + 1).toFixed());
+    },
+    isActive(id) {
+      if (id == this.id) {
+        return 'page-link ActiveBtn';
+      }
+      return 'page-link ';
+
+    },
+    Next() {
+      if (this.id != this.paginationComments()) {
+        this.id = (this.id + 1);
+      }
+    },
+    Previous() {
+      if (this.id != 1) {
+        this.id = (this.id - 1);
+      }
+    },
+    ThePage(id = null) {
+      if (id == null) {
+        id = 1;
+      }
+      this.id = id;
+    },
+    Comm(event, fnc) {
+      element = event.currentTarget;
+      var id = element.getAttribute('href');
+      this.getTheComment(id);
+      switch (fnc) {
+        case 'details':
+          this.showDatails = false;
+          break;
+        case 'ans':
+          this.ShowAns = false;
+          break;
+        case 'delete':
+          // this.delete(this.user.Id);
+          break;
+      }
+    },
+    getTheComment(i){
+       this.comment=this.Comments[i];
+      return  this.comment;
+    }
+  }
 };
+//route
 const routes = [
   {
     path: '/panelAdmin',
     component: HomeComponent
+  },
+  {
+    path: '/comments',
+    component: Comment
   },
   {
     path: '/errors',
@@ -411,13 +507,12 @@ const routes = [
   }
 ];
 
+//main asli
 const router = new VueRouter({
   routes,
   mode: 'history'
 });
 Vue.use(CKEditor);
-
-
 var vm = new Vue({
   el: '#wraper',
   router,
