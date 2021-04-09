@@ -15,6 +15,7 @@ session_start();
   <link href="https://v1.fontapi.ir/css/Tanha" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+
   <!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>-->
   <!--  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -35,7 +36,6 @@ session_start();
 
 <div id="wraper">
 
-  <!--  <ckeditor :editor="editor" v-model="editorData" @input="onEditorInput" :config="editorConfig"></ckeditor>-->
   <header class="header" id="header">
     <div class="header__toggle">
       <i class='bx bx-menu' id="header-toggle"></i>
@@ -125,18 +125,17 @@ session_start();
   <div dir="rtl">
     <router-view></router-view>
   </div>
-</div>
-<!--<template>-->
-<!--  <div id="app">-->
-<!--    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>-->
-<!--  </div>-->
-<!--</template>-->
 
+</div>
 <!--===== MAIN JS =====-->
 <script src="assets/js/vue.js"></script>
 <script src="https://unpkg.com/vue-router@3.4.9/dist/vue-router.js"></script>
+<!--<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>-->
 <script src="assets/js/ckeditor.js"></script>
 <script src="assets/js/ckeditor2.js"></script>
+<!--<script>-->
+<!--  CKEDITOR.replace('editor1');-->
+<!--</script>-->
 <script src="../asetes/js/axios.js"></script>
 <script src="https://unpkg.com/vue-chartjs@2.5.7-rc3/dist/vue-chartjs.full.min.js"></script>
 <script src="assets/js/App.js"></script>

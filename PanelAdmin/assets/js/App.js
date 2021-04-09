@@ -1,3 +1,5 @@
+// import Vue from 'vue';
+// import CKEditor from 'ckeditor4-vue';
 //urls
 const Url = 'http://es.local/';
 const UrlOfsite = Url + 'panelAdmin/page/DatabaseAndJson';
@@ -389,15 +391,52 @@ const HomeComponent = {
   }
 
 };
+Vue.use(CKEditor);
 const Comment = {
   template: '#comment',
   data() {
     return {
+      editor: ClassicEditor,
+      editorData: '<p>متن پاسخ خود را در اينجا بنويسيد.</p>',
+      onEditorInput: {},
+      editorConfig: {
+        language : "fa",
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            "link",
+            "blockQuote",
+            ,"|","indent","outdent","|",
+            'bulletedList',
+            'numberedList',
+            '|',
+            'insertTable',
+            '|',
+            'undo',
+            'redo',
+          ]
+        },
+        // 'imageUpload',
+        // image: {
+        //   toolbar: [
+        //     'imageStyle:full',
+        //     'imageStyle:side',
+        //     '|',
+        //     'imageTextAlternative'
+        //   ]
+        // },
+        table: {
+          contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+        },
+      },
       Comments: [],
       comment: [],
       id: 1,
       showDatails:true,
-      ShowAns :false,
+      ShowAns :true,
       adding:0
     };
   },
@@ -410,9 +449,82 @@ const Comment = {
     this.getComments();
     this.getTheComment();
     this.getThePage();
+    this.deleteCommentRep();
     this.comments;
   },
   methods: {
+    SucsesRep(){
+      this.ShowAns=true;
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'پاسخ شما به ديدگاه مورد نظر به درستی ثبت شد.'
+      })
+    },
+    deleteOptins(event,act){
+      element = event.currentTarget;
+      var id = element.getAttribute('href');
+      var action= act;
+        Swal.fire({
+          title: 'آيا مطمئن هستيد كه ميخواهيد اين دیدگاه را حذف كنيد ؟',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          cancelButtonText: 'نه منصرف شدم',
+          confirmButtonText: 'بله مطمئنم پاكش كن'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.deleteCommentRep(id,action)
+            Swal.fire(
+                '!پاك شد',
+                '.دیدگاه مورد نظر حذف شد',
+                'success'
+            );
+            window.location.replace(Url + 'panelAdmin');
+          }
+        });
+    },
+    deleteCommentRep(id,act) {
+      axios.post(url8, {
+        action: act,
+        Id: id
+      })
+          .then((response) => {
+            console.log(id);
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
+    SendComment(event) {
+      element = event.currentTarget;
+      var id = element.getAttribute('href');
+      axios.post(url8, {
+        action: "Comment",
+        comment:this.editorData,
+        Name:'مدير سايت',
+        CommentId:id,
+        Email:"Admin@admin.com"
+      })
+          .then((response) => {
+            console.log("ok");
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
     getComments() {
       axios.get(url9)
           .then(response => {
@@ -426,13 +538,14 @@ const Comment = {
       var page = 10 * this.id;
       var i = ((this.id - 1) * 10);
       this.adding=i;
-      console.log(page);
-      console.log(i);
+
       return this.Comments.slice(i, page);
     },
     paginationComments() {
       var length = this.Comments.length;
-      return Number(((length / 10) + 1).toFixed());
+     var num= Number(((length/10)+0.4).toFixed())
+      console.log(num);
+      return num;
     },
     isActive(id) {
       if (id == this.id) {
@@ -512,20 +625,15 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 });
-Vue.use(CKEditor);
+
+//
 var vm = new Vue({
   el: '#wraper',
   router,
   data: {
     showdash: 0,
-    editor: ClassicEditor,
-    editorData: '<p>Content of the editor.</p>',
-    onEditorInput: {},
-    editorConfig: {
-      // The configuration of the editor.
-    }
 
-  }
+  },
 
 
 });

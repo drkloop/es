@@ -1,5 +1,6 @@
+
 <div class="col-md-12 col-12" v-if="!showDatails">
-  <button type="submit" class="btn btn-primary left-0" @click="showDatails=true" >
+  <button type="submit" class="btn btn-primary left-0" @click="showDatails=true">
     بازگشت به لیست گزارشات ◄
   </button>
   <br>
@@ -21,15 +22,15 @@
       <td>{{comment.Tarihk_co}}</td>
     </tr>
     <tr>
-   <th>شناسه</th>
-   <th colspan="2">متن ريپلاي</th>
-   <th>تاريخ</th>
-   <th>نام پاسخ دهنده</th>
-   <th>عمليات</th>
+      <th>شناسه</th>
+      <th colspan="2">متن ريپلاي</th>
+      <th>تاريخ</th>
+      <th>نام پاسخ دهنده</th>
+      <th>عمليات</th>
     </tr>
-      <td colspan="6"  v-if="comment.Rep==''">
-        برای این دیدگاه هیچ پاسخی وجود ندارد.
-      </td>
+    <td colspan="6" v-if="comment.Rep==''">
+      برای این دیدگاه هیچ پاسخی وجود ندارد.
+    </td>
     <tr v-for="(item,index) in comment.Rep">
       <td>
         {{index+1}}
@@ -44,28 +45,66 @@
         {{item.Name_rep}}
       </td>
       <td>
-        <a class="btn btn-danger" href="#">حذف</a>
+        <a class="btn btn-danger" @click.prevent="deleteOptins($event,'CommentRep')" :href="item.Id_rep">حذف</a>
       </td>
 
     </tr>
     </tbody>
   </table>
 
-     <span >
+  <span>
 
 
 <!--       <td>{{item.comment_rep}}</td>-->
 
      </span>
 </div>
+<div class="col-md-12 col-12" v-if="!ShowAns">
+  <button type="submit" class="btn btn-primary left-0" @click="ShowAns=true">
+    بازگشت به لیست گزارشات ◄
+  </button>
+  <br>
+  <br>
+  <table class="table table-bordered table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th colspan="3">ديدگاه</th>
+      <th>ایمیل کاربر</th>
+      <th>نام كاربر</th>
+      <th>تاريخ ارسال</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td colspan="3">{{comment.comment_co}}</td>
+      <td>{{comment.Email_co}}</td>
+      <td>{{comment.Name_co}}</td>
+      <td>{{comment.Tarihk_co}}</td>
+    </tr>
+    <tr>
+      <td colspan="6">
+        <lable for="pasokh"> پاشخ شما :</lable>
+        <br>
+        <hr>
+        <ckeditor :editor="editor" v-model="editorData" @input="onEditorInput" :config="editorConfig"></ckeditor>
+        <a class="btn btn-info "  @click.prevent="SendComment($event),SucsesRep()" :href="comment.Id_co" >
+          ارسال پاسخ
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
 <!---->
-<div v-if="showDatails">
+<div v-if="showDatails && ShowAns">
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
       <th></th>
       <th>نام كاربر</th>
-      <th >ايميل</th>
+      <th>ايميل</th>
       <th>عمليات</th>
     </tr>
     </thead>
@@ -79,9 +118,9 @@
         {{comment.Email_co}}
       </td>
       <td>
-          <a class="btn btn-info"   @click.prevent="Comm($event,'details')" :href="index+adding">جزئيات</a>
-          <a class="btn btn-primary" @click.prevent="Comm($event,'ans')" :href="index+adding">پاسخ به ديدگاه</a>
-        <a class="btn btn-danger" @click.prevent="Comm($event,'delete')" :href="index+adding">حذف ديدگاه</a>
+        <a class="btn btn-info" @click.prevent="Comm($event,'details')" :href="index+adding">جزئيات</a>
+        <a class="btn btn-primary" @click.prevent="Comm($event,'ans')" :href="index+adding">پاسخ به ديدگاه</a>
+        <a class="btn btn-danger" @click.prevent="deleteOptins($event,'CommentCo')" :href="comment.Id_co">حذف ديدگاه</a>
       </td>
     </tr>
     </tbody>
@@ -100,7 +139,7 @@
         <li class="page-item"><button :class="isActive(n)" @click.prevent="ThePage(n)">{{n}}</button></li>
         </span>
         <li class="page-item">
-          <a class="page-link" href="#"  @click.prevent="Next()" aria-label="Next">
+          <a class="page-link" href="#" @click.prevent="Next()" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
