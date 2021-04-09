@@ -80,7 +80,7 @@ require_once './core/jdf.php';
                 <img src="./asetes/img/link.png" class="icon">
               </span>
             </div>
-            <p class="container  font-weight-bold">
+            <p class="container  font-weight-bold" v-html="">
               {{Reply.Mtn}}
             </p>
           </div>
@@ -101,7 +101,6 @@ require_once './core/jdf.php';
       <option value="15">15</option>
       <option value="20">20</option>
     </select>
-
     <div class="btn-group btn-custom-center" role="group" id="paginat" >
       <button type="button" :class="flagBtn<0 ? btnActive : btnNotActive " @click="btnIdToken(--flagBtn)">&laquo;
       </button>
@@ -178,8 +177,8 @@ require_once './core/jdf.php';
               <img src="./asetes/img/link.png" class="icon">
             </span>
           </div>
-          <p class="container  font-weight-bold">
-            {{Reply.Mtn}}
+          <p class="container  font-weight-bold" v-html="Reply.Mtn">
+
           </p>
           <!-- اينجا براي پاسخ به ريپلايه -->
           <!-- <button class="btn btn-secondary" style="width: 100px;margin-right: 10px;margin-bottom: 10px"

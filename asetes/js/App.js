@@ -173,7 +173,7 @@ Vue.component('Comment', {
     </div>
     <div class="row" style="margin-right: 10px ">
       <label for="em_nazarat" class="label-border col-3">ايميل</label>
-      <input type="email" id="em_nazarat" name="Email" class="form-control col-8" required >
+      <input patern="[a-zA-Z0-9-آابپتثجچحخدذرزژسشصضطظعغفق  کگلمنوهی]" type="email" id="em_nazarat" name="Email" class="form-control col-8" required >
       <div class="col-1"></div>
     </div>
     <div class="form-group">
