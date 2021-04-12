@@ -55,7 +55,6 @@ var ComponentA = {
   props: [
     'hara', 'harb', 'harc', 'hard', 'hare', 'harf', 'harh', 'datea', 'dateb', 'datec', 'dated', 'datee', 'datef', 'dateg'
   ],
-
   extends: VueChartJs.Line,
   data() {
     return {
@@ -64,7 +63,6 @@ var ComponentA = {
       visited: []
     };
   },
-
   mounted() {
     // this.gradient = this.$refs.canvas
     //     .getContext("2d")
@@ -119,8 +117,203 @@ var ComponentA = {
   }
 };
 //end uses
+var INPUT={
+ props:['option','flag'],
+  data() {
+    return {
+      editor: ClassicEditor,
+      editorData: '<p>متن پاسخ خود را در اينجا بنويسيد.</p>',
+      onEditorInput: {},
+      editorConfig: {
+        language : "fa",
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            "link",
+            "blockQuote",
+            "|",
+            "indent",
+            "outdent",
+            "|",
+            'bulletedList',
+            'numberedList',
+            '|',
+            'insertTable',
+            '|',
+            'undo',
+            'redo',
+          ]
+        },
+        table: {
+          contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+        },
+      },
+    }
+  },
+  methods: {
+    remove() {
+      this.$emit('remove');
+    }
+  },
+  template:`
+<div>
+  <br>
+  <div v-if="flag.title=='title'">
+    <h3> سرتيتر :</h3>
+    <div class="row">
+      <div class="col-10">
+        <input type="text" class="form-control" placeholder="سرتیتر خود را در اینجا وارد کنید" v-model="option.title">
+      </div>
+      <div class="col-2">
+        <a class="btn btn-outline-danger" href="#" @click.prevent="remove"> X</a>
+      </div>
+    </div>
+  </div>
+  <div v-if="flag.title=='box'">
+    <h3> متن داخل باكس : </h3>
+    <div class="row">
+      <div class="col-10">
+        <ckeditor :editor="editor" v-model="option.box" @input="onEditorInput" :config="editorConfig"></ckeditor>
+      </div>
+      <div class="col-2">
+        <a href="#" class="btn btn-outline-danger"
+                @click.prevent="remove"> X
+        </a>
+      </div>
+    </div>
+  </div>
+  <div v-if="flag.title=='mtn'">
+    <h3> متن  : </h3>
+    <div class="row">
+      <div class="col-10">
+        <ckeditor :editor="editor" v-model="option.mtn" @input="onEditorInput" :config="editorConfig" ></ckeditor>
+      </div>
+      <div class="col-2">
+        <a href="#" class="btn btn-outline-danger"
+                @click.prevent="remove"> X
+        </a>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>
+  `
+}
 
 //main component
+const Advertise = {
+  template: '#Advertise',
+  components: {
+      'ipt': INPUT,
+  },
+  data() {
+    return {
+      mardomi:false,
+      sarasari:false,
+      AddSarasari:false,
+      agahi:true,
+      Options:[],
+      flag:[],
+      title1:'',
+      title2:'',
+      kholase:'',
+    };
+  },
+  mounted() {
+   // this.insertSarasari();
+  },
+  methods: {
+    Sucses() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'آگهي سراسري به درستي منتشر شد .'
+      });
+    },
+    danger() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'فیلد های ستاره دار الزامی هستند.'
+      });
+    },
+    insertSarasari() {
+      if ((this.title1!='' && this.title2!='' &&this.kholase!='')){
+      axios.post(url8, {
+        action: 'sarasari',
+        Options:this.Options,
+        title1:this.title1,
+        title2:this.title2,
+        kholase:this.kholase,
+      })
+          .then((response) => {
+            console.log('ok');
+            this.Sucses();
+            this.AddSarasari=false;
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+      }else {
+        this.danger();
+      }
+    },
+    addOP(act){
+      switch (act){
+        case 'title':
+       this.flag.push({title:'title'});
+        this.Options.push({title: ''}); // what to push unto the rows array?
+        break;
+        case 'box':
+          this.flag.push({title:'box'});
+        this.Options.push({box: ''}); // what to push unto the rows array?
+        break;
+        case 'mtn':
+          this.flag.push({title:'mtn'});
+        this.Options.push({mtn: ''}); // what to push unto the rows array?
+        break;
+      }
+    },
+    removeOP(index){
+      this.Options.splice(index, 1); // what to push unto the rows array?
+      this.flag.splice(index, 1); // what to push unto the rows array?
+    },
+    ShowAdv(func){
+      this.agahi=false;
+      switch (func){
+        case 'sarasari':
+          this.sarasari=true;
+          break;
+          case 'mardomi':
+          this.mardomi=true;
+          break;
+      }
+    },
+  }
+};
 const NotfoundComponent = {
   template: '#NotFound'
 };
@@ -603,6 +796,10 @@ const routes = [
     component: Comment
   },
   {
+    path: '/advertise',
+    component: Advertise
+  },
+  {
     path: '/errors',
     component: errors
   },
@@ -634,6 +831,5 @@ var vm = new Vue({
     showdash: 0,
 
   },
-
 
 });

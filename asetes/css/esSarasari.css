@@ -71,7 +71,8 @@
     vertical-align: middle;
 }
 .es_sa_info_infos_first_img{
-    margin: auto;
+    margin-right: 0;
+    margin-top: auto;
     width: 0;
     height: 0;
     border-style: solid;

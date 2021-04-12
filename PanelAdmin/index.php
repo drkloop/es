@@ -28,6 +28,7 @@ session_start();
     require_once __DIR__ . "/page/errors.phtml";
     require_once __DIR__ . "/page/exit.php";
     require_once __DIR__ . "/page/Users.phtml";
+    require_once __DIR__ . "/page/advertise.phtml";
     require_once __DIR__ . "/page/Comment.phtml";
     require_once __DIR__ . "/page/404.html";
 
@@ -98,11 +99,12 @@ session_start();
             <span class="nav__name">نظرات</span>
           </a>
  </router-link>
+          <router-link to="/advertise" title="آگهی ها">
           <a href="#" class="nav__link">
             <i class='bx bxs-megaphone bx-tada'></i>
             <span class="nav__name">آگهی ها </span>
           </a>
-
+          </router-link>
 
           <router-link to="/errors" title="اشكالات">
             <a href="#" class="nav__link">
@@ -130,12 +132,8 @@ session_start();
 <!--===== MAIN JS =====-->
 <script src="assets/js/vue.js"></script>
 <script src="https://unpkg.com/vue-router@3.4.9/dist/vue-router.js"></script>
-<!--<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>-->
 <script src="assets/js/ckeditor.js"></script>
 <script src="assets/js/ckeditor2.js"></script>
-<!--<script>-->
-<!--  CKEDITOR.replace('editor1');-->
-<!--</script>-->
 <script src="../asetes/js/axios.js"></script>
 <script src="https://unpkg.com/vue-chartjs@2.5.7-rc3/dist/vue-chartjs.full.min.js"></script>
 <script src="assets/js/App.js"></script>
