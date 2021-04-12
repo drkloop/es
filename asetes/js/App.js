@@ -158,10 +158,8 @@ Vue.component('copylink', {
     }
 });
 Vue.component('Comment', {
-
     data() {
         return {
-
         }
     },
     template: `
@@ -185,7 +183,6 @@ Vue.component('Comment', {
   
   </form>
   `,
-
 });
 Vue.component('Commentrep', {
     props: ["idcoment"],
@@ -216,10 +213,58 @@ Vue.component('Commentrep', {
     </div>
     <hr>
     <button type="submit" class="btn btn-block btn-info ">ثبت نظر</button>
-  
   </form>
   `,
+});
+Vue.component('titr', {
+    props: ["tags"],
+    data() {
+        return {
 
+        }
+    },
+    template: `
+  <div class="es_sa_info_infos_first_title row">
+    <span class="es_sa_info_infos_first_p1">e</span>
+    <span class="es_sa_info_infos_first_p2" v-html='tags'> 
+    </span>
+  </div>   
+  `,
+});
+Vue.component('box', {
+    props: ["tags"],
+    data() {
+        return {
+
+        }
+    },
+    template:
+        `   
+<div class="es_sa_info_infos_first_info row" style="width: 100%">
+ <p class="es_sa_info_infos_first_p3" style="font-size: x-large">
+  استخدام
+ </p>
+ <div class="es_sa_info_infos_first_tri">
+  <p class="es_sa_info_infos_first_img"></p>
+ </div>
+ <div class="es_sa_info_infos_first_p4" v-html='tags'>
+ </div>
+</div>
+
+  `,
+});
+Vue.component('mtn', {
+    props: ["tags"],
+    data() {
+        return {
+
+        }
+    },
+    template:
+        ` 
+        <div v-html='tags'>
+        </div>
+        `,
 });
 
 Vue.component('accsu', {

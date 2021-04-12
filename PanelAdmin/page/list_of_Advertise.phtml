@@ -1,0 +1,124 @@
+<!--صفحه اول آگهی ها-->
+<div v-if="agahi">
+  <!--عکس-->
+  <img src="panelAdmin/assets/img/adver.png" width="40%" height="40%">
+  <!--#-->
+  <div class="row">
+    <div class="col-lg-4 col-md-3 col-0"></div>
+    <!--  سراسری-->
+    <div @click="ShowAdv('sarasari')" class=" col-lg-2 col-md-3 col-6 mos_dash bg-info" style="cursor: pointer;">
+      <b style="color: cornsilk;margin-left: 20px">
+        <div>
+          <span style="font-size:large"> آگهی های سراسری</span>
+          <br>
+          <i class='bx bxs-book-reader bx-tada bx-md'></i>
+          <br>
+          تعداد:
+          <br>
+          20
+        </div>
+      </b>
+
+    </div>
+    <!--  #-->
+    <!--  مردمی-->
+    <div @click="ShowAdv('mardomi')" class=" col-lg-2 col-md-3 col-6 mos_dash bg-success" style="cursor: pointer;">
+      <b style="color: cornsilk;margin-left: 20px">
+        <div>
+                                   <span style="font-size:large">
+                                      آگهی های مردمی
+                                   </span>
+          <br>
+          <i class='bx bxs-megaphone bx-tada bx-md'></i>
+          <br>
+          تعداد :
+          <br>
+          20
+        </div>
+      </b>
+    </div>
+    <!--  #-->
+    <div class="col-lg-4 col-md-3 col-0"></div>
+  </div>
+</div>
+<!--# اگهي ها-->
+<!--بخش اگهي هاي سراسري-->
+<div v-if="sarasari">
+  <div v-if="!AddSarasari">
+    <button type="submit" class="btn btn-primary left-0" @click="agahi=true , sarasari=false">
+      بازگشت به عقب ◄
+    </button>
+    <div class="d-flex justify-content-end" title="اضافه كردن آگهی سراسری" @click="AddSarasari=true">
+      <i class='bx bxs-add-to-queue bx-tada ' style='color:rgba(11,176,66,0.73); font-size: 72px ;cursor: pointer;'
+         dir="ltr"></i>
+    </div>
+
+    <!--<tags tsetag='  <a class="btn btn-block btn-primary" href="#">مقداری که میخواستم اینجاست</a>'></tags>-->
+    <table class="table table-bordered table-striped table-responsive-md">
+      <thead>
+      <tr>
+        <th>عنوان</th>
+        <th>تاریخ</th>
+        <th>عملیات</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          استخدام ارتش
+        </td>
+        <td>
+          1399-12-2
+        </td>
+        <td>
+          <a class="btn btn-info" @click.prevent="" href="#">دیدن صفحه آگهی</a>
+          <a class="btn btn-danger" @click.prevent="" href="#">حذف آگهی</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--بخش افزودن اگهی سراسری-->
+  <div v-if="AddSarasari">
+    <button type="submit" class="btn btn-primary left-0" @click="AddSarasari=false">
+      بازگشت به عقب ◄
+    </button>
+    <br><br>
+    <div class="row">
+      <div class="col-4">
+        <button class="btn btn-outline-info btn-block" @click="addOP('title')">+ سر تیتر</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-outline-secondary btn-block" @click="addOP('box')">+ باکس متن</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-outline-warning btn-block" @click="addOP('mtn')"> + متن</button>
+      </div>
+    </div>
+    <hr>
+    <form action="#" method="post">
+      <label for="title1">  *
+        عنوان اصلی اگهی سراسری :</label>
+      <input class="form-control" id="title1"  placeholder="" required type="text" v-model="title1">
+      <label for="title2">*
+        عنوان برای نمایش در صفحه آگهی :</label>
+      <input  class="form-control" id="title2" placeholder="" required type="text" v-model="title2">
+      <label for="kholase">*
+        خلاصه ای از اگهی مورد نظر را وارد کنید :</label>
+
+      <textarea class="form-control" id="kholase"  placeholder="" required type="text" maxlength="150" v-model="kholase"></textarea>
+<!--    بخش اضافه شدن تمپليت ها-->
+    <ipt v-for="(option,index) in  Options" :key="index" :option="option" v-on:remove="removeOP(index)" :flag="flag[index]"></ipt>
+      <button class="btn btn-success" type="submit" @click.prevent="insertSarasari()"> نشر اگهی مورد نظر</button>
+    </form>
+  </div>
+  <!--#افزودن اگهی سراسری-->
+</div>
+<!--# اگهي هاي سراسري-->
+<!--اگهي هاي مردمي-->
+<div v-if="mardomi">
+  <button type="submit" class="btn btn-primary left-0" @click="agahi=true , mardomi=false">
+    بازگشت به عقب ◄
+  </button>
+</div>
+<!--# اگهي هاي مردمي-->
