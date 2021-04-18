@@ -31,7 +31,7 @@ session_start();
     require_once __DIR__ . "/page/advertise.phtml";
     require_once __DIR__ . "/page/Comment.phtml";
     require_once __DIR__ . "/page/404.html";
-
+//    require_once __DIR__ .'/page/AgahiSarasari.phtml'
     ?>
 </div>
 

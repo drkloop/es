@@ -12,6 +12,8 @@ const url6 = UrlOfsite + '/er.php';
 const url7 = UrlOfsite + '/users.php';
 const url8 = UrlOfsite + '/insert.php';
 const url9 = UrlOfsite + '/comments.php';
+const url10 = UrlOfsite + '/sarasari-ag.php';
+const url11 = UrlOfsite + '/mardomi.php';
 // end url
 
 //comonet that use
@@ -214,8 +216,13 @@ const Advertise = {
       mardomi:false,
       sarasari:false,
       AddSarasari:false,
+      ShowSarasari:false,
+      ShowMardomi:false,
       agahi:true,
+      link:"",
       Options:[],
+      AgahiSarasari:[],
+      AgahiMardomi:[],
       flag:[],
       title1:'',
       title2:'',
@@ -224,8 +231,72 @@ const Advertise = {
   },
   mounted() {
    // this.insertSarasari();
+    this. getAgahiSarasari();
+    this. getAgahiMardomi();
+
   },
   methods: {
+    deleteADver(id,func) {
+      Swal.fire({
+        title: 'آيا مطمئن هستيد كه ميخواهيد اين آگهي  را حذف كنيد ؟',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'نه منصرف شدم',
+        confirmButtonText: 'بله مطمئنم پاكش كن'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteAdv(id,func);
+          Swal.fire(
+              '!پاك شد',
+              '.آگهي مورد نظر حذف شد',
+              'success'
+          );
+          window.location.replace(Url + 'panelAdmin');
+        }
+      });
+    },
+    deleteAdv(id,func) {
+      axios.post(url8, {
+        action: 'deleteAver',
+        func:func,
+        Id: id
+      })
+          .then((response) => {
+            console.log(id);
+          })
+          .catch(e => {
+            console.log(error.response.data);
+          });
+    },
+    getAgahiSarasari() {
+      axios.get(url10)
+          .then(response => {
+            this.AgahiSarasari = response.data;
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+    },
+    geToPageSararari(Id){
+      this.ShowSarasari=true;
+    return  this.link=  Url + 'estekhdamSarasari?id='+Id ;
+    },
+    geToPageMardomi(Id){
+      this.ShowMardomi=true;
+    return  this.link=  Url + 'adver?id='+Id ;
+    },
+
+    getAgahiMardomi() {
+      axios.get(url11)
+          .then(response => {
+            this.AgahiMardomi = response.data;
+          })
+          .catch(error => {
+            console.log(error.response.data);
+          });
+    },
     Sucses() {
       const Toast = Swal.mixin({
         toast: true,
@@ -465,6 +536,37 @@ const errors = {
   template: '#errors',
   data() {
     return {
+      text:'',
+      editor: ClassicEditor,
+      editorData: '<p>متن پاسخ خود را در اينجا بنويسيد.</p>',
+      onEditorInput: {},
+      editorConfig: {
+        language : "fa",
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            "link",
+            "blockQuote",
+            "|",
+            "indent",
+            "outdent",
+            "|",
+            'bulletedList',
+            'numberedList',
+            '|',
+            'insertTable',
+            '|',
+            'undo',
+            'redo',
+          ]
+        },
+        table: {
+          contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+        },
+      },
       errors: [],
       showList: true,
       ER: []
@@ -483,6 +585,63 @@ const errors = {
     this.getErrors();
   },
   methods: {
+    Sucses() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'پاسخ شما به درستي ارسال شد .'
+      });
+    },
+    danger() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'حداقل بايد پاسخ شما داراي 15 كاراكتر باشد .'
+      });
+    },
+    SendMessage(id) {
+      //بايد اينجا رو درست كنم فردا
+      if ((this.text.length>15)){
+        axios.post(url8, {
+          action: 'pasokhEr',
+          text:this.text,
+          id:id
+        })
+            .then((response) => {
+              console.log('ok');
+              this.Sucses();
+              window.location.replace(Url + 'panelAdmin');
+            })
+            .catch(e => {
+              console.log(error.response.data);
+            });
+      }else {
+        this.danger();
+      }
+    },
+
+
+
     listErfuncs(event) {
       element = event.currentTarget;
       id = element.getAttribute('href');
@@ -785,8 +944,10 @@ const Comment = {
     }
   }
 };
+
 //route
 const routes = [
+
   {
     path: '/panelAdmin',
     component: HomeComponent

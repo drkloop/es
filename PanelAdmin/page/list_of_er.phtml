@@ -18,13 +18,19 @@
       <td>{{ER.email}}</td>
       <td>{{ER.coment}}</td>
     </tr>
-    <tr>
+    <tr v-if="Number(ER.visited)">
+      <th>
+        پاسخي كه داده ايد :
+      </th>
+      <td colspan="2" v-html="ER.javab"></td>
+    </tr>
+    <tr v-if="!Number(ER.visited)">
       <td colspan="3">
-        <lable for="pasokh"> پاشخ شما :</lable>
-        <textarea name="pasokh" id="pasokh" class="form-control" required></textarea>
+        <lable> پاشخ شما :</lable>
+        <ckeditor :editor="editor"  v-model="text" @input="onEditorInput" :config="editorConfig"></ckeditor>
         <br>
         <hr>
-        <button type="submit" class="btn btn-info btn-center">
+        <button type="submit" @click.prevent="SendMessage(ER.Id)" class="btn btn-info btn-center">
           ارسال پاسخ
         </button>
       </td>
@@ -58,10 +64,15 @@
         <button v-if="error.visited==0" class="btn btn-danger">✘</button>
       </td>
       <td>
-
+<span v-if="!Number(error.visited)">
         <a class="btn btn-success" @click.prevent="listErfuncs($event) " :href="index" >
         پاسخ
         </a>
+</span>
+        <span v-if="Number(error.visited)">
+        <a class="btn btn-info" @click.prevent="listErfuncs($event) " :href="index" >
+       مشاهده</a>
+</span>
         <button class="btn btn-danger">حذف</button>
       </td>
     </tr>
