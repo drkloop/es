@@ -1,3 +1,4 @@
+
 <!--صفحه اول آگهی ها-->
 <div v-if="agahi">
   <!--عکس-->
@@ -15,7 +16,7 @@
           <br>
           تعداد:
           <br>
-          20
+      {{ AgahiSarasari.length}}
         </div>
       </b>
 
@@ -33,7 +34,7 @@
           <br>
           تعداد :
           <br>
-          20
+          {{ AgahiMardomi.length}}
         </div>
       </b>
     </div>
@@ -44,7 +45,7 @@
 <!--# اگهي ها-->
 <!--بخش اگهي هاي سراسري-->
 <div v-if="sarasari">
-  <div v-if="!AddSarasari">
+  <div v-if="!AddSarasari && !ShowSarasari">
     <button type="submit" class="btn btn-primary left-0" @click="agahi=true , sarasari=false">
       بازگشت به عقب ◄
     </button>
@@ -63,21 +64,30 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr v-for="(adver,index) in AgahiSarasari">
         <td>
-          استخدام ارتش
+          {{adver.title}}
         </td>
         <td>
-          1399-12-2
+          {{adver.date}}
         </td>
         <td>
-          <a class="btn btn-info" @click.prevent="" href="#">دیدن صفحه آگهی</a>
-          <a class="btn btn-danger" @click.prevent="" href="#">حذف آگهی</a>
+
+          <a class="btn btn-info" @click.prevent="geToPageSararari(adver.Id)" href="#" >دیدن صفحه آگهی</a>
+          <a class="btn btn-danger" @click.prevent="deleteADver(adver.Id ,'sarasari')" href="">حذف آگهی</a>
         </td>
       </tr>
       </tbody>
     </table>
   </div>
+  <!--    بخش ديدن اگهي سراسري-->
+  <div v-if="ShowSarasari">
+    <button type="submit" class="btn btn-primary left-0" @click="ShowSarasari=false">
+      بازگشت به عقب ◄
+    </button>
+  <object :data="link" width="100%" height="800px"></object>
+  </div>
+  <!--    #-->
   <!--بخش افزودن اگهی سراسری-->
   <div v-if="AddSarasari">
     <button type="submit" class="btn btn-primary left-0" @click="AddSarasari=false">
@@ -116,9 +126,43 @@
 </div>
 <!--# اگهي هاي سراسري-->
 <!--اگهي هاي مردمي-->
-<div v-if="mardomi">
+<div v-if="mardomi ">
+  <div v-if="!ShowMardomi">
   <button type="submit" class="btn btn-primary left-0" @click="agahi=true , mardomi=false">
     بازگشت به عقب ◄
   </button>
+    <table class="table table-bordered table-striped table-responsive-md">
+      <thead>
+      <tr>
+        <th>عنوان</th>
+        <th>تاریخ</th>
+        <th>عملیات</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(adver,index) in AgahiMardomi">
+        <td>
+          {{adver.title}}
+        </td>
+        <td>
+          {{adver.date}}
+        </td>
+        <td>
+
+          <a class="btn btn-info" @click.prevent="geToPageMardomi(adver.Id)" href="#" >دیدن صفحه آگهی</a>
+          <a class="btn btn-danger" @click.prevent="deleteADver(adver.Id ,'mardomi')" href="">حذف آگهی</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+<!--  بخش ديدن اگهي مردمي-->
+  <div v-if="ShowMardomi">
+    <button type="submit" class="btn btn-primary left-0" @click=" ShowMardomi=false">
+      بازگشت به عقب ◄
+    </button>
+    <object :data="link" width="100%" height="800px"></object>
+  </div>
+<!--  مردمي#-->
 </div>
 <!--# اگهي هاي مردمي-->
