@@ -524,9 +524,7 @@ $('.adver_btn').click(function() {
   $.post("./model/delete_user_advertise.php",{val:val},function (result) {
   if(result==1){
   alert("آکهی با موفقیت حذف شد");
-  $.post("./model/user_advertise.php",function (result) {
-  $("#user_advertise_tbody").html(result);
-});
+  location.reload();
 }else{
   alert("حذف آکهی با مشکل مواجه شد");
 }
@@ -536,4 +534,39 @@ $(".adver_sarasari").click(function () {
   var es_sa_id = $(this).attr("val-adver-sarasari");
   var url = "estekhdamSarasari?id="+es_sa_id;
   window.open(url,"_self");
+});
+$("#adv_extra").click(function () {
+    var clas = $(this).attr("class");
+    if(clas == "adv_extra_inf_star"){
+      var val = $(this).attr("adver_id");
+      $.post("./model/set_star_adver.php",{val:val},function (result){
+        if(result==1){
+          $(".adv_extra_inf_star").addClass("adv_extra_inf_stared");
+          $(".adv_extra_inf_star").removeClass("adv_extra_inf_star");
+        }else{
+          alert("بايد ثبت نام كنيد");
+          alert(result);
+        }
+      });
+    }else if(clas=="adv_extra_inf_stared"){
+      var val = $(this).attr("adver_id");
+      $.post("./model/set_star_adver.php",{del_val:val},function (result){
+        if(result==1){
+          $(".adv_extra_inf_stared").addClass("adv_extra_inf_star");
+          $(".adv_extra_inf_stared").removeClass("adv_extra_inf_stared");
+        }else{
+          alert("بايد ثبت نام كنيد");
+        }
+      });
+    }
+});
+$(".delete_star").click(function () {
+  var val = $(this).attr("val");
+  $.post("./model/set_star_adver.php",{del_val:val},function (result){
+    if(result==1){
+      location.reload();
+    }else{
+      alert("بايد ثبت نام كنيد");
+    }
+  });
 });

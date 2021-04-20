@@ -5,6 +5,14 @@ include "func_adv.php";
 $database=new db();
 if(isset($_GET["id"])){
     $adv_id = $_GET["id"];
+    $adver_id  = "";
+    if(isset($_SESSION["logIn"])){
+        $user_mail = $_SESSION["logIn"];
+        $star_query = "SELECT adver_id FROM star WHERE user_mail='$user_mail' AND adver_id='$adv_id'";
+        $run = mysqli_query($database->getDb(),$star_query);
+        $row = mysqli_fetch_array($run);
+        $adver_id = $row["adver_id"];
+    }
     $query = "SELECT * FROM advertise WHERE advertise_id='$adv_id'";
     $run = mysqli_query($database->getDb(),$query);
     $row = mysqli_fetch_array($run);
@@ -35,12 +43,22 @@ if(isset($_GET["id"])){
                 <p id=\"adv_extra_inf_today\">
                     $when
                 </p>
-                <p id=\"adv_extra_inf_star\">
+    ";
+    if($adv_id == $adver_id){
+        echo "
+        <p class=\"adv_extra_inf_stared\" id='adv_extra' adver_id='$adv_id'>
                     <i class=\"fa fa-star\"></i>
                     <span>نشان کردن</span>
-                </p>
-            </div>
-    ";
+                </p>";
+    }else{
+        echo "
+        <p class=\"adv_extra_inf_star\" id='adv_extra' adver_id='$adv_id'>
+                    <i class=\"fa fa-star\"></i>
+                    <span>نشان کردن</span>
+                </p>";
+    }
+    echo "
+            </div>";
     $adv_factory = $row["advertise_factory"];
     echo
     "

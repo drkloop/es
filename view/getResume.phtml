@@ -1,0 +1,31 @@
+<?php $this->loadView('MenoUser'); ?>
+<?php
+require_once "./model/db.php";
+$db = new db();
+$user_mail = $_SESSION["logIn"];
+$query_resume = "SELECT * FROM user WHERE Email='$user_mail'";
+$run_resume = mysqli_query($db->getDb(),$query_resume);
+$row_res = mysqli_fetch_array($run_resume);
+$full_name = $row_res['Name'];
+?>
+<div id="for_print">
+    <h1 style="text-align: center">رزومه ساز اي استخدام</h1>
+    <hr>
+    <div class="btn btn-success" style="display: inline-block">
+        <p >نام و نام خانوادگي :</p>
+        <p><?=$full_name?></p>
+    </div>
+</div>
+
+<script>
+        $(document).ready(function () {
+            var divContents = $("#for_print").html();
+            var a = window.open("");
+            a.document.write('<html>');
+            a.document.write('<body style="direction: rtl;">');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        });
+</script>

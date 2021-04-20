@@ -1,0 +1,39 @@
+<?php $this->loadView('MenoUser'); ?>
+<div id="user_stared">
+    <div class="row ">
+        <div class="col-md-3 col-0">
+            <?php $this->loadView('panelUserMeno')?>
+        </div>
+        <div class="col-lg-9 col-md-9 col-12 " >
+            <div id="user_advertises">
+                <div id="user_advertise_title">
+                    <h3>مدیریت آگهی</h3>
+                </div>
+
+                <div id="user_advertises_info">
+                    <span id="span_seccond"><i class="fa fa-bell"></i></span>
+                    <span>از پنل پایین میتوانید لیست نشان دار های خود را مدیریت کنید</span>
+                </div>
+
+                <div id="user_advertises_pannel">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <td style="width: 10%">ردیف</td>
+                            <td style="width: 70%">عنوان آگهی</td>
+                            <td style="width: 10%">حذف</td>
+                        </tr>
+                        </thead>
+                        <tbody id="user_advertise_tbody">
+                        <?php
+                        include "./model/user_star.php";
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>

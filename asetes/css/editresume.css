@@ -1,6 +1,11 @@
 #edit_resume{
     left: 95px;
 }
+@media (max-width: 991px) {
+    #edit_resume{
+        left: 0;
+    }
+}
 .editforresume_title{
     padding: 15px 10px;
     background: #f6f6f6;

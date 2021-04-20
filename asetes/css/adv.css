@@ -19,11 +19,20 @@
     padding: 3px;
     margin-right: 10px;
 }
-#adv_extra_inf_star{
+.adv_extra_inf_star{
+    cursor: pointer;
     padding: 3px;
     margin-right: 10px;
     border-radius: 4px;
     border: 1px solid #666666;
+}
+.adv_extra_inf_stared{
+    cursor: pointer;
+    padding: 3px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #666666;
+    background: #d39e00;
 }
 #adv_extra_inf_star:hover{
     color: #d39e00;

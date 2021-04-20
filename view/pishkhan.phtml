@@ -1,0 +1,101 @@
+<?php $this->loadView('MenoUser'); ?>
+<?php
+require_once "./model/db.php";
+$db = new db();
+$user_mail = $_SESSION["logIn"];
+$query = "SELECT * FROM star WHERE user_mail='$user_mail'";
+$run = mysqli_query($db->getDb(),$query);
+$count_star = mysqli_num_rows($run);
+$query = "SELECT * FROM advertise WHERE advertise_email='$user_mail'";
+$run = mysqli_query($db->getDb(),$query);
+$count_adver =  mysqli_num_rows($run);
+
+$query_resume = "SELECT * FROM resume WHERE user_mail='$user_mail'";
+$run_resume = mysqli_query($db->getDb(),$query_resume);
+$row_res = mysqli_fetch_array($run_resume);
+$job_status = $row_res['job_status'];
+$work_in = $row_res['work_in'];
+$salary = $row_res['salary'];
+$i = 0;
+if($job_status!="" && $work_in!='' && $salary!=""){
+    $stat = 'check';
+    $i+=50;
+}else{
+    $stat = 'close';
+}
+if($row_res['languages']!=''){
+    $i +=50;
+}
+?>
+<div class="container">
+
+    <div class="row ">
+        <div class="col-md-3 col-0">
+            <?php $this->loadView('panelUserMeno')?>
+        </div>
+        <div class="col-lg-9 col-md-9 col-12">
+            <div id="pishkhan" class="row">
+                <div class="col-md-6">
+                    <div class="card bg-success">
+                        <div class="card-header">
+                            <p class="float-right text-white"><?=$count_star?></p>
+                            <p class="float-left text-white">تعداد آگهی های ستاره دار شده</p>
+
+                            <a href="PanelUser_adverStared" class="float-left text-white">برای مشاهده لیست نشان دار شده ها کلیک کنید</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-danger">
+                        <div class="card-header">
+                            <p class="float-right text-white"><?=$count_adver?></p>
+                            <p class="float-left text-white">تعداد آگهی های منتشر شده</p>
+
+                            <a href="PanelUser_adverStared" class="float-left text-white">برای مشاهده لیست آگهی های منتشر شده کلیک کنید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="resume_quality" style="">
+                <h4>کیفیت رزومه</h4>
+                <div data-value="<?= $i ?>" class="ldBar"
+                     style="width:100%;height:60px;text-align: center;"
+                     data-stroke="data:ldbar/res,gradient(0,1,#9df,#9fd,#df9,#fd9)"
+                     data-path="M10 20Q20 15 30 20Q40 25 50 20Q60 15 70 20Q80 25 90 20"
+                ></div>
+                <div id="table_resume">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;" class="resume_td">وضعیت</th>
+                                <th style="width: 90%;" class="resume_td">عنوان</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="text-align: center"><i class="fa fa-briefcase"></i></td>
+                            <td><a style="color: rebeccapurple;text-decoration: none;" href="panelUser_editUserInfo">تکمیل اطلاعات پروفایل</a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center"><i class="fa fa-<?=$stat?>"></i></td>
+                            <td><a style="color: rebeccapurple;text-decoration: none;" href="panelUser_jobInfo">اطلاعات شغلي</a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center"><i class="fa fa-<?= $row_res['languages']!='' ? 'check' : 'close'?>"></i></td>
+                            <td><a style="color: rebeccapurple;text-decoration: none;" href="panelUser_other?action=language">زبان هاي خارجي</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <center>
+                            <a href="panelUser_getResume" class="btn btn-success">پرينت رزومه</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
