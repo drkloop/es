@@ -1,5 +1,4 @@
-<?php $this->loadView('MenoUser'); ?>
-<?php
+<?php $this->loadView('MenoUser');
 require_once "./model/db.php";
 $db = new db();
 $user_mail = $_SESSION["logIn"];
@@ -12,6 +11,7 @@ $count_adver =  mysqli_num_rows($run);
 
 $query_resume = "SELECT * FROM resume WHERE user_mail='$user_mail'";
 $run_resume = mysqli_query($db->getDb(),$query_resume);
+if (mysqli_num_rows($run_resume) > 0) :
 $row_res = mysqli_fetch_array($run_resume);
 $job_status = $row_res['job_status'];
 $work_in = $row_res['work_in'];
@@ -26,6 +26,7 @@ if($job_status!="" && $work_in!='' && $salary!=""){
 if($row_res['languages']!=''){
     $i +=50;
 }
+endif;
 ?>
 <div class="container">
 
