@@ -2,7 +2,7 @@
 require_once "db.php";
 $db = new db();
 $mail = $_SESSION["logIn"];
-$query = "SELECT * FROM resume";
+$query = "SELECT * FROM resume WHERE user_mail='$mail'";
 $run = mysqli_query($db->getDb(),$query);
 $row = mysqli_fetch_array($run);
 $job_status = $row["job_status"];

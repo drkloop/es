@@ -1,7 +1,10 @@
 #edit_resume{
-    position: absolute;
-    top: 132px;
     left: 95px;
+}
+@media (max-width: 991px) {
+    #edit_resume{
+        left: 0;
+    }
 }
 .editforresume_title{
     padding: 15px 10px;
@@ -155,7 +158,8 @@
     cursor: pointer;
     background: #f7f7f7;
 }
-#btnlang{
+#btnlang,
+#btnlangedit{
     background: #00af00;
     border-radius: 4px;
     cursor: pointer;
@@ -165,4 +169,22 @@
 }
 .img_lan{
     width: 70px;
+}
+
+.fa-close{
+    text-align: center;
+    color: #d02327;
+    cursor: pointer;
+}
+.fa-lan{
+    margin-left: 15px;
+}
+.fa-pencil{
+    cursor: pointer;
+}
+#lang_name{
+    margin-top: 20px;
+}
+#lang_name input{
+    text-align: center;
 }

@@ -38,8 +38,7 @@ class PanelUser extends controller
     public function index()
     {
         $this->notFound = 1;
-        $this->loadView('panelUserMeno');
-        $this->loadView('MenoUser');
+        $this->loadView('pishkhan');
     }
 
     public function userAdvertise()
@@ -113,5 +112,13 @@ class PanelUser extends controller
         }
     }
 
+    public function adverStared()
+    {
+        if (isset($_SESSION["logIn"])) {
+            $this->loadView("adver_stared");
+        } else {
+            $this->loadView('vorod');
+        }
+    }
 
 }

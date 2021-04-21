@@ -7,6 +7,7 @@
 <script src="<?php Assetes::js('jsmami.js') ?>"></script>
 <script src="<?php Assetes::js('get_adverss.js') ?>"></script>
 <script src="<?php Assetes::js('editUserInfo.js') ?>"></script>
+<script src="<?php Assetes::js('loading-bar.js') ?>"></script>
 <!-- Insert the vue core before vue-toasted -->
 <script>
   AOS.init();
